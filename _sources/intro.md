@@ -1,11 +1,19 @@
-# Welcome to your Jupyter Book
+# PROYEK SAINS DATA - A
 
-This is a small sample book to give you a feel for how book content is
-structured.
-It shows off a few of the major file types, as well as some sample content.
-It does not go in-depth into any particular topic - check out [the Jupyter Book documentation](https://jupyterbook.org) for more information.
+Hallo guyss… Kenalin namaku Abdiadha Syabirin,Aku mahasiswa Teknik Informatika Angkatan 2023 di Universitas Trunojoyo Madura ,Aku ingin memberikan pengalaman belajarku seputar matakuliah Proyek Sains Data .
 
-Check out the content pages bundled with this sample book to see more.
+Biodata Diri
+Nama : Abdiadha Syabirin
 
-```{tableofcontents}
-```
+Prodi : Teknik Informatika
+
+NIM : 230411100029
+
+Universitas : Universitas Trunojoyo Madura
+
+No.HP : 087759712347
+
+Email : ahabirabdi@gmail.com
+
+<!--```{tableofcontents}-->
+<!--```-->
