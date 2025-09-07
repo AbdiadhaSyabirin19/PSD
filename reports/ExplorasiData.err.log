@@ -19,20 +19,108 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^
   File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1005, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 806, in _async_poll_for_reply
-    error_on_timeout_execute_reply = await self._async_handle_timeout(timeout, cell)
-                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 856, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-from google.colab import files
-uploaded = files.upload()
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/usr/local/lib/python3.12/dist-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import psycopg2
+import pandas as pd
+from sqlalchemy import create_engine
 
--------------------
+# --- KONFIGURASI DATABASE ---
+PG_HOST = "localhost"
+PG_PORT = "5432"
+PG_DB = "PSD"
+PG_USER = "postgres"
+PG_PASSWORD = "abdi19"
+
+# --- 1. KONEKSI KE DATABASE ---
+try:
+    conn = psycopg2.connect(
+        host=PG_HOST,
+        port=PG_PORT,
+        dbname=PG_DB,
+        user=PG_USER,
+        password=PG_PASSWORD
+    )
+    cur = conn.cursor()
+    print("✅ Koneksi berhasil ke PostgreSQL")
+except Exception as e:
+    print("❌ Gagal koneksi:", e)
+
+
+# --- 2. BUAT TABEL ---
+create_table_query = """
+CREATE TABLE IF NOT EXISTS obesity_data (
+    "Gender" TEXT,
+    "Age" NUMERIC,
+    "Height" NUMERIC,
+    "Weight" NUMERIC,
+    "family_history_with_overweight" TEXT,
+    "FAVC" TEXT,
+    "FCVC" NUMERIC,
+    "NCP" NUMERIC,
+    "CAEC" TEXT,
+    "SMOKE" TEXT,
+    "CH2O" NUMERIC,
+    "SCC" TEXT,
+    "FAF" NUMERIC,
+    "TUE" NUMERIC,
+    "CALC" TEXT,
+    "MTRANS" TEXT,
+    "NObeyesdad" TEXT
+);
+"""
+cur.execute(create_table_query)
+conn.commit()
+print("✅ Tabel 'obesity_data' siap.")
+
+
+# --- 3. BACA DATA DARI CSV ---
+csv_file = "ObesityDataSet.csv"  # ganti dengan nama file csv kamu
+df = pd.read_csv(csv_file)
+print("✅ Data CSV berhasil dibaca, jumlah baris:", len(df))
+
+
+# --- 4. INPUT DATA KE POSTGRES ---
+engine = create_engine(
+    f"postgresql://{PG_USER}:{PG_PASSWORD}@{PG_HOST}:{PG_PORT}/{PG_DB}"
+)
+
+# Masukkan data, ganti 'replace' -> kalau tabel sudah ada akan ditimpa
+# Kalau mau nambahin data gunakan 'append'
+df.to_sql("obesity_data", engine, if_exists="append", index=False)
+print("✅ Data berhasil dimasukkan ke PostgreSQL.")
+
+
+# --- 5. CEK DATA SAMPLE ---
+cur.execute("SELECT * FROM obesity_data LIMIT 5;")
+rows = cur.fetchall()
+print("\nSample data dari database:")
+for row in rows:
+    print(row)
+
+
+
+------------------
+
+----- stdout -----
+❌ Gagal koneksi: connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5432 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m/tmp/ipython-input-3869435254.py[0m in [0;36m<cell line: 0>[0;34m()[0m
+[1;32m     47[0m );
+[1;32m     48[0m """
+[0;32m---> 49[0;31m [0mcur[0m[0;34m.[0m[0mexecute[0m[0;34m([0m[0mcreate_table_query[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     50[0m [0mconn[0m[0;34m.[0m[0mcommit[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     51[0m [0mprint[0m[0;34m([0m[0;34m"✅ Tabel 'obesity_data' siap."[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNameError[0m: name 'cur' is not defined
 

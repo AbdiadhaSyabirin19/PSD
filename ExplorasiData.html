@@ -380,7 +380,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-yang-diperlukan">Import Library yang Diperlukan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-dari-csv-dan-preview-awal">Load Dataset dari CSV dan Preview Awal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-database-postgresql-konfigurasi-koneksi-create-table-insert-data">Setup Database PostgreSQL (Konfigurasi,Koneksi,Create Table,Insert Data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-tipe-data-dan-missing-values">EDA - Tipe Data dan Missing Values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-outlier-analisis-dengan-iqr">EDA - Outlier Analisis dengan IQR</a></li>
@@ -439,308 +438,6 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.12/dist-pac
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="load-dataset-dari-csv-dan-preview-awal">
-<h2>Load Dataset dari CSV dan Preview Awal<a class="headerlink" href="#load-dataset-dari-csv-dan-preview-awal" title="Link to this heading">#</a></h2>
-<p>Buka file <strong>data.csv</strong> ke dalam DataFrame menggunakan pandas. Setelah itu, tampilkan <strong>5 baris teratas (preview)</strong> serta <strong>informasi dataset</strong> (tipe data tiap kolom dan jumlah baris). Langkah ini berguna untuk memahami struktur data sebelum dilakukan pembersihan. Jika file tidak ditemukan, akan muncul error—pastikan file berada di folder yang sama.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
-<span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-     <input type="file" id="files-692b69be-7aa9-41b7-bcfd-4db30c05193f" name="files[]" multiple disabled
-        style="border:none" />
-     <output id="result-692b69be-7aa9-41b7-bcfd-4db30c05193f">
-      Upload widget is only available when the cell has been executed in the
-      current browser session. Please rerun this cell to enable.
-      </output>
-      <script>// Copyright 2017 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//      http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
-/**
- * @fileoverview Helpers for google.colab Python module.
- */
-(function(scope) {
-function span(text, styleAttributes = {}) {
-  const element = document.createElement('span');
-  element.textContent = text;
-  for (const key of Object.keys(styleAttributes)) {
-    element.style[key] = styleAttributes[key];
-  }
-  return element;
-}
-
-// Max number of bytes which will be uploaded at a time.
-const MAX_PAYLOAD_SIZE = 100 * 1024;
-
-function _uploadFiles(inputId, outputId) {
-  const steps = uploadFilesStep(inputId, outputId);
-  const outputElement = document.getElementById(outputId);
-  // Cache steps on the outputElement to make it available for the next call
-  // to uploadFilesContinue from Python.
-  outputElement.steps = steps;
-
-  return _uploadFilesContinue(outputId);
-}
-
-// This is roughly an async generator (not supported in the browser yet),
-// where there are multiple asynchronous steps and the Python side is going
-// to poll for completion of each step.
-// This uses a Promise to block the python side on completion of each step,
-// then passes the result of the previous step as the input to the next step.
-function _uploadFilesContinue(outputId) {
-  const outputElement = document.getElementById(outputId);
-  const steps = outputElement.steps;
-
-  const next = steps.next(outputElement.lastPromiseValue);
-  return Promise.resolve(next.value.promise).then((value) => {
-    // Cache the last promise value to make it available to the next
-    // step of the generator.
-    outputElement.lastPromiseValue = value;
-    return next.value.response;
-  });
-}
-
-/**
- * Generator function which is called between each async step of the upload
- * process.
- * @param {string} inputId Element ID of the input file picker element.
- * @param {string} outputId Element ID of the output display.
- * @return {!Iterable<!Object>} Iterable of next steps.
- */
-function* uploadFilesStep(inputId, outputId) {
-  const inputElement = document.getElementById(inputId);
-  inputElement.disabled = false;
-
-  const outputElement = document.getElementById(outputId);
-  outputElement.innerHTML = '';
-
-  const pickedPromise = new Promise((resolve) => {
-    inputElement.addEventListener('change', (e) => {
-      resolve(e.target.files);
-    });
-  });
-
-  const cancel = document.createElement('button');
-  inputElement.parentElement.appendChild(cancel);
-  cancel.textContent = 'Cancel upload';
-  const cancelPromise = new Promise((resolve) => {
-    cancel.onclick = () => {
-      resolve(null);
-    };
-  });
-
-  // Wait for the user to pick the files.
-  const files = yield {
-    promise: Promise.race([pickedPromise, cancelPromise]),
-    response: {
-      action: 'starting',
-    }
-  };
-
-  cancel.remove();
-
-  // Disable the input element since further picks are not allowed.
-  inputElement.disabled = true;
-
-  if (!files) {
-    return {
-      response: {
-        action: 'complete',
-      }
-    };
-  }
-
-  for (const file of files) {
-    const li = document.createElement('li');
-    li.append(span(file.name, {fontWeight: 'bold'}));
-    li.append(span(
-        `(${file.type || 'n/a'}) - ${file.size} bytes, ` +
-        `last modified: ${
-            file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() :
-                                    'n/a'} - `));
-    const percent = span('0% done');
-    li.appendChild(percent);
-
-    outputElement.appendChild(li);
-
-    const fileDataPromise = new Promise((resolve) => {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        resolve(e.target.result);
-      };
-      reader.readAsArrayBuffer(file);
-    });
-    // Wait for the data to be ready.
-    let fileData = yield {
-      promise: fileDataPromise,
-      response: {
-        action: 'continue',
-      }
-    };
-
-    // Use a chunked sending to avoid message size limits. See b/62115660.
-    let position = 0;
-    do {
-      const length = Math.min(fileData.byteLength - position, MAX_PAYLOAD_SIZE);
-      const chunk = new Uint8Array(fileData, position, length);
-      position += length;
-
-      const base64 = btoa(String.fromCharCode.apply(null, chunk));
-      yield {
-        response: {
-          action: 'append',
-          file: file.name,
-          data: base64,
-        },
-      };
-
-      let percentDone = fileData.byteLength === 0 ?
-          100 :
-          Math.round((position / fileData.byteLength) * 100);
-      percent.textContent = `${percentDone}% done`;
-
-    } while (position < fileData.byteLength);
-  }
-
-  // All done.
-  yield {
-    response: {
-      action: 'complete',
-    }
-  };
-}
-
-scope.google = scope.google || {};
-scope.google.colab = scope.google.colab || {};
-scope.google.colab._files = {
-  _uploadFiles,
-  _uploadFilesContinue,
-};
-})(self);
-</script> </div><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">/tmp/ipython-input-264872163.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">files</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">uploaded</span> <span class="o">=</span> <span class="n">files</span><span class="o">.</span><span class="n">upload</span><span class="p">()</span>
-
-<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/files.py</span> in <span class="ni">upload</span><span class="nt">(target_dir)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span>   <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="s2"> </span>
-<span class="ne">---&gt; </span><span class="mi">72</span><span class="s2">   uploaded_files = _upload_files(multiple=True)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="s2">   # Mapping from original filename to filename as saved locally.</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span><span class="s2">   local_filenames = dict()</span>
-
-<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/files.py</span> in <span class="ni">_upload_files</span><span class="nt">(multiple)</span>
-<span class="g g-Whitespace">    </span><span class="mi">162</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">163</span><span class="s2">   # First result is always an indication that the file picker has completed.</span>
-<span class="ne">--&gt; </span><span class="mi">164</span><span class="s2">   result = _output.eval_js(</span>
-<span class="g g-Whitespace">    </span><span class="mi">165</span><span class="s2">       &#39;google.colab._files._uploadFiles(&quot;</span><span class="si">{input_id}</span><span class="s2">&quot;, &quot;</span><span class="si">{output_id}</span><span class="s2">&quot;)&#39;.format(</span>
-<span class="g g-Whitespace">    </span><span class="mi">166</span><span class="s2">           input_id=input_id, output_id=output_id</span>
-
-<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/output/_js.py</span> in <span class="ni">eval_js</span><span class="nt">(script, ignore_result, timeout_sec)</span>
-<span class="g g-Whitespace">     </span><span class="mi">38</span><span class="s2">   if ignore_result:</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span><span class="s2">     return</span>
-<span class="ne">---&gt; </span><span class="mi">40</span><span class="s2">   return _message.read_reply_from_input(request_id, timeout_sec)</span>
-<span class="g g-Whitespace">     </span><span class="mi">41</span><span class="s2"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">42</span><span class="s2"> </span>
-
-<span class="nn">/usr/local/lib/python3.12/dist-packages/google/colab/_message.py</span> in <span class="ni">read_reply_from_input</span><span class="nt">(message_id, timeout_sec)</span>
-<span class="g g-Whitespace">     </span><span class="mi">94</span><span class="s2">     reply = _read_next_input_message()</span>
-<span class="g g-Whitespace">     </span><span class="mi">95</span><span class="s2">     if reply == _NOT_READY or not isinstance(reply, dict):</span>
-<span class="ne">---&gt; </span><span class="mi">96</span><span class="s2">       time.sleep(0.025)</span>
-<span class="g g-Whitespace">     </span><span class="mi">97</span><span class="s2">       continue</span>
-<span class="g g-Whitespace">     </span><span class="mi">98</span><span class="s2">     if (</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load CSV ke DataFrame</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;ObesityDataSet.csv&quot;</span><span class="p">)</span>
-
-
-<span class="c1"># Preview data</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Preview Data:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
-
-<span class="c1"># Info data awal (tipe data, non-null count)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Info Data Awal:&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Preview Data:
-   Gender   Age  Height  Weight family_history_with_overweight FAVC  FCVC  \
-0  Female  21.0    1.62    64.0                            yes   no   2.0   
-1  Female  21.0    1.52    56.0                            yes   no   3.0   
-2    Male  23.0    1.80    77.0                            yes   no   2.0   
-3    Male  27.0    1.80    87.0                             no   no   3.0   
-4    Male  22.0    1.78    89.8                             no   no   2.0   
-
-   NCP       CAEC SMOKE  CH2O  SCC  FAF  TUE        CALC  \
-0  3.0  Sometimes    no   2.0   no  0.0  1.0          no   
-1  3.0  Sometimes   yes   3.0  yes  3.0  0.0   Sometimes   
-2  3.0  Sometimes    no   2.0   no  2.0  1.0  Frequently   
-3  3.0  Sometimes    no   2.0   no  2.0  0.0  Frequently   
-4  1.0  Sometimes    no   2.0   no  0.0  0.0   Sometimes   
-
-                  MTRANS           NObeyesdad  
-0  Public_Transportation        Normal_Weight  
-1  Public_Transportation        Normal_Weight  
-2  Public_Transportation        Normal_Weight  
-3                Walking   Overweight_Level_I  
-4  Public_Transportation  Overweight_Level_II  
-
-Info Data Awal:
-&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 2111 entries, 0 to 2110
-Data columns (total 17 columns):
- #   Column                          Non-Null Count  Dtype  
----  ------                          --------------  -----  
- 0   Gender                          2111 non-null   object 
- 1   Age                             2111 non-null   float64
- 2   Height                          2111 non-null   float64
- 3   Weight                          2111 non-null   float64
- 4   family_history_with_overweight  2111 non-null   object 
- 5   FAVC                            2111 non-null   object 
- 6   FCVC                            2111 non-null   float64
- 7   NCP                             2111 non-null   float64
- 8   CAEC                            2111 non-null   object 
- 9   SMOKE                           2111 non-null   object 
- 10  CH2O                            2111 non-null   float64
- 11  SCC                             2111 non-null   object 
- 12  FAF                             2111 non-null   float64
- 13  TUE                             2111 non-null   float64
- 14  CALC                            2111 non-null   object 
- 15  MTRANS                          2111 non-null   object 
- 16  NObeyesdad                      2111 non-null   object 
-dtypes: float64(8), object(9)
-memory usage: 280.5+ KB
-None
 </pre></div>
 </div>
 </div>
@@ -835,17 +532,22 @@ None
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✅ Koneksi berhasil ke PostgreSQL
-✅ Tabel &#39;obesity_data&#39; siap.
-✅ Data CSV berhasil dibaca, jumlah baris: 2111
-✅ Data berhasil dimasukkan ke PostgreSQL.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>❌ Gagal koneksi: connection to server at &quot;localhost&quot; (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at &quot;localhost&quot; (::1), port 5432 failed: Cannot assign requested address
+	Is the server running on that host and accepting TCP/IP connections?
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-3869435254.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="p">);</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">49</span><span class="s2"> cur.execute(create_table_query)</span>
+<span class="g g-Whitespace">     </span><span class="mi">50</span><span class="s2"> conn.commit()</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span><span class="s2"> print(&quot;✅ Tabel &#39;obesity_data&#39; siap.&quot;)</span>
 
-Sample data dari database:
-(&#39;Female&#39;, Decimal(&#39;21.0&#39;), Decimal(&#39;1.62&#39;), Decimal(&#39;64.0&#39;), &#39;yes&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), Decimal(&#39;3.0&#39;), &#39;Sometimes&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), &#39;no&#39;, Decimal(&#39;0.0&#39;), Decimal(&#39;1.0&#39;), &#39;no&#39;, &#39;Public_Transportation&#39;, &#39;Normal_Weight&#39;)
-(&#39;Female&#39;, Decimal(&#39;21.0&#39;), Decimal(&#39;1.52&#39;), Decimal(&#39;56.0&#39;), &#39;yes&#39;, &#39;no&#39;, Decimal(&#39;3.0&#39;), Decimal(&#39;3.0&#39;), &#39;Sometimes&#39;, &#39;yes&#39;, Decimal(&#39;3.0&#39;), &#39;yes&#39;, Decimal(&#39;3.0&#39;), Decimal(&#39;0.0&#39;), &#39;Sometimes&#39;, &#39;Public_Transportation&#39;, &#39;Normal_Weight&#39;)
-(&#39;Male&#39;, Decimal(&#39;23.0&#39;), Decimal(&#39;1.8&#39;), Decimal(&#39;77.0&#39;), &#39;yes&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), Decimal(&#39;3.0&#39;), &#39;Sometimes&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), &#39;no&#39;, Decimal(&#39;2.0&#39;), Decimal(&#39;1.0&#39;), &#39;Frequently&#39;, &#39;Public_Transportation&#39;, &#39;Normal_Weight&#39;)
-(&#39;Male&#39;, Decimal(&#39;27.0&#39;), Decimal(&#39;1.8&#39;), Decimal(&#39;87.0&#39;), &#39;no&#39;, &#39;no&#39;, Decimal(&#39;3.0&#39;), Decimal(&#39;3.0&#39;), &#39;Sometimes&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), &#39;no&#39;, Decimal(&#39;2.0&#39;), Decimal(&#39;0.0&#39;), &#39;Frequently&#39;, &#39;Walking&#39;, &#39;Overweight_Level_I&#39;)
-(&#39;Male&#39;, Decimal(&#39;22.0&#39;), Decimal(&#39;1.78&#39;), Decimal(&#39;89.8&#39;), &#39;no&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), Decimal(&#39;1.0&#39;), &#39;Sometimes&#39;, &#39;no&#39;, Decimal(&#39;2.0&#39;), &#39;no&#39;, Decimal(&#39;0.0&#39;), Decimal(&#39;0.0&#39;), &#39;Sometimes&#39;, &#39;Public_Transportation&#39;, &#39;Overweight_Level_II&#39;)
+<span class="ne">NameError</span>: name &#39;cur&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1165,7 +867,6 @@ max       3.000000     3.000000     2.000000
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-yang-diperlukan">Import Library yang Diperlukan</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-dari-csv-dan-preview-awal">Load Dataset dari CSV dan Preview Awal</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-database-postgresql-konfigurasi-koneksi-create-table-insert-data">Setup Database PostgreSQL (Konfigurasi,Koneksi,Create Table,Insert Data)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-tipe-data-dan-missing-values">EDA - Tipe Data dan Missing Values</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eda-outlier-analisis-dengan-iqr">EDA - Outlier Analisis dengan IQR</a></li>
