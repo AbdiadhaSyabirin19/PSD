@@ -471,6 +471,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
@@ -483,6 +484,27 @@ document.write(`
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="p">)</span>
 
 <span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+
+<span class="ne">OperationalError</span><span class="g g-Whitespace">                          </span>Traceback (most recent call last)
+<span class="nn">/tmp/ipython-input-3271063930.py</span> in <span class="ni">&lt;cell line: 0&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># Koneksi ke PostgreSQL</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;analisis_db&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">user</span><span class="o">=</span><span class="s2">&quot;postgres&quot;</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.12/dist-packages/psycopg2/__init__.py</span> in <span class="ni">connect</span><span class="nt">(dsn, connection_factory, cursor_factory, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> 
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="n">dsn</span> <span class="o">=</span> <span class="n">_ext</span><span class="o">.</span><span class="n">make_dsn</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">122</span>     <span class="n">conn</span> <span class="o">=</span> <span class="n">_connect</span><span class="p">(</span><span class="n">dsn</span><span class="p">,</span> <span class="n">connection_factory</span><span class="o">=</span><span class="n">connection_factory</span><span class="p">,</span> <span class="o">**</span><span class="n">kwasync</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>     <span class="k">if</span> <span class="n">cursor_factory</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>         <span class="n">conn</span><span class="o">.</span><span class="n">cursor_factory</span> <span class="o">=</span> <span class="n">cursor_factory</span>
+
+<span class="ne">OperationalError</span>: connection to server at &quot;localhost&quot; (127.0.0.1), port 5432 failed: Connection refused
+	<span class="n">Is</span> <span class="n">the</span> <span class="n">server</span> <span class="n">running</span> <span class="n">on</span> <span class="n">that</span> <span class="n">host</span> <span class="ow">and</span> <span class="n">accepting</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> connections<span class="o">?</span>
+<span class="n">connection</span> <span class="n">to</span> <span class="n">server</span> <span class="n">at</span> <span class="s2">&quot;localhost&quot;</span> <span class="p">(::</span><span class="mi">1</span><span class="p">),</span> <span class="n">port</span> <span class="mi">5432</span> <span class="n">failed</span><span class="p">:</span> <span class="n">Cannot</span> <span class="n">assign</span> <span class="n">requested</span> <span class="n">address</span>
+	<span class="n">Is</span> <span class="n">the</span> <span class="n">server</span> <span class="n">running</span> <span class="n">on</span> <span class="n">that</span> <span class="n">host</span> <span class="ow">and</span> <span class="n">accepting</span> <span class="n">TCP</span><span class="o">/</span><span class="n">IP</span> connections<span class="o">?</span>
+>>>>>>> c79dd268d1343e9f66540a6cd25a54b57db90610
 </pre></div>
 </div>
 </div>
