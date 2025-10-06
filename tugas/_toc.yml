@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: memahamiBisnis
+  title: Bussines Understanding
+- file: dataUnderstanding
+  title: Data Understanding
+- file: ExplorasiData
+  title: Exploration Data
+- file: PreprocessingData
+  title: Data Preprocessing     
+- file: ketidakseimbanganData
+  title: Preprocessing Data Imbalance (Data Iris)
+- file: ketidakseimbanganData2
+  title: Preprocessing Data Imbalance (Data Iris)

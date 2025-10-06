@@ -1,0 +1,9 @@
+.env
+# Abaikan folder output Jupyter Book
+/tugas/_build/
+
+# Abaikan folder virtual environment Python
+.venv/
+
+# File sistem operasi
+.DS_Store
