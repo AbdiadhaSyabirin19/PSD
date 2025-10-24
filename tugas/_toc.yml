@@ -15,4 +15,6 @@ chapters:
 - file: ketidakseimbanganData
   title: Preprocessing Data Imbalance (Data Iris)
 - file: ketidakseimbanganData2
-  title: Preprocessing Data Imbalance (Data Iris)
+  title: Preprocessing Data Imbalance (Data Bank)
+- file: Forecasting
+  title: Forecasting NO2 with KNN
