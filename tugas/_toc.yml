@@ -18,3 +18,7 @@ chapters:
   title: Preprocessing Data Imbalance (Data Bank)
 - file: Forecasting
   title: Forecasting NO2 with KNN
+- file: Forecasting(autoCorelation)
+  title: Forecasting NO2 with KNN (Auto Correlation)
+- file: sound
+  title: Voice Analysis
