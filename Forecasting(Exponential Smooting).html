@@ -1,0 +1,1882 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Forecasting dengan Auto Corelation &#8212; Proyek Sains Data A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Forecasting(Exponential Smooting)';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. Setup dan Import Library" href="test.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Proyek Sains Data A - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Proyek Sains Data A - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my learning site : “PROYEK SAINS DATA - A”
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Bussines Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE)</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData2.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Forecasting.html">Forecasting NO2 with KNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">Forecasting NO2 with KNN (Auto Correlation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html"><strong>1. Setup dan Import Library</strong></a></li>
+
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Forecasting NO2 with Exponential Smoothing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FForecasting(Exponential Smooting).html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Forecasting(Exponential Smooting).ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Forecasting dengan Auto Corelation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-forecasting">- Apa itu Forecasting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-forecasting-penting">- Mengapa Forecasting penting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data">- Crawling Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libarary-yang-dibutuhkan">1. Import libarary yang dibutuhkan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025">2. Definisi kan koordinat di wilayah Kamal dan parameter waktu (2022-2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian">3. Loading data Sentinel-5P NO2 dan agregasi temporal harian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf">4. Melakukan eksekusi job batch processing untuk memproses data secara otomatis dan terjadwal, kemudian mengekspor hasilnya ke dalam format file NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan">5. Ubah data NetCDF ke CSV agar lebih mudah untuk digunakan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">- Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-tanggal-waktu">- Mengurutkan Data berdasarkan tanggal/waktu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatasi-missing-value-dengan-interpolasi">- Mengatasi Missing Value dengan interpolasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-penanganan-outlier">- DETEKSI &amp; PENANGANAN OUTLIER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-menggunakan-zscore-dengan-standart-sklearn">- Normalisasi Data menggunakan zscore dengan standart sklearn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-smoothing-untuk-data-no2-menggunakan-library-pycaret">- Exponential Smoothing untuk data NO2 menggunakan Library Pycaret</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">1. Import Library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-preprocessing-data-pembersihan">2. Load &amp; Preprocessing Data (Pembersihan)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split-pembagian-data-uji">3. Train-Test Split (Pembagian Data Uji)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pembuatan-model">4. Pembuatan Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5. Evaluasi Model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-smoothing-untuk-data-no2-menggunakan-library-statsmodels">- Exponential Smoothing untuk data NO2 menggunakan Library StatsModels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-load-data">1. Import Library &amp; Load Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Train-Test Split (Pembagian Data Uji)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#training-model">3. Training Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil">4. Evaluasi Hasil</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">5. Visualisasi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-no2">6. Prediksi NO2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="forecasting-dengan-auto-corelation">
+<h1>Forecasting dengan Auto Corelation<a class="headerlink" href="#forecasting-dengan-auto-corelation" title="Link to this heading">#</a></h1>
+<section id="apa-itu-forecasting">
+<h2>- Apa itu Forecasting?<a class="headerlink" href="#apa-itu-forecasting" title="Link to this heading">#</a></h2>
+<p>Bayangkan Anda adalah seorang kapten kapal yang mencoba menavigasi lautan yang tidak pasti di depan. Untuk tahu ke mana harus berlayar, Anda tidak bisa hanya menebak-nebak; Anda harus melihat ke belakang, mempelajari catatan perjalanan sebelumnya, menganalisis pola angin musiman, dan data arus laut yang telah dikumpulkan. Inilah inti dari forecasting (peramalan): sebuah proses sistematis untuk memprediksi apa yang akan terjadi di masa depan dengan cara menggali dan menganalisis data historis serta tren masa lalu. Baik itu untuk memperkirakan cuaca besok, penjualan produk bulan depan, atau, seperti dalam kasus Anda, memprediksi tingkat polusi <span class="math notranslate nohighlight">\(NO_2\)</span>, tujuannya selalu sama—yaitu menggunakan wawasan dari masa lalu untuk mengurangi ketidakpastian dan membantu kita mengambil keputusan yang lebih cerdas dan lebih siap hari ini.</p>
+</section>
+<section id="mengapa-forecasting-penting">
+<h2>- Mengapa Forecasting penting?<a class="headerlink" href="#mengapa-forecasting-penting" title="Link to this heading">#</a></h2>
+<p>Pada intinya, kita melihat pola-pola yang terjadi di masa lalu (seperti tren musiman, siklus, atau kebiasaan) dan menggunakan pola tersebut untuk membuat perkiraan yang logis tentang apa yang akan terjadi selanjutnya.Tujuan utamanya adalah untuk mengurangi ketidakpastian dalam pengambilan keputusan. Dengan memiliki perkiraan yang berbasis data, sebuah organisasi atau individu dapat membuat perencanaan yang lebih matang, mengantisipasi risiko, dan mengalokasikan sumber daya secara lebih efisien.</p>
+</section>
+<section id="crawling-data">
+<h2>- Crawling Data<a class="headerlink" href="#crawling-data" title="Link to this heading">#</a></h2>
+<section id="import-libarary-yang-dibutuhkan">
+<h3>1. Import libarary yang dibutuhkan<a class="headerlink" href="#import-libarary-yang-dibutuhkan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_absolute_percentage_error</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected to Copernicus Data Space Ecosystem&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using refresh token.
+Connected to Copernicus Data Space Ecosystem
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025">
+<h3>2. Definisi kan koordinat di wilayah Kamal dan parameter waktu (2022-2025)<a class="headerlink" href="#definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">[</span>
+            <span class="p">[</span>
+              <span class="mf">112.71199080623381</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.151070739706199</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.71199080623381</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.168985131602568</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.73980259222657</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.168985131602568</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.73980259222657</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.151070739706199</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.71199080623381</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.151070739706199</span>
+            <span class="p">]</span>
+          <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define spatial extent from AOI coordinates</span>
+<span class="n">spatial_extent</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="mf">112.71199080623381</span><span class="p">,</span>
+    <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.168985131602568</span><span class="p">,</span>
+    <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="mf">112.73980259222657</span><span class="p">,</span>
+    <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.151070739706199</span>
+<span class="p">}</span>
+
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2022-10-23&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2025-10-23&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AOI defined for coordinates: </span><span class="si">{</span><span class="n">spatial_extent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time range: </span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setup completed successfully&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AOI defined for coordinates: {&#39;west&#39;: 112.71199080623381, &#39;south&#39;: -7.168985131602568, &#39;east&#39;: 112.73980259222657, &#39;north&#39;: -7.151070739706199}
+Time range: 2022-10-23 to 2025-10-23
+Setup completed successfully
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian">
+<h3>3. Loading data Sentinel-5P NO2 dan agregasi temporal harian<a class="headerlink" href="#loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading Sentinel-5P NO2 data...&quot;</span><span class="p">)</span>
+
+<span class="n">s5p_no2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+    <span class="s2">&quot;SENTINEL_5P_L2&quot;</span><span class="p">,</span>
+    <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">],</span>
+    <span class="n">spatial_extent</span><span class="o">=</span><span class="n">spatial_extent</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">s5p_monthly</span> <span class="o">=</span> <span class="n">s5p_no2</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span>
+    <span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data collection and aggregation configured successfully&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading Sentinel-5P NO2 data...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data collection and aggregation configured successfully
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf">
+<h3>4. Melakukan eksekusi job batch processing untuk memproses data secara otomatis dan terjadwal, kemudian mengekspor hasilnya ke dalam format file NetCDF<a class="headerlink" href="#melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting data processing job...&quot;</span><span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">s5p_monthly</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 Averages 2021-2025&quot;</span><span class="p">,</span> 
+    <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;no2_averages_4years.nc&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting data processing job...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-251121140752428780b51e6a788ce440&#39;: send &#39;start&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:13 Job &#39;j-251121140752428780b51e6a788ce440&#39;: created (progress 0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:19 Job &#39;j-251121140752428780b51e6a788ce440&#39;: queued (progress 0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:25 Job &#39;j-251121140752428780b51e6a788ce440&#39;: queued (progress 0%)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan">
+<h3>5. Ubah data NetCDF ke CSV agar lebih mudah untuk digunakan<a class="headerlink" href="#ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Buka file .nc Anda</span>
+<span class="c1"># Ganti &#39;openEO.nc&#39; jika nama filenya berbeda</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Dokumen</span><span class="se">\\</span><span class="s2">PSD</span><span class="se">\\</span><span class="s2">dataset</span><span class="se">\\</span><span class="s2">openEO.nc&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Konversi dataset xarray menjadi DataFrame pandas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+
+<span class="c1"># 3. [PENTING] Ratakan Multi-Index</span>
+<span class="c1"># Data NetCDF biasanya punya banyak index (spt waktu, lat, lon).</span>
+<span class="c1"># &#39;reset_index()&#39; akan mengubah semua index itu menjadi kolom biasa.</span>
+<span class="n">df_flat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># 4. Simpan sebagai file CSV</span>
+<span class="n">df_flat</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;hasil_data_no2.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! File &#39;hasil_data_no2.csv&#39; telah dibuat.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! File &#39;hasil_data_no2.csv&#39; telah dibuat.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="preprocessing">
+<h2>- Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<section id="mengurutkan-data-berdasarkan-tanggal-waktu">
+<h3>- Mengurutkan Data berdasarkan tanggal/waktu<a class="headerlink" href="#mengurutkan-data-berdasarkan-tanggal-waktu" title="Link to this heading">#</a></h3>
+<p>Mengurutkan data berdasarkan tanggal/waktu (sortir kronologis) adalah langkah preprocessing yang fundamental, terutama untuk data time-series (data berurutan).</p>
+<p>Ini penting karena mengubah data yang acak menjadi sebuah alur cerita yang logis.</p>
+<p>Tujuannya adalah untuk memastikan bahwa setiap observasi (baris data) ditempatkan dalam urutan yang benar sesuai kejadiannya. Tanpa pengurutan ini, analisis seperti mencari tren, mengidentifikasi pola musiman, atau melakukan interpolasi (mengisi data hilang) akan menghasilkan kesimpulan yang salah, karena hubungan antar-waktu antar-titik data menjadi rusak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Baca file CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;hasil_data_no2.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Ubah kolom &#39;t&#39; menjadi format datetime</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+
+<span class="c1"># 3. Urutkan DataFrame berdasarkan kolom &#39;t&#39;</span>
+<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. Menampilkan hasil pengirutan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! Data telah diurutkan berdasarkan waktu dan disimpan di &#39;hasil_data_no2_sorted.csv&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              t           x         y  crs       NO2
+0    2022-10-23  112.739273 -7.151624  b&#39;&#39;  0.000030
+1    2022-10-24  112.739273 -7.151624  b&#39;&#39;       NaN
+2    2022-10-25  112.739273 -7.151624  b&#39;&#39;  0.000070
+3    2022-10-26  112.739273 -7.151624  b&#39;&#39;       NaN
+4    2022-10-27  112.739273 -7.151624  b&#39;&#39;       NaN
+...         ...         ...       ...  ...       ...
+1085 2025-10-18  112.739273 -7.151624  b&#39;&#39;  0.000015
+1086 2025-10-19  112.739273 -7.151624  b&#39;&#39;  0.000056
+1087 2025-10-20  112.739273 -7.151624  b&#39;&#39;       NaN
+1088 2025-10-21  112.739273 -7.151624  b&#39;&#39;       NaN
+1089 2025-10-22  112.739273 -7.151624  b&#39;&#39;       NaN
+
+[1090 rows x 5 columns]
+Selesai! Data telah diurutkan berdasarkan waktu dan disimpan di &#39;hasil_data_no2_sorted.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengatasi-missing-value-dengan-interpolasi">
+<h3>- Mengatasi Missing Value dengan interpolasi<a class="headerlink" href="#mengatasi-missing-value-dengan-interpolasi" title="Link to this heading">#</a></h3>
+<p>Mengatasi <em>missing value</em> (data hilang) dengan <strong>interpolasi</strong> adalah teknik <em>preprocessing</em> untuk “menebak” nilai yang hilang secara cerdas.</p>
+<p>Cara kerjanya adalah dengan <strong>melihat nilai-nilai tetangga yang diketahui</strong> (misalnya, nilai sebelum dan sesudah data yang hilang) dan menarik garis lurus (atau kurva) di antara keduanya. Nilai yang hilang kemudian diisi dengan titik yang jatuh tepat di atas garis tersebut.</p>
+<p>Ini adalah metode yang sangat umum untuk data <em>time-series</em> (seperti data cuaca atau polusi) karena metode ini <strong>mempertahankan kelancaran dan tren data</strong> dari waktu ke waktu, alih-alih hanya mengisi dengan nilai rata-rata atau membuang baris data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">df_indexed</span> <span class="o">=</span> <span class="n">df_sorted</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+<span class="n">df_indexed</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_indexed</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">df_interpolated</span> <span class="o">=</span> <span class="n">df_indexed</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data diinterpolasi. Jumlah baris: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_interpolated</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data diinterpolasi. Jumlah baris: 1090
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="deteksi-penanganan-outlier">
+<h3>- DETEKSI &amp; PENANGANAN OUTLIER<a class="headerlink" href="#deteksi-penanganan-outlier" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p01</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">p99</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.99</span><span class="p">)</span>
+<span class="c1"># Hitung jumlah outlier yang ditemukan</span>
+<span class="n">outliers_low</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">p01</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="n">outliers_high</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">p99</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Deteksi outlier: </span><span class="si">{</span><span class="n">outliers_low</span><span class="si">}</span><span class="s2"> nilai rendah dan </span><span class="si">{</span><span class="n">outliers_high</span><span class="si">}</span><span class="s2"> nilai tinggi ditemukan.&quot;</span><span class="p">)</span>
+<span class="c1"># Ganti outlier dengan nilai persentil (clipping)</span>
+<span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">lower</span><span class="o">=</span><span class="n">p01</span><span class="p">,</span> <span class="n">upper</span><span class="o">=</span><span class="n">p99</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Outlier telah diganti (clipping).&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Deteksi outlier: 11 nilai rendah dan 11 nilai tinggi ditemukan.
+Outlier telah diganti (clipping).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalisasi-data-menggunakan-zscore-dengan-standart-sklearn">
+<h3>- Normalisasi Data menggunakan zscore dengan standart sklearn<a class="headerlink" href="#normalisasi-data-menggunakan-zscore-dengan-standart-sklearn" title="Link to this heading">#</a></h3>
+<p>Menggunakan StandardScaler (metode Z-score) dari sklearn adalah teknik preprocessing untuk menstandardisasi fitur data Anda.Tujuannya adalah untuk mengubah skala setiap fitur sehingga memiliki:</p>
+<ol class="arabic simple">
+<li><p>Rata-rata (mean)</p></li>
+<li><p>Standar deviasi (standard deviation)</p></li>
+</ol>
+<p>Proses ini menghitung seberapa jauh setiap titik data dari rata-rata, diukur dalam satuan standar deviasi. Ini sangat penting untuk algoritma berbasis jarak (seperti kNN yang Anda gunakan) karena memastikan bahwa semua fitur memberikan kontribusi yang setara pada perhitungan jarak, terlepas dari apakah skala aslinya sangat besar (misal: ribuan) atau sangat kecil (misal: <span class="math notranslate nohighlight">\(0.001\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Normalisasi data</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_interpolated</span><span class="p">[[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]])</span>
+<span class="n">df_scaled</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[[</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data telah dinormalisasi menggunakan StandardScaler.&quot;</span><span class="p">)</span>
+
+<span class="c1"># Menampilkan beberapa baris pertama dari dataset yang telah diproses</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contoh data setelah preprocessing:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_scaled</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Simpan dataset yang telah diproses ke file CSV</span>
+<span class="n">df_scaled</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;dataset_no2_processed.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data telah dinormalisasi menggunakan StandardScaler.
+Contoh data setelah preprocessing:
+           t  NO2_scaled
+0 2022-10-23   -0.367877
+1 2022-10-24    0.338611
+2 2022-10-25    1.045099
+3 2022-10-26    0.596856
+4 2022-10-27    0.148612
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exponential-smoothing-untuk-data-no2-menggunakan-library-pycaret">
+<h3>- Exponential Smoothing untuk data NO2 menggunakan Library Pycaret<a class="headerlink" href="#exponential-smoothing-untuk-data-no2-menggunakan-library-pycaret" title="Link to this heading">#</a></h3>
+<section id="import-library">
+<h4>1. Import Library<a class="headerlink" href="#import-library" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pycaret.time_series</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 1. PERSIAPAN DATA (DATA PREPARATION)</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># Load data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_no2_processed.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ubah kolom &#39;t&#39; jadi datetime dan set sebagai Index</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Ambil hanya kolom target &#39;NO2&#39;</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span>
+
+<span class="c1"># PENTING: PyCaret butuh frekuensi data yang jelas.</span>
+<span class="c1"># Kita set ke &#39;D&#39; (Daily/Harian) dan isi data kosong jika ada.</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data siap! Rentang waktu:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="s2">&quot;sampai&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data siap! Rentang waktu: 2022-10-23 00:00:00 sampai 2025-10-22 00:00:00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-preprocessing-data-pembersihan">
+<h4>2. Load &amp; Preprocessing Data (Pembersihan)<a class="headerlink" href="#load-preprocessing-data-pembersihan" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># 2. SETUP PYCARET</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># fh = 30 artinya kita ingin memprediksi 30 hari ke depan</span>
+<span class="c1"># fold = 3 artinya melakukan 3 kali pengujian validasi silang</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">setup</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fh</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">session_id</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> <span class="n">fold</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style type="text/css">
+#T_f4583_row25_col1 {
+  background-color: lightgreen;
+}
+</style>
+<table id="T_f4583">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_f4583_level0_col0" class="col_heading level0 col0" >Description</th>
+      <th id="T_f4583_level0_col1" class="col_heading level0 col1" >Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_f4583_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_f4583_row0_col0" class="data row0 col0" >session_id</td>
+      <td id="T_f4583_row0_col1" class="data row0 col1" >123</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_f4583_row1_col0" class="data row1 col0" >Target</td>
+      <td id="T_f4583_row1_col1" class="data row1 col1" >NO2_scaled</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_f4583_row2_col0" class="data row2 col0" >Approach</td>
+      <td id="T_f4583_row2_col1" class="data row2 col1" >Univariate</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row3" class="row_heading level0 row3" >3</th>
+      <td id="T_f4583_row3_col0" class="data row3 col0" >Exogenous Variables</td>
+      <td id="T_f4583_row3_col1" class="data row3 col1" >Not Present</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row4" class="row_heading level0 row4" >4</th>
+      <td id="T_f4583_row4_col0" class="data row4 col0" >Original data shape</td>
+      <td id="T_f4583_row4_col1" class="data row4 col1" >(1096, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row5" class="row_heading level0 row5" >5</th>
+      <td id="T_f4583_row5_col0" class="data row5 col0" >Transformed data shape</td>
+      <td id="T_f4583_row5_col1" class="data row5 col1" >(1096, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row6" class="row_heading level0 row6" >6</th>
+      <td id="T_f4583_row6_col0" class="data row6 col0" >Transformed train set shape</td>
+      <td id="T_f4583_row6_col1" class="data row6 col1" >(1065, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row7" class="row_heading level0 row7" >7</th>
+      <td id="T_f4583_row7_col0" class="data row7 col0" >Transformed test set shape</td>
+      <td id="T_f4583_row7_col1" class="data row7 col1" >(30, 1)</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row8" class="row_heading level0 row8" >8</th>
+      <td id="T_f4583_row8_col0" class="data row8 col0" >Rows with missing values</td>
+      <td id="T_f4583_row8_col1" class="data row8 col1" >0.0%</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row9" class="row_heading level0 row9" >9</th>
+      <td id="T_f4583_row9_col0" class="data row9 col0" >Fold Generator</td>
+      <td id="T_f4583_row9_col1" class="data row9 col1" >ExpandingWindowSplitter</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row10" class="row_heading level0 row10" >10</th>
+      <td id="T_f4583_row10_col0" class="data row10 col0" >Fold Number</td>
+      <td id="T_f4583_row10_col1" class="data row10 col1" >3</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row11" class="row_heading level0 row11" >11</th>
+      <td id="T_f4583_row11_col0" class="data row11 col0" >Enforce Prediction Interval</td>
+      <td id="T_f4583_row11_col1" class="data row11 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row12" class="row_heading level0 row12" >12</th>
+      <td id="T_f4583_row12_col0" class="data row12 col0" >Splits used for hyperparameters</td>
+      <td id="T_f4583_row12_col1" class="data row12 col1" >all</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row13" class="row_heading level0 row13" >13</th>
+      <td id="T_f4583_row13_col0" class="data row13 col0" >User Defined Seasonal Period(s)</td>
+      <td id="T_f4583_row13_col1" class="data row13 col1" >None</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row14" class="row_heading level0 row14" >14</th>
+      <td id="T_f4583_row14_col0" class="data row14 col0" >Ignore Seasonality Test</td>
+      <td id="T_f4583_row14_col1" class="data row14 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row15" class="row_heading level0 row15" >15</th>
+      <td id="T_f4583_row15_col0" class="data row15 col0" >Seasonality Detection Algo</td>
+      <td id="T_f4583_row15_col1" class="data row15 col1" >auto</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row16" class="row_heading level0 row16" >16</th>
+      <td id="T_f4583_row16_col0" class="data row16 col0" >Max Period to Consider</td>
+      <td id="T_f4583_row16_col1" class="data row16 col1" >60</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row17" class="row_heading level0 row17" >17</th>
+      <td id="T_f4583_row17_col0" class="data row17 col0" >Seasonal Period(s) Tested</td>
+      <td id="T_f4583_row17_col1" class="data row17 col1" >[48, 40]</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row18" class="row_heading level0 row18" >18</th>
+      <td id="T_f4583_row18_col0" class="data row18 col0" >Significant Seasonal Period(s)</td>
+      <td id="T_f4583_row18_col1" class="data row18 col1" >[48, 40]</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row19" class="row_heading level0 row19" >19</th>
+      <td id="T_f4583_row19_col0" class="data row19 col0" >Significant Seasonal Period(s) without Harmonics</td>
+      <td id="T_f4583_row19_col1" class="data row19 col1" >[48, 40]</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row20" class="row_heading level0 row20" >20</th>
+      <td id="T_f4583_row20_col0" class="data row20 col0" >Remove Harmonics</td>
+      <td id="T_f4583_row20_col1" class="data row20 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row21" class="row_heading level0 row21" >21</th>
+      <td id="T_f4583_row21_col0" class="data row21 col0" >Harmonics Order Method</td>
+      <td id="T_f4583_row21_col1" class="data row21 col1" >harmonic_max</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row22" class="row_heading level0 row22" >22</th>
+      <td id="T_f4583_row22_col0" class="data row22 col0" >Num Seasonalities to Use</td>
+      <td id="T_f4583_row22_col1" class="data row22 col1" >1</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row23" class="row_heading level0 row23" >23</th>
+      <td id="T_f4583_row23_col0" class="data row23 col0" >All Seasonalities to Use</td>
+      <td id="T_f4583_row23_col1" class="data row23 col1" >[48]</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row24" class="row_heading level0 row24" >24</th>
+      <td id="T_f4583_row24_col0" class="data row24 col0" >Primary Seasonality</td>
+      <td id="T_f4583_row24_col1" class="data row24 col1" >48</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row25" class="row_heading level0 row25" >25</th>
+      <td id="T_f4583_row25_col0" class="data row25 col0" >Seasonality Present</td>
+      <td id="T_f4583_row25_col1" class="data row25 col1" >True</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row26" class="row_heading level0 row26" >26</th>
+      <td id="T_f4583_row26_col0" class="data row26 col0" >Target Strictly Positive</td>
+      <td id="T_f4583_row26_col1" class="data row26 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row27" class="row_heading level0 row27" >27</th>
+      <td id="T_f4583_row27_col0" class="data row27 col0" >Target White Noise</td>
+      <td id="T_f4583_row27_col1" class="data row27 col1" >No</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row28" class="row_heading level0 row28" >28</th>
+      <td id="T_f4583_row28_col0" class="data row28 col0" >Recommended d</td>
+      <td id="T_f4583_row28_col1" class="data row28 col1" >1</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row29" class="row_heading level0 row29" >29</th>
+      <td id="T_f4583_row29_col0" class="data row29 col0" >Recommended Seasonal D</td>
+      <td id="T_f4583_row29_col1" class="data row29 col1" >0</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row30" class="row_heading level0 row30" >30</th>
+      <td id="T_f4583_row30_col0" class="data row30 col0" >Preprocess</td>
+      <td id="T_f4583_row30_col1" class="data row30 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row31" class="row_heading level0 row31" >31</th>
+      <td id="T_f4583_row31_col0" class="data row31 col0" >CPU Jobs</td>
+      <td id="T_f4583_row31_col1" class="data row31 col1" >-1</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row32" class="row_heading level0 row32" >32</th>
+      <td id="T_f4583_row32_col0" class="data row32 col0" >Use GPU</td>
+      <td id="T_f4583_row32_col1" class="data row32 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row33" class="row_heading level0 row33" >33</th>
+      <td id="T_f4583_row33_col0" class="data row33 col0" >Log Experiment</td>
+      <td id="T_f4583_row33_col1" class="data row33 col1" >False</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row34" class="row_heading level0 row34" >34</th>
+      <td id="T_f4583_row34_col0" class="data row34 col0" >Experiment Name</td>
+      <td id="T_f4583_row34_col1" class="data row34 col1" >ts-default-name</td>
+    </tr>
+    <tr>
+      <th id="T_f4583_level0_row35" class="row_heading level0 row35" >35</th>
+      <td id="T_f4583_row35_col0" class="data row35 col0" >USI</td>
+      <td id="T_f4583_row35_col1" class="data row35 col1" >143e</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</section>
+<section id="train-test-split-pembagian-data-uji">
+<h4>3. Train-Test Split (Pembagian Data Uji)<a class="headerlink" href="#train-test-split-pembagian-data-uji" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># 3. MEMBUAT MODEL &amp; AMBIL SKORNYA LANGSUNG</span>
+<span class="c1"># ==========================================</span>
+
+<span class="c1"># --- A. SES (Simple) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sedang melatih SES...&quot;</span><span class="p">)</span>
+<span class="n">ses_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;exp_smooth&#39;</span><span class="p">,</span> <span class="n">trend</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seasonal</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">ses_metrics</span> <span class="o">=</span> <span class="n">pull</span><span class="p">()</span> <span class="c1"># &lt;--- AMBIL TABEL SKOR LANGSUNG DISINI</span>
+
+<span class="c1"># --- B. DES (Double) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sedang melatih DES...&quot;</span><span class="p">)</span>
+<span class="n">des_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;exp_smooth&#39;</span><span class="p">,</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">seasonal</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">des_metrics</span> <span class="o">=</span> <span class="n">pull</span><span class="p">()</span> <span class="c1"># &lt;--- AMBIL TABEL SKOR LANGSUNG DISINI</span>
+
+<span class="c1"># --- C. TES (Triple) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sedang melatih TES...&quot;</span><span class="p">)</span>
+<span class="n">tes_model</span> <span class="o">=</span> <span class="n">create_model</span><span class="p">(</span><span class="s1">&#39;exp_smooth&#39;</span><span class="p">,</span> <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">seasonal</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="n">sp</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">tes_metrics</span> <span class="o">=</span> <span class="n">pull</span><span class="p">()</span> <span class="c1"># &lt;--- AMBIL TABEL SKOR LANGSUNG DISINI</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sedang melatih SES...
+</pre></div>
+</div>
+<div class="output text_html"></div><div class="output text_html"><style type="text/css">
+#T_90cba_row3_col0, #T_90cba_row3_col1, #T_90cba_row3_col2, #T_90cba_row3_col3, #T_90cba_row3_col4, #T_90cba_row3_col5, #T_90cba_row3_col6, #T_90cba_row3_col7 {
+  background: yellow;
+}
+</style>
+<table id="T_90cba">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_90cba_level0_col0" class="col_heading level0 col0" >cutoff</th>
+      <th id="T_90cba_level0_col1" class="col_heading level0 col1" >MASE</th>
+      <th id="T_90cba_level0_col2" class="col_heading level0 col2" >RMSSE</th>
+      <th id="T_90cba_level0_col3" class="col_heading level0 col3" >MAE</th>
+      <th id="T_90cba_level0_col4" class="col_heading level0 col4" >RMSE</th>
+      <th id="T_90cba_level0_col5" class="col_heading level0 col5" >MAPE</th>
+      <th id="T_90cba_level0_col6" class="col_heading level0 col6" >SMAPE</th>
+      <th id="T_90cba_level0_col7" class="col_heading level0 col7" >R2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_90cba_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_90cba_row0_col0" class="data row0 col0" >2025-06-23</td>
+      <td id="T_90cba_row0_col1" class="data row0 col1" >0.7437</td>
+      <td id="T_90cba_row0_col2" class="data row0 col2" >0.7768</td>
+      <td id="T_90cba_row0_col3" class="data row0 col3" >0.6510</td>
+      <td id="T_90cba_row0_col4" class="data row0 col4" >1.0114</td>
+      <td id="T_90cba_row0_col5" class="data row0 col5" >1.9923</td>
+      <td id="T_90cba_row0_col6" class="data row0 col6" >0.9744</td>
+      <td id="T_90cba_row0_col7" class="data row0 col7" >-0.0495</td>
+    </tr>
+    <tr>
+      <th id="T_90cba_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_90cba_row1_col0" class="data row1 col0" >2025-07-23</td>
+      <td id="T_90cba_row1_col1" class="data row1 col1" >0.3568</td>
+      <td id="T_90cba_row1_col2" class="data row1 col2" >0.2999</td>
+      <td id="T_90cba_row1_col3" class="data row1 col3" >0.3116</td>
+      <td id="T_90cba_row1_col4" class="data row1 col4" >0.3886</td>
+      <td id="T_90cba_row1_col5" class="data row1 col5" >0.6122</td>
+      <td id="T_90cba_row1_col6" class="data row1 col6" >0.5478</td>
+      <td id="T_90cba_row1_col7" class="data row1 col7" >-0.8575</td>
+    </tr>
+    <tr>
+      <th id="T_90cba_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_90cba_row2_col0" class="data row2 col0" >2025-08-22</td>
+      <td id="T_90cba_row2_col1" class="data row2 col1" >0.3714</td>
+      <td id="T_90cba_row2_col2" class="data row2 col2" >0.4082</td>
+      <td id="T_90cba_row2_col3" class="data row2 col3" >0.3192</td>
+      <td id="T_90cba_row2_col4" class="data row2 col4" >0.5220</td>
+      <td id="T_90cba_row2_col5" class="data row2 col5" >0.7398</td>
+      <td id="T_90cba_row2_col6" class="data row2 col6" >0.4522</td>
+      <td id="T_90cba_row2_col7" class="data row2 col7" >-0.0202</td>
+    </tr>
+    <tr>
+      <th id="T_90cba_level0_row3" class="row_heading level0 row3" >Mean</th>
+      <td id="T_90cba_row3_col0" class="data row3 col0" >NaT</td>
+      <td id="T_90cba_row3_col1" class="data row3 col1" >0.4906</td>
+      <td id="T_90cba_row3_col2" class="data row3 col2" >0.4950</td>
+      <td id="T_90cba_row3_col3" class="data row3 col3" >0.4273</td>
+      <td id="T_90cba_row3_col4" class="data row3 col4" >0.6406</td>
+      <td id="T_90cba_row3_col5" class="data row3 col5" >1.1148</td>
+      <td id="T_90cba_row3_col6" class="data row3 col6" >0.6581</td>
+      <td id="T_90cba_row3_col7" class="data row3 col7" >-0.3090</td>
+    </tr>
+    <tr>
+      <th id="T_90cba_level0_row4" class="row_heading level0 row4" >SD</th>
+      <td id="T_90cba_row4_col0" class="data row4 col0" >NaT</td>
+      <td id="T_90cba_row4_col1" class="data row4 col1" >0.1790</td>
+      <td id="T_90cba_row4_col2" class="data row4 col2" >0.2041</td>
+      <td id="T_90cba_row4_col3" class="data row4 col3" >0.1582</td>
+      <td id="T_90cba_row4_col4" class="data row4 col4" >0.2677</td>
+      <td id="T_90cba_row4_col5" class="data row4 col5" >0.6227</td>
+      <td id="T_90cba_row4_col6" class="data row4 col6" >0.2270</td>
+      <td id="T_90cba_row4_col7" class="data row4 col7" >0.3880</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sedang melatih DES...
+</pre></div>
+</div>
+<div class="output text_html"></div><div class="output text_html"><style type="text/css">
+#T_8f14d_row3_col0, #T_8f14d_row3_col1, #T_8f14d_row3_col2, #T_8f14d_row3_col3, #T_8f14d_row3_col4, #T_8f14d_row3_col5, #T_8f14d_row3_col6, #T_8f14d_row3_col7 {
+  background: yellow;
+}
+</style>
+<table id="T_8f14d">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_8f14d_level0_col0" class="col_heading level0 col0" >cutoff</th>
+      <th id="T_8f14d_level0_col1" class="col_heading level0 col1" >MASE</th>
+      <th id="T_8f14d_level0_col2" class="col_heading level0 col2" >RMSSE</th>
+      <th id="T_8f14d_level0_col3" class="col_heading level0 col3" >MAE</th>
+      <th id="T_8f14d_level0_col4" class="col_heading level0 col4" >RMSE</th>
+      <th id="T_8f14d_level0_col5" class="col_heading level0 col5" >MAPE</th>
+      <th id="T_8f14d_level0_col6" class="col_heading level0 col6" >SMAPE</th>
+      <th id="T_8f14d_level0_col7" class="col_heading level0 col7" >R2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_8f14d_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_8f14d_row0_col0" class="data row0 col0" >2025-06-23</td>
+      <td id="T_8f14d_row0_col1" class="data row0 col1" >0.7452</td>
+      <td id="T_8f14d_row0_col2" class="data row0 col2" >0.7789</td>
+      <td id="T_8f14d_row0_col3" class="data row0 col3" >0.6523</td>
+      <td id="T_8f14d_row0_col4" class="data row0 col4" >1.0141</td>
+      <td id="T_8f14d_row0_col5" class="data row0 col5" >2.0232</td>
+      <td id="T_8f14d_row0_col6" class="data row0 col6" >0.9722</td>
+      <td id="T_8f14d_row0_col7" class="data row0 col7" >-0.0553</td>
+    </tr>
+    <tr>
+      <th id="T_8f14d_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_8f14d_row1_col0" class="data row1 col0" >2025-07-23</td>
+      <td id="T_8f14d_row1_col1" class="data row1 col1" >0.3523</td>
+      <td id="T_8f14d_row1_col2" class="data row1 col2" >0.2964</td>
+      <td id="T_8f14d_row1_col3" class="data row1 col3" >0.3077</td>
+      <td id="T_8f14d_row1_col4" class="data row1 col4" >0.3840</td>
+      <td id="T_8f14d_row1_col5" class="data row1 col5" >0.6141</td>
+      <td id="T_8f14d_row1_col6" class="data row1 col6" >0.5387</td>
+      <td id="T_8f14d_row1_col7" class="data row1 col7" >-0.8144</td>
+    </tr>
+    <tr>
+      <th id="T_8f14d_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_8f14d_row2_col0" class="data row2 col0" >2025-08-22</td>
+      <td id="T_8f14d_row2_col1" class="data row2 col1" >0.3713</td>
+      <td id="T_8f14d_row2_col2" class="data row2 col2" >0.4085</td>
+      <td id="T_8f14d_row2_col3" class="data row2 col3" >0.3191</td>
+      <td id="T_8f14d_row2_col4" class="data row2 col4" >0.5223</td>
+      <td id="T_8f14d_row2_col5" class="data row2 col5" >0.7488</td>
+      <td id="T_8f14d_row2_col6" class="data row2 col6" >0.4511</td>
+      <td id="T_8f14d_row2_col7" class="data row2 col7" >-0.0215</td>
+    </tr>
+    <tr>
+      <th id="T_8f14d_level0_row3" class="row_heading level0 row3" >Mean</th>
+      <td id="T_8f14d_row3_col0" class="data row3 col0" >NaT</td>
+      <td id="T_8f14d_row3_col1" class="data row3 col1" >0.4896</td>
+      <td id="T_8f14d_row3_col2" class="data row3 col2" >0.4946</td>
+      <td id="T_8f14d_row3_col3" class="data row3 col3" >0.4264</td>
+      <td id="T_8f14d_row3_col4" class="data row3 col4" >0.6402</td>
+      <td id="T_8f14d_row3_col5" class="data row3 col5" >1.1287</td>
+      <td id="T_8f14d_row3_col6" class="data row3 col6" >0.6540</td>
+      <td id="T_8f14d_row3_col7" class="data row3 col7" >-0.2971</td>
+    </tr>
+    <tr>
+      <th id="T_8f14d_level0_row4" class="row_heading level0 row4" >SD</th>
+      <td id="T_8f14d_row4_col0" class="data row4 col0" >NaT</td>
+      <td id="T_8f14d_row4_col1" class="data row4 col1" >0.1809</td>
+      <td id="T_8f14d_row4_col2" class="data row4 col2" >0.2062</td>
+      <td id="T_8f14d_row4_col3" class="data row4 col3" >0.1598</td>
+      <td id="T_8f14d_row4_col4" class="data row4 col4" >0.2704</td>
+      <td id="T_8f14d_row4_col5" class="data row4 col5" >0.6349</td>
+      <td id="T_8f14d_row4_col6" class="data row4 col6" >0.2278</td>
+      <td id="T_8f14d_row4_col7" class="data row4 col7" >0.3661</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sedang melatih TES...
+</pre></div>
+</div>
+<div class="output text_html"></div><div class="output text_html"><style type="text/css">
+#T_b28ae_row3_col0, #T_b28ae_row3_col1, #T_b28ae_row3_col2, #T_b28ae_row3_col3, #T_b28ae_row3_col4, #T_b28ae_row3_col5, #T_b28ae_row3_col6, #T_b28ae_row3_col7 {
+  background: yellow;
+}
+</style>
+<table id="T_b28ae">
+  <thead>
+    <tr>
+      <th class="blank level0" >&nbsp;</th>
+      <th id="T_b28ae_level0_col0" class="col_heading level0 col0" >cutoff</th>
+      <th id="T_b28ae_level0_col1" class="col_heading level0 col1" >MASE</th>
+      <th id="T_b28ae_level0_col2" class="col_heading level0 col2" >RMSSE</th>
+      <th id="T_b28ae_level0_col3" class="col_heading level0 col3" >MAE</th>
+      <th id="T_b28ae_level0_col4" class="col_heading level0 col4" >RMSE</th>
+      <th id="T_b28ae_level0_col5" class="col_heading level0 col5" >MAPE</th>
+      <th id="T_b28ae_level0_col6" class="col_heading level0 col6" >SMAPE</th>
+      <th id="T_b28ae_level0_col7" class="col_heading level0 col7" >R2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="T_b28ae_level0_row0" class="row_heading level0 row0" >0</th>
+      <td id="T_b28ae_row0_col0" class="data row0 col0" >2025-06-23</td>
+      <td id="T_b28ae_row0_col1" class="data row0 col1" >0.7501</td>
+      <td id="T_b28ae_row0_col2" class="data row0 col2" >0.8117</td>
+      <td id="T_b28ae_row0_col3" class="data row0 col3" >0.6566</td>
+      <td id="T_b28ae_row0_col4" class="data row0 col4" >1.0569</td>
+      <td id="T_b28ae_row0_col5" class="data row0 col5" >2.4376</td>
+      <td id="T_b28ae_row0_col6" class="data row0 col6" >0.9121</td>
+      <td id="T_b28ae_row0_col7" class="data row0 col7" >-0.1460</td>
+    </tr>
+    <tr>
+      <th id="T_b28ae_level0_row1" class="row_heading level0 row1" >1</th>
+      <td id="T_b28ae_row1_col0" class="data row1 col0" >2025-07-23</td>
+      <td id="T_b28ae_row1_col1" class="data row1 col1" >0.4336</td>
+      <td id="T_b28ae_row1_col2" class="data row1 col2" >0.3488</td>
+      <td id="T_b28ae_row1_col3" class="data row1 col3" >0.3786</td>
+      <td id="T_b28ae_row1_col4" class="data row1 col4" >0.4519</td>
+      <td id="T_b28ae_row1_col5" class="data row1 col5" >0.7090</td>
+      <td id="T_b28ae_row1_col6" class="data row1 col6" >0.7409</td>
+      <td id="T_b28ae_row1_col7" class="data row1 col7" >-1.5122</td>
+    </tr>
+    <tr>
+      <th id="T_b28ae_level0_row2" class="row_heading level0 row2" >2</th>
+      <td id="T_b28ae_row2_col0" class="data row2 col0" >2025-08-22</td>
+      <td id="T_b28ae_row2_col1" class="data row2 col1" >0.3917</td>
+      <td id="T_b28ae_row2_col2" class="data row2 col2" >0.4407</td>
+      <td id="T_b28ae_row2_col3" class="data row2 col3" >0.3366</td>
+      <td id="T_b28ae_row2_col4" class="data row2 col4" >0.5635</td>
+      <td id="T_b28ae_row2_col5" class="data row2 col5" >0.8615</td>
+      <td id="T_b28ae_row2_col6" class="data row2 col6" >0.4574</td>
+      <td id="T_b28ae_row2_col7" class="data row2 col7" >-0.1890</td>
+    </tr>
+    <tr>
+      <th id="T_b28ae_level0_row3" class="row_heading level0 row3" >Mean</th>
+      <td id="T_b28ae_row3_col0" class="data row3 col0" >NaT</td>
+      <td id="T_b28ae_row3_col1" class="data row3 col1" >0.5251</td>
+      <td id="T_b28ae_row3_col2" class="data row3 col2" >0.5337</td>
+      <td id="T_b28ae_row3_col3" class="data row3 col3" >0.4573</td>
+      <td id="T_b28ae_row3_col4" class="data row3 col4" >0.6908</td>
+      <td id="T_b28ae_row3_col5" class="data row3 col5" >1.3361</td>
+      <td id="T_b28ae_row3_col6" class="data row3 col6" >0.7035</td>
+      <td id="T_b28ae_row3_col7" class="data row3 col7" >-0.6157</td>
+    </tr>
+    <tr>
+      <th id="T_b28ae_level0_row4" class="row_heading level0 row4" >SD</th>
+      <td id="T_b28ae_row4_col0" class="data row4 col0" >NaT</td>
+      <td id="T_b28ae_row4_col1" class="data row4 col1" >0.1600</td>
+      <td id="T_b28ae_row4_col2" class="data row4 col2" >0.2001</td>
+      <td id="T_b28ae_row4_col3" class="data row4 col3" >0.1420</td>
+      <td id="T_b28ae_row4_col4" class="data row4 col4" >0.2628</td>
+      <td id="T_b28ae_row4_col5" class="data row4 col5" >0.7814</td>
+      <td id="T_b28ae_row4_col6" class="data row4 col6" >0.1875</td>
+      <td id="T_b28ae_row4_col7" class="data row4 col7" >0.6341</td>
+    </tr>
+  </tbody>
+</table>
+</div><div class="output text_html"></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== HASIL EVALUASI (RMSE) ===
+RMSE SES: 0.5661
+RMSE DES: 0.5662
+RMSE TES: 0.6052
+🏆 Pemenangnya: SES
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pembuatan-model">
+<h4>4. Pembuatan Model<a class="headerlink" href="#pembuatan-model" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># 4. EVALUASI (PERBANDINGAN)</span>
+<span class="c1"># ==========================================</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== HASIL EVALUASI (RMSE) ===&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ambil nilai RMSE rata-rata dari tabel yang sudah disimpan tadi</span>
+<span class="n">rmse_ses</span> <span class="o">=</span> <span class="n">ses_metrics</span><span class="p">[</span><span class="s1">&#39;RMSE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">rmse_des</span> <span class="o">=</span> <span class="n">des_metrics</span><span class="p">[</span><span class="s1">&#39;RMSE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">rmse_tes</span> <span class="o">=</span> <span class="n">tes_metrics</span><span class="p">[</span><span class="s1">&#39;RMSE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mae_ses</span> <span class="o">=</span> <span class="n">ses_metrics</span><span class="p">[</span><span class="s1">&#39;MAE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mae_des</span> <span class="o">=</span> <span class="n">des_metrics</span><span class="p">[</span><span class="s1">&#39;MAE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mae_tes</span> <span class="o">=</span> <span class="n">tes_metrics</span><span class="p">[</span><span class="s1">&#39;MAE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mape_ses</span> <span class="o">=</span> <span class="n">ses_metrics</span><span class="p">[</span><span class="s1">&#39;MAPE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mape_des</span> <span class="o">=</span> <span class="n">des_metrics</span><span class="p">[</span><span class="s1">&#39;MAPE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mape_tes</span> <span class="o">=</span> <span class="n">tes_metrics</span><span class="p">[</span><span class="s1">&#39;MAPE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mse_ses</span> <span class="o">=</span> <span class="n">ses_metrics</span><span class="p">[</span><span class="s1">&#39;MASE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mse_des</span> <span class="o">=</span> <span class="n">des_metrics</span><span class="p">[</span><span class="s1">&#39;MASE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mse_tes</span> <span class="o">=</span> <span class="n">tes_metrics</span><span class="p">[</span><span class="s1">&#39;MASE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE SES: </span><span class="si">{</span><span class="n">rmse_ses</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE DES: </span><span class="si">{</span><span class="n">rmse_des</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE TES: </span><span class="si">{</span><span class="n">rmse_tes</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== HASIL EVALUASI (MAE) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE SES: </span><span class="si">{</span><span class="n">mae_ses</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE DES: </span><span class="si">{</span><span class="n">mae_des</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE TES: </span><span class="si">{</span><span class="n">mae_tes</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== HASIL EVALUASI (MAPE) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPE SES: </span><span class="si">{</span><span class="n">mape_ses</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPE DES: </span><span class="si">{</span><span class="n">mape_des</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAPE TES: </span><span class="si">{</span><span class="n">mape_tes</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== HASIL EVALUASI (MASE) ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE SES: </span><span class="si">{</span><span class="n">mse_ses</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE DES: </span><span class="si">{</span><span class="n">mse_des</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE TES: </span><span class="si">{</span><span class="n">mse_tes</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Logika memilih pemenang</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rmse_ses</span><span class="p">,</span> <span class="n">rmse_des</span><span class="p">,</span> <span class="n">rmse_tes</span><span class="p">,</span><span class="n">mae_des</span><span class="p">,</span><span class="n">mae_ses</span><span class="p">,</span><span class="n">mae_tes</span><span class="p">,</span><span class="n">mape_ses</span><span class="p">,</span><span class="n">mape_des</span><span class="p">,</span><span class="n">mape_tes</span><span class="p">,</span><span class="n">mse_ses</span><span class="p">,</span><span class="n">mse_des</span><span class="p">,</span><span class="n">mse_tes</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">rmse_ses</span> <span class="ow">and</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">mae_ses</span> <span class="ow">and</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">mape_ses</span> <span class="ow">and</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">mse_ses</span><span class="p">:</span>
+    <span class="n">final_choice</span> <span class="o">=</span> <span class="n">ses_model</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; hasil terbaik: SES&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">rmse_des</span> <span class="ow">and</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">mae_des</span> <span class="ow">and</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">mape_des</span> <span class="ow">and</span> <span class="n">best_score</span> <span class="o">==</span> <span class="n">mse_des</span><span class="p">:</span>
+    <span class="n">final_choice</span> <span class="o">=</span> <span class="n">des_model</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; hasil terbaik: DES&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">final_choice</span> <span class="o">=</span> <span class="n">tes_model</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; hasil terbaik: TES&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== HASIL EVALUASI (RMSE) ===
+RMSE SES: 0.5661
+RMSE DES: 0.5662
+RMSE TES: 0.6052
+
+=== HASIL EVALUASI (MAE) ===
+MAE SES: 0.3735
+MAE DES: 0.3731
+MAE TES: 0.3942
+
+=== HASIL EVALUASI (MAPE) ===
+MAPE SES: 1.0164
+MAPE DES: 1.0299
+MAPE TES: 1.2251
+
+=== HASIL EVALUASI (MASE) ===
+MSE SES: 0.4283
+MSE DES: 0.4279
+MSE TES: 0.4521
+ hasil terbaik: TES
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluasi-model">
+<h4>5. Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># 5. FORECASTING MASA DEPAN (FINAL)</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># Melatih ulang model pemenang dengan SEMUA data</span>
+<span class="n">final_model</span> <span class="o">=</span> <span class="n">finalize_model</span><span class="p">(</span><span class="n">final_choice</span><span class="p">)</span>
+
+<span class="c1"># Prediksi 30 hari ke depan (sesuai fh di setup)</span>
+<span class="n">prediction</span> <span class="o">=</span> <span class="n">predict_model</span><span class="p">(</span><span class="n">final_model</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">=== HASIL PREDIKSI MASA DEPAN ===&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">prediction</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># ==========================================</span>
+<span class="c1"># 6. VISUALISASI</span>
+<span class="c1"># ==========================================</span>
+<span class="c1"># Plot hasil prediksi masa depan</span>
+<span class="n">plot_model</span><span class="p">(</span><span class="n">final_model</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="s1">&#39;forecast&#39;</span><span class="p">,</span> <span class="n">data_kwargs</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="s1">&#39;Prediksi NO2 Masa Depan&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>=== HASIL PREDIKSI MASA DEPAN ===
+            y_pred
+2025-10-23  0.4160
+2025-10-24  0.3728
+2025-10-25  0.4146
+2025-10-26  0.3770
+2025-10-27  0.3016
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exponential-smoothing-untuk-data-no2-menggunakan-library-statsmodels">
+<h3>- Exponential Smoothing untuk data NO2 menggunakan Library StatsModels<a class="headerlink" href="#exponential-smoothing-untuk-data-no2-menggunakan-library-statsmodels" title="Link to this heading">#</a></h3>
+<section id="import-library-load-data">
+<h4>1. Import Library &amp; Load Data<a class="headerlink" href="#import-library-load-data" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- LANGKAH 1: IMPORT LIBRARY ---</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">statsmodels.tsa.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">SimpleExpSmoothing</span><span class="p">,</span> <span class="n">Holt</span><span class="p">,</span> <span class="n">ExponentialSmoothing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">mean_absolute_error</span>
+
+<span class="c1"># Supaya grafik terlihat lebih rapi</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn-v0_8-whitegrid&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Library berhasil di-load.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- LANGKAH 2: LOAD &amp; PREPROCESSING ---</span>
+<span class="c1"># 1. Baca file CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset_no2_processed.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Ubah kolom &#39;t&#39; menjadi tipe data datetime agar dikenali sebagai waktu</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+
+<span class="c1"># 3. Jadikan waktu sebagai index (label baris)</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. Urutkan data dari tanggal lama ke baru</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_index</span><span class="p">()</span>
+
+<span class="c1"># 5. Set frekuensi menjadi Harian (&#39;D&#39;). </span>
+<span class="c1"># Ini penting untuk Exponential Smoothing agar tahu jarak antar data.</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">asfreq</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+
+<span class="c1"># 6. Isi data yang kosong (NaN) akibat langkah no 5 dengan nilai sebelumnya (Forward Fill)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Info Data:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">5 Data Teratas:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Library berhasil di-load.
+Info Data:
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+DatetimeIndex: 1096 entries, 2022-10-23 to 2025-10-22
+Freq: D
+Data columns (total 1 columns):
+ #   Column      Non-Null Count  Dtype  
+---  ------      --------------  -----  
+ 0   NO2_scaled  1096 non-null   float64
+dtypes: float64(1)
+memory usage: 17.1 KB
+None
+
+5 Data Teratas:
+            NO2_scaled
+t                     
+2022-10-23   -0.367877
+2022-10-24    0.338611
+2022-10-25    1.045099
+2022-10-26    0.596856
+2022-10-27    0.148612
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h4>2. Train-Test Split (Pembagian Data Uji)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- LANGKAH 3: TRAIN-TEST SPLIT ---</span>
+<span class="c1"># Kita ambil 85% data awal untuk latihan, 15% sisanya untuk ujian</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.85</span><span class="p">)</span>
+
+<span class="n">train</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span>  <span class="c1"># Data Latih</span>
+<span class="n">test</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:]</span>   <span class="c1"># Data Uji (Masa Depan yang diketahui)</span>
+
+<span class="c1"># Kita simpan kolom target ke variabel khusus biar ringkas</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span>
+<span class="n">test_data</span> <span class="o">=</span> <span class="n">test</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah Data Training: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">)</span><span class="si">}</span><span class="s2"> hari&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah Data Testing: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">)</span><span class="si">}</span><span class="s2"> hari&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Jumlah Data Training: 931 hari
+Jumlah Data Testing: 165 hari
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-model">
+<h4>3. Training Model<a class="headerlink" href="#training-model" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sedang melatih model...&quot;</span><span class="p">)</span>
+
+<span class="c1"># Model 1: Single Exponential Smoothing (SES)</span>
+<span class="c1"># Cocok untuk data datar/fluktuatif tanpa tren</span>
+<span class="n">model_ses</span> <span class="o">=</span> <span class="n">SimpleExpSmoothing</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">optimized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pred_ses</span> <span class="o">=</span> <span class="n">model_ses</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+
+<span class="c1"># Model 2: Double Exponential Smoothing (DES / Holt)</span>
+<span class="c1"># Cocok untuk data yang punya tren naik/turun</span>
+<span class="n">model_des</span> <span class="o">=</span> <span class="n">Holt</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">optimized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pred_des</span> <span class="o">=</span> <span class="n">model_des</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+
+<span class="c1"># Model 3: Triple Exponential Smoothing (TES / Holt-Winters)</span>
+<span class="c1"># Cocok untuk data dengan tren + pola musiman</span>
+<span class="c1"># seasonal_periods=7 artinya kita asumsikan polanya berulang tiap minggu</span>
+<span class="n">model_tes</span> <span class="o">=</span> <span class="n">ExponentialSmoothing</span><span class="p">(</span>
+    <span class="n">train_data</span><span class="p">,</span> 
+    <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> 
+    <span class="n">seasonal</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> 
+    <span class="n">seasonal_periods</span><span class="o">=</span><span class="mi">7</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">pred_tes</span> <span class="o">=</span> <span class="n">model_tes</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pelatihan selesai.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sedang melatih model...
+Pelatihan selesai.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluasi-hasil">
+<h4>4. Evaluasi Hasil<a class="headerlink" href="#evaluasi-hasil" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">hitung_error</span><span class="p">(</span><span class="n">y_asli</span><span class="p">,</span> <span class="n">y_prediksi</span><span class="p">,</span> <span class="n">nama_model</span><span class="p">):</span>
+    <span class="c1"># RMSE: Menghukum kesalahan besar lebih berat</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_asli</span><span class="p">,</span> <span class="n">y_prediksi</span><span class="p">))</span>
+    <span class="c1"># MAE: Rata-rata kesalahan mutlak</span>
+    <span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_asli</span><span class="p">,</span> <span class="n">y_prediksi</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;Model&quot;</span><span class="p">:</span> <span class="n">nama_model</span><span class="p">,</span> <span class="s2">&quot;RMSE&quot;</span><span class="p">:</span> <span class="n">rmse</span><span class="p">,</span> <span class="s2">&quot;MAE&quot;</span><span class="p">:</span> <span class="n">mae</span><span class="p">}</span>
+
+<span class="c1"># Kumpulkan hasil</span>
+<span class="n">hasil_evaluasi</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">hasil_evaluasi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hitung_error</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">pred_ses</span><span class="p">,</span> <span class="s2">&quot;Single ES&quot;</span><span class="p">))</span>
+<span class="n">hasil_evaluasi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hitung_error</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">pred_des</span><span class="p">,</span> <span class="s2">&quot;Double ES&quot;</span><span class="p">))</span>
+<span class="n">hasil_evaluasi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hitung_error</span><span class="p">(</span><span class="n">test_data</span><span class="p">,</span> <span class="n">pred_tes</span><span class="p">,</span> <span class="s2">&quot;Triple ES&quot;</span><span class="p">))</span>
+
+<span class="c1"># Buat tabel biar rapi</span>
+<span class="n">df_hasil</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">hasil_evaluasi</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">&quot;RMSE&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Perbandingan Error (Semakin kecil semakin bagus):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_hasil</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Perbandingan Error (Semakin kecil semakin bagus):
+       Model      RMSE       MAE
+0  Single ES  1.142933  0.914120
+2  Triple ES  1.259777  1.050694
+1  Double ES  5.768407  5.169461
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi">
+<h4>5. Visualisasi<a class="headerlink" href="#visualisasi" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># GRAFIK 1: Single Exponential Smoothing (SES)</span>
+<span class="c1"># ==========================================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot Data Latih (Akhir) untuk konteks</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:],</span> <span class="n">train_data</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Latih (Akhir)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot Data Asli (Test)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Asli (Aktual)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plot Prediksi SES</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pred_ses</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi SES (Level Only)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Model 1: Single Exponential Smoothing (SES)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;NO2 Scaled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5fc8097fafa8fb0cc9c466a32c9394aa94088db53c123aff2ba1691f5c6a43de.png" src="_images/5fc8097fafa8fb0cc9c466a32c9394aa94088db53c123aff2ba1691f5c6a43de.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># GRAFIK 2: Double Exponential Smoothing (DES)</span>
+<span class="c1"># ==========================================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot Data Latih (Akhir)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:],</span> <span class="n">train_data</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Latih (Akhir)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot Data Asli (Test)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Asli (Aktual)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plot Prediksi DES</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pred_des</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi DES (Trend)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Model 2: Double Exponential Smoothing (DES)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;NO2 Scaled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/30ba2a3ce4f795d1fad4c7f735c231436604c510914fd7251b46c0f2de4cdcb7.png" src="_images/30ba2a3ce4f795d1fad4c7f735c231436604c510914fd7251b46c0f2de4cdcb7.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ==========================================</span>
+<span class="c1"># GRAFIK 3: Triple Exponential Smoothing (TES)</span>
+<span class="c1"># ==========================================</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot Data Latih (Akhir)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:],</span> <span class="n">train_data</span><span class="p">[</span><span class="o">-</span><span class="mi">50</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Latih (Akhir)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Plot Data Asli (Test)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Asli (Aktual)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plot Prediksi TES</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">test</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">pred_tes</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi TES (Seasonal)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Model 3: Triple Exponential Smoothing (TES)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;NO2 Scaled&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f8475556157c443d23e4fe96886d0bffbf8eac3b806cc86183d34f9c3fc85f96.png" src="_images/f8475556157c443d23e4fe96886d0bffbf8eac3b806cc86183d34f9c3fc85f96.png" />
+</div>
+</div>
+</section>
+<section id="prediksi-no2">
+<h4>6. Prediksi NO2<a class="headerlink" href="#prediksi-no2" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">full_model</span> <span class="o">=</span> <span class="n">ExponentialSmoothing</span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">],</span> 
+    <span class="n">trend</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> 
+    <span class="n">seasonal</span><span class="o">=</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> 
+    <span class="n">seasonal_periods</span><span class="o">=</span><span class="mi">7</span>  <span class="c1"># Pola mingguan</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+
+<span class="c1"># Prediksi 30 hari ke depan</span>
+<span class="n">forecast_days</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">future_forecast</span> <span class="o">=</span> <span class="n">full_model</span><span class="o">.</span><span class="n">forecast</span><span class="p">(</span><span class="n">forecast_days</span><span class="p">)</span>
+
+<span class="c1"># Buat DataFrame</span>
+<span class="n">future_dates</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">pd</span><span class="o">.</span><span class="n">Timedelta</span><span class="p">(</span><span class="n">days</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">periods</span><span class="o">=</span><span class="n">forecast_days</span><span class="p">)</span>
+<span class="n">df_future</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">:</span> <span class="n">future_dates</span><span class="p">,</span> <span class="s1">&#39;Prediksi_NO2&#39;</span><span class="p">:</span> <span class="n">future_forecast</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Prediksi 5 Hari Pertama (Sekarang angkanya pasti beda-beda):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_future</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="c1"># Visualisasi Hasil Prediksi Masa Depan</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="p">[</span><span class="o">-</span><span class="mi">60</span><span class="p">:],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;NO2_scaled&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">60</span><span class="p">:],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Historis (Terakhir)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_future</span><span class="p">[</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">],</span> <span class="n">df_future</span><span class="p">[</span><span class="s1">&#39;Prediksi_NO2&#39;</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prediksi Masa Depan (TES)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Prediksi NO2 30 Hari ke Depan (Triple ES)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prediksi 5 Hari Pertama (Sekarang angkanya pasti beda-beda):
+              Tanggal  Prediksi_NO2
+2025-10-23 2025-10-23      0.555997
+2025-10-24 2025-10-24      0.433375
+2025-10-25 2025-10-25      0.413268
+2025-10-26 2025-10-26      0.330502
+2025-10-27 2025-10-27      0.409593
+</pre></div>
+</div>
+<img alt="_images/ca1b92cbf276b253cd862f487be6b6e2ed435a74250f5c81fade4f34fbb4dd0c.png" src="_images/ca1b92cbf276b253cd862f487be6b6e2ed435a74250f5c81fade4f34fbb4dd0c.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="test.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>1. Setup dan Import Library</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-forecasting">- Apa itu Forecasting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-forecasting-penting">- Mengapa Forecasting penting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data">- Crawling Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libarary-yang-dibutuhkan">1. Import libarary yang dibutuhkan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025">2. Definisi kan koordinat di wilayah Kamal dan parameter waktu (2022-2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian">3. Loading data Sentinel-5P NO2 dan agregasi temporal harian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf">4. Melakukan eksekusi job batch processing untuk memproses data secara otomatis dan terjadwal, kemudian mengekspor hasilnya ke dalam format file NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan">5. Ubah data NetCDF ke CSV agar lebih mudah untuk digunakan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">- Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-tanggal-waktu">- Mengurutkan Data berdasarkan tanggal/waktu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatasi-missing-value-dengan-interpolasi">- Mengatasi Missing Value dengan interpolasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deteksi-penanganan-outlier">- DETEKSI &amp; PENANGANAN OUTLIER</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-menggunakan-zscore-dengan-standart-sklearn">- Normalisasi Data menggunakan zscore dengan standart sklearn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-smoothing-untuk-data-no2-menggunakan-library-pycaret">- Exponential Smoothing untuk data NO2 menggunakan Library Pycaret</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library">1. Import Library</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-preprocessing-data-pembersihan">2. Load &amp; Preprocessing Data (Pembersihan)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#train-test-split-pembagian-data-uji">3. Train-Test Split (Pembagian Data Uji)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pembuatan-model">4. Pembuatan Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">5. Evaluasi Model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exponential-smoothing-untuk-data-no2-menggunakan-library-statsmodels">- Exponential Smoothing untuk data NO2 menggunakan Library StatsModels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-load-data">1. Import Library &amp; Load Data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">2. Train-Test Split (Pembagian Data Uji)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#training-model">3. Training Model</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-hasil">4. Evaluasi Hasil</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi">5. Visualisasi</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-no2">6. Prediksi NO2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdiadha Syabirin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
