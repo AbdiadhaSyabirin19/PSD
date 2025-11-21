@@ -30,12 +30,12 @@ jobs:
         run: |
           jupyter-book build tugas/
 
-      - name: List build directory  # <--- tambahan penting nih!
+      - name: List build directory
         run: |
-          ls -R
+          ls -R tugas/_build/
 
       - name: Deploy to GitHub Pages
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          ghp-import -n -p -f _build/html -b gh-pages
+          ghp-import -n -p -f tugas/_build/html -b gh-pages
