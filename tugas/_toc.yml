@@ -20,5 +20,7 @@ chapters:
   title: Forecasting NO2 with KNN
 - file: Forecasting(autoCorelation)
   title: Forecasting NO2 with KNN (Auto Correlation)
-- file: sound
+- file: test
   title: Voice Analysis
+- file: Forecasting(Exponential Smooting)
+  title: Forecasting NO2 with Exponential Smoothing
