@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1. Setup dan Import Library &#8212; Proyek Sains Data A</title>
+    <title>Analisis Suara &#8212; Proyek Sains Data A</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'test';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Forecasting dengan Auto Corelation" href="Forecasting%28Exponential%20Smooting%29.html" />
+    <link rel="next" title="PROJECT AKHIR" href="project_akhir.html" />
     <link rel="prev" title="Forecasting dengan Auto Corelation" href="Forecasting%28autoCorelation%29.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -180,7 +180,7 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Bussines Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Business Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
@@ -194,16 +194,12 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Forecasting.html">Forecasting NO2 with KNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">Forecasting NO2 with KNN (Auto Correlation)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><strong>1. Setup dan Import Library</strong></a></li>
-
-
-
-
-
-
-<li class="toctree-l1"><a class="reference internal" href="Forecasting%28Exponential%20Smooting%29.html">Forecasting NO2 with Exponential Smoothing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Forecasting.html">Forecasting NO2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">KNN (Auto Correlation)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Voice Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_akhir.html">Project Akhir</a></li>
 </ul>
 
     </div>
@@ -389,7 +385,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>1. Setup dan Import Library</h1>
+    <h1>Analisis Suara</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,15 +395,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>1. Setup dan Import Library</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dari-dataset-audio"><strong>2. Ekstraksi Fitur dari Dataset Audio</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-dan-pembagian-train-test-split"><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dengan-keseluruhan-fitur"><strong>4. Training dengan Keseluruhan Fitur</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-information-gain"><strong>5. Seleksi Fitur (Information Gain)</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-dengan-pca"><strong>6. Transformasi dengan PCA</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-akhir-dan-visualisasi-perbandingan"><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-dan-import-library"><strong>1. Setup dan Import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dari-dataset-audio"><strong>2. Ekstraksi Fitur dari Dataset Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-dan-pembagian-train-test-split"><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dengan-keseluruhan-fitur"><strong>4. Training dengan Keseluruhan Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-information-gain"><strong>5. Seleksi Fitur (Information Gain)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-dengan-pca"><strong>6. Transformasi dengan PCA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-akhir-dan-visualisasi-perbandingan"><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong></a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -418,8 +413,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="setup-dan-import-library">
-<h1><strong>1. Setup dan Import Library</strong><a class="headerlink" href="#setup-dan-import-library" title="Link to this heading">#</a></h1>
+  <section id="analisis-suara">
+<h1><strong>Analisis Suara</strong><a class="headerlink" href="#analisis-suara" title="Link to this heading">#</a></h1>
+<section id="setup-dan-import-library">
+<h2><strong>1. Setup dan Import Library</strong><a class="headerlink" href="#setup-dan-import-library" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import library standar</span>
@@ -460,7 +457,7 @@ document.write(`
 </div>
 </section>
 <section id="ekstraksi-fitur-dari-dataset-audio">
-<h1><strong>2. Ekstraksi Fitur dari Dataset Audio</strong><a class="headerlink" href="#ekstraksi-fitur-dari-dataset-audio" title="Link to this heading">#</a></h1>
+<h2><strong>2. Ekstraksi Fitur dari Dataset Audio</strong><a class="headerlink" href="#ekstraksi-fitur-dari-dataset-audio" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Konfigurasi TSFEL ---</span>
@@ -537,7 +534,7 @@ Tidak ada file yang ditemukan.
 </div>
 </section>
 <section id="persiapan-data-dan-pembagian-train-test-split">
-<h1><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong><a class="headerlink" href="#persiapan-data-dan-pembagian-train-test-split" title="Link to this heading">#</a></h1>
+<h2><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong><a class="headerlink" href="#persiapan-data-dan-pembagian-train-test-split" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_list</span><span class="p">)</span>
@@ -573,7 +570,7 @@ Tidak ada file yang ditemukan.
 </div>
 </section>
 <section id="training-dengan-keseluruhan-fitur">
-<h1><strong>4. Training dengan Keseluruhan Fitur</strong><a class="headerlink" href="#training-dengan-keseluruhan-fitur" title="Link to this heading">#</a></h1>
+<h2><strong>4. Training dengan Keseluruhan Fitur</strong><a class="headerlink" href="#training-dengan-keseluruhan-fitur" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- EKSPERIMEN 1: Melatih dengan SEMUA </span><span class="si">{</span><span class="n">N_FEATURES</span><span class="si">}</span><span class="s2"> FITUR TSFEL ---&quot;</span><span class="p">)</span>
@@ -618,7 +615,7 @@ Melakukan scaling data...
 </div>
 </section>
 <section id="seleksi-fitur-information-gain">
-<h1><strong>5. Seleksi Fitur (Information Gain)</strong><a class="headerlink" href="#seleksi-fitur-information-gain" title="Link to this heading">#</a></h1>
+<h2><strong>5. Seleksi Fitur (Information Gain)</strong><a class="headerlink" href="#seleksi-fitur-information-gain" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- EKSPERIMEN 2: Mencari &#39;k&#39; Fitur Terbaik ---&quot;</span><span class="p">)</span>
@@ -1278,7 +1275,7 @@ Model dan artefak baru berhasil disimpan ke: model_artifacts.joblib
 </div>
 </section>
 <section id="transformasi-dengan-pca">
-<h1><strong>6. Transformasi dengan PCA</strong><a class="headerlink" href="#transformasi-dengan-pca" title="Link to this heading">#</a></h1>
+<h2><strong>6. Transformasi dengan PCA</strong><a class="headerlink" href="#transformasi-dengan-pca" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- EKSPERIMEN 3: Melatih dengan Looping Komponen PCA ---&quot;</span><span class="p">)</span>
@@ -1400,7 +1397,7 @@ Didapatkan saat menggunakan 4 komponen PCA terbaik.
 </div>
 </section>
 <section id="ringkasan-akhir-dan-visualisasi-perbandingan">
-<h1><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong><a class="headerlink" href="#ringkasan-akhir-dan-visualisasi-perbandingan" title="Link to this heading">#</a></h1>
+<h2><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong><a class="headerlink" href="#ringkasan-akhir-dan-visualisasi-perbandingan" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
@@ -1448,6 +1445,7 @@ Langkah 7b: Visualisasi Perbandingan Hasil Akhir...
 </div>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1489,11 +1487,11 @@ Langkah 7b: Visualisasi Perbandingan Hasil Akhir...
       </div>
     </a>
     <a class="right-next"
-       href="Forecasting%28Exponential%20Smooting%29.html"
+       href="project_akhir.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Forecasting dengan Auto Corelation</p>
+        <p class="prev-next-title"><strong>PROJECT AKHIR</strong></p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -1513,15 +1511,14 @@ Langkah 7b: Visualisasi Perbandingan Hasil Akhir...
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><strong>1. Setup dan Import Library</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dari-dataset-audio"><strong>2. Ekstraksi Fitur dari Dataset Audio</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-dan-pembagian-train-test-split"><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dengan-keseluruhan-fitur"><strong>4. Training dengan Keseluruhan Fitur</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-information-gain"><strong>5. Seleksi Fitur (Information Gain)</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-dengan-pca"><strong>6. Transformasi dengan PCA</strong></a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-akhir-dan-visualisasi-perbandingan"><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-dan-import-library"><strong>1. Setup dan Import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dari-dataset-audio"><strong>2. Ekstraksi Fitur dari Dataset Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-dan-pembagian-train-test-split"><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dengan-keseluruhan-fitur"><strong>4. Training dengan Keseluruhan Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-information-gain"><strong>5. Seleksi Fitur (Information Gain)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-dengan-pca"><strong>6. Transformasi dengan PCA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-akhir-dan-visualisasi-perbandingan"><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong></a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

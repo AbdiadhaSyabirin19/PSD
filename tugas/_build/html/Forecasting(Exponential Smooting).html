@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Forecasting dengan Auto Corelation &#8212; Proyek Sains Data A</title>
+    <title>Forecasting dengan Exponential Smoothing &#8212; Proyek Sains Data A</title>
   
   
   
@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -62,7 +62,6 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'Forecasting(Exponential Smooting)';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="1. Setup dan Import Library" href="test.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -125,6 +124,8 @@
       
       
       
+        
+      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -180,8 +181,8 @@
                 </a>
             </li>
         </ul>
-        <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Bussines Understanding</a></li>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Business Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
@@ -195,16 +196,12 @@
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Forecasting.html">Forecasting NO2 with KNN</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">Forecasting NO2 with KNN (Auto Correlation)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test.html"><strong>1. Setup dan Import Library</strong></a></li>
-
-
-
-
-
-
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Forecasting NO2 with Exponential Smoothing</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="Forecasting.html">Forecasting NO2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">KNN (Auto Correlation)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Voice Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_akhir.html">Project Akhir</a></li>
 </ul>
 
     </div>
@@ -390,7 +387,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Forecasting dengan Auto Corelation</h1>
+    <h1>Forecasting dengan Exponential Smoothing</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -445,8 +442,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="forecasting-dengan-auto-corelation">
-<h1>Forecasting dengan Auto Corelation<a class="headerlink" href="#forecasting-dengan-auto-corelation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="forecasting-dengan-exponential-smoothing">
+<h1>Forecasting dengan Exponential Smoothing<a class="headerlink" href="#forecasting-dengan-exponential-smoothing" title="Link to this heading">#</a></h1>
 <section id="apa-itu-forecasting">
 <h2>- Apa itu Forecasting?<a class="headerlink" href="#apa-itu-forecasting" title="Link to this heading">#</a></h2>
 <p>Bayangkan Anda adalah seorang kapten kapal yang mencoba menavigasi lautan yang tidak pasti di depan. Untuk tahu ke mana harus berlayar, Anda tidak bisa hanya menebak-nebak; Anda harus melihat ke belakang, mempelajari catatan perjalanan sebelumnya, menganalisis pola angin musiman, dan data arus laut yang telah dikumpulkan. Inilah inti dari forecasting (peramalan): sebuah proses sistematis untuk memprediksi apa yang akan terjadi di masa depan dengan cara menggali dan menganalisis data historis serta tren masa lalu. Baik itu untuk memperkirakan cuaca besok, penjualan produk bulan depan, atau, seperti dalam kasus Anda, memprediksi tingkat polusi <span class="math notranslate nohighlight">\(NO_2\)</span>, tujuannya selalu sama—yaitu menggunakan wawasan dari masa lalu untuk mengurangi ketidakpastian dan membantu kita mengambil keputusan yang lebih cerdas dan lebih siap hari ini.</p>
@@ -599,16 +596,16 @@ Setup completed successfully
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting data processing job...
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-251121140752428780b51e6a788ce440&#39;: send &#39;start&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-2512141416274426808323f545a9ae22&#39;: send &#39;start&#39;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:13 Job &#39;j-251121140752428780b51e6a788ce440&#39;: created (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:15 Job &#39;j-2512141416274426808323f545a9ae22&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:19 Job &#39;j-251121140752428780b51e6a788ce440&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:21 Job &#39;j-2512141416274426808323f545a9ae22&#39;: created (progress 0%)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:25 Job &#39;j-251121140752428780b51e6a788ce440&#39;: queued (progress 0%)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:27 Job &#39;j-2512141416274426808323f545a9ae22&#39;: created (progress 0%)
 </pre></div>
 </div>
 </div>
@@ -1766,15 +1763,6 @@ Pelatihan selesai.
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="test.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><strong>1. Setup dan Import Library</strong></p>
-      </div>
-    </a>
 </div>
                 </footer>
               
