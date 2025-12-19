@@ -57,8 +57,6 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'project_akhir';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -405,7 +403,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-memuat-dataset">2.2 Import Library &amp; Memuat Dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembersihan-label-bytes-string">2.3 Pembersihan Label (Bytes → String)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-dimensi-dan-struktur-data">2.4 Mengecek Dimensi dan Struktur Data</a></li>
@@ -418,7 +419,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-statistik">3.2 Ekstraksi Fitur Statistik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label-target">3.3 Encoding Label Target</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-fitur-scaling">3.4. Standarisasi Fitur (Scaling)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data-akhir">5. Verifikasi Data Akhir</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data-akhir">3.5 Verifikasi Data Akhir</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting"><strong>DATA SPLITTING</strong></a><ul class="nav section-nav flex-column">
@@ -438,6 +439,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-model-laporan-klasifikasi">6.1 Pengujian Model &amp; Laporan Klasifikasi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-confusion-matrix">6.2 Visualisasi Confusion Matrix</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-deployment-ready">6.3 Menyimpan Model (Deployment Ready)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-deployment-streamlit">6.4 Hasil Deployment Streamlit</a></li>
 </ul>
 </li>
 </ul>
@@ -526,14 +528,40 @@ Setiap instance mewakili potongan suara jantung selama 5 detik dalam bentuk inte
 <p>Bagian ini menjelaskan proses pemahaman data yang digunakan pada penelitian, mulai dari pemuatan data, pemeriksaan struktur, distribusi kelas, hingga eksplorasi visual terhadap bentuk spectrogram. Seluruh proses dijelaskan secara bertahap agar memberikan gambaran menyeluruh tentang karakteristik dataset.</p>
 <section id="penjelasan-dataset-spectrogram">
 <h3>2.1 Penjelasan Dataset (Spectrogram)<a class="headerlink" href="#penjelasan-dataset-spectrogram" title="Link to this heading">#</a></h3>
-<p>Dataset yang digunakan dalam penelitian ini diadopsi dari database publik PhysioNet/CinC Challenge 2016. Data ini merupakan kumpulan rekaman suara jantung yang dikumpulkan dari berbagai sumber di seluruh dunia, mencakup subjek sehat dan pasien dengan kondisi patologis (seperti kelainan katup jantung dan penyakit arteri koroner).Berbeda dengan data audio mentah (raw wav), dataset yang digunakan dalam penelitian ini telah melalui proses transformasi menjadi format Multivariate Spectrogram.</p>
+<p>Dataset yang digunakan dalam penelitian ini diadopsi dari beberapa sumber dataset seperti :</p>
+<p>Referensi Dataset :</p>
 <ul class="simple">
-<li><p>Struktur Data: Data disimpan dalam format runtun waktu (Time Series) dengan dimensi <span class="math notranslate nohighlight">\(61 \times 405\)</span>, di mana 61 merepresentasikan pita frekuensi (frequency bands) dan 405 merepresentasikan titik waktu (timepoints).</p></li>
+<li><p><a class="reference external" href="https://open.umich.edu/find/open-educational-resources/medical/heart-sound-murmur-library">https://open.umich.edu/find/open-educational-resources/medical/heart-sound-murmur-library</a></p></li>
+<li><p><a class="reference external" href="https://istethoscope.peterjbentley.com/heartchallenge/index.html">https://istethoscope.peterjbentley.com/heartchallenge/index.html</a></p></li>
+<li><p><a class="reference external" href="https://physionet.org/content/circor-heart-sound/1.0.0/">https://physionet.org/content/circor-heart-sound/1.0.0/</a></p></li>
+</ul>
+<p>Data ini merupakan kumpulan rekaman suara jantung yang dikumpulkan dari berbagai sumber di seluruh dunia, mencakup subjek sehat dan pasien dengan kondisi patologis (seperti kelainan katup jantung dan penyakit arteri koroner).Berbeda dengan data audio mentah (raw wav), dataset yang digunakan dalam penelitian ini telah melalui proses transformasi menjadi format Multivariate Spectrogram.</p>
+<ul class="simple">
+<li><p>Struktur Data: Data disimpan dalam format runtun waktu (Time Series) dengan dimensi 61 x 405, di mana 61 merepresentasikan pita frekuensi (frequency bands) dan 405 merepresentasikan titik waktu (timepoints).</p></li>
 <li><p>Kategori Label: Data terbagi menjadi dua kelas, yaitu Normal (subjek sehat) dan Abnormal (subjek dengan diagnosis jantung dikonfirmasi).</p></li>
 <li><p>Karakteristik: Dataset ini memiliki tantangan berupa ketidakseimbangan kelas (class imbalance) dan variasi sinyal yang tinggi karena
 data direkam dari lokasi tubuh yang berbeda (aorta, pulmonal, mitral, trikuspid).</p></li>
 </ul>
 <p>Penggunaan representasi spectrogram dipilih karena mampu memvisualisasikan intensitas energi pada berbagai frekuensi, yang mana fitur ini sangat relevan untuk mendeteksi murmur atau suara tambahan pada jantung abnormal.</p>
+<section id="transformasi-sinyal-jantung-ke-spectrogram">
+<h4>2.1.1 Transformasi Sinyal Jantung ke Spectrogram<a class="headerlink" href="#transformasi-sinyal-jantung-ke-spectrogram" title="Link to this heading">#</a></h4>
+<p>Sinyal suara jantung yang direkam menggunakan stetoskop digital pada awalnya berbentuk domain waktu (time domain). Pada bentuk ini, grafik hanya memperlihatkan perubahan amplitudo atau keras–lemahnya suara terhadap waktu. Namun, tampilan ini belum menunjukkan informasi frekuensi, padahal kelainan suara jantung seperti murmur biasanya muncul pada rentang frekuensi tertentu, misalnya frekuensi tinggi di atas 200 Hz.</p>
+<p>Untuk mendapatkan informasi frekuensi, sinyal perlu diubah ke domain frekuensi. Akan tetapi, penggunaan Fast Fourier Transform (FFT) biasa memiliki kelemahan, yaitu kehilangan informasi waktu. Dengan FFT, kita dapat mengetahui frekuensi apa saja yang ada, tetapi tidak dapat mengetahui kapan frekuensi tersebut muncul, misalnya apakah terjadi saat fase sistol atau diastol.</p>
+<p>Oleh karena itu, penelitian ini menggunakan spectrogram sebagai representasi sinyal suara jantung. Spectrogram dihasilkan melalui metode Short-Time Fourier Transform (STFT), yang mampu menampilkan informasi waktu dan frekuensi secara bersamaan.</p>
+<p>Proses STFT dilakukan dengan langkah-langkah sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Sinyal suara yang panjang dibagi menjadi potongan-potongan kecil (window) yang saling tumpang tindih (overlap).</p></li>
+<li><p>Setiap potongan kecil tersebut dianalisis menggunakan FFT.</p></li>
+<li><p>Hasil dari setiap potongan kemudian disusun secara berurutan berdasarkan waktu.</p></li>
+<li><p>Hasil akhirnya adalah gambar spectrogram yang memuat tiga informasi utama:</p></li>
+</ol>
+<ul class="simple">
+<li><p>Sumbu X (Waktu) menunjukkan durasi atau urutan detak jantung.</p></li>
+<li><p>Sumbu Y (Frekuensi) menunjukkan tinggi atau rendahnya frekuensi suara.</p></li>
+<li><p>Warna atau intensitas menunjukkan kekuatan energi suara pada waktu dan frekuensi tertentu.</p></li>
+</ul>
+<p>Dengan menggunakan spectrogram, pola suara jantung—termasuk adanya murmur—dapat lebih mudah dikenali karena informasi waktu dan frekuensi ditampilkan secara bersamaan.</p>
+</section>
 </section>
 <section id="import-library-memuat-dataset">
 <h3>2.2 Import Library &amp; Memuat Dataset<a class="headerlink" href="#import-library-memuat-dataset" title="Link to this heading">#</a></h3>
@@ -652,12 +680,7 @@ Jumlah Data Testing       : 205 orang
 </section>
 <section id="analisis-keseimbangan-kelas-class-imbalance">
 <h3>2.5 Analisis Keseimbangan Kelas (Class Imbalance)<a class="headerlink" href="#analisis-keseimbangan-kelas-class-imbalance" title="Link to this heading">#</a></h3>
-<p>Langkah ini bertujuan untuk melihat apakah jumlah data Normal dan Abnormal seimbang atau tidak.</p>
-<ul class="simple">
-<li><p>Grafik ini menunjukkan perbandingan jumlah data tiap kelas.</p></li>
-<li><p>Jika salah satu kelas jauh lebih banyak, maka dataset disebut imbalanced.</p></li>
-<li><p>Informasi ini penting sebagai alasan penggunaan class weight atau teknik penyeimbangan data di tahap modeling.</p></li>
-</ul>
+<p>Langkah ini bertujuan untuk melihat apakah jumlah data Normal dan Abnormal seimbang atau tidak.Grafik ini menunjukkan perbandingan jumlah data tiap kelas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 4: CEK KESEIMBANGAN KELAS (VISUALISASI) ---&quot;</span><span class="p">)</span>
@@ -686,7 +709,7 @@ Jumlah Data Testing       : 205 orang
 Rincian Jumlah Data: Counter({&#39;abnormal&#39;: 147, &#39;normal&#39;: 57})
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_15504\3621272935.py:9: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_15936\3621272935.py:9: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -696,6 +719,25 @@ Passing `palette` without assigning `hue` is deprecated and will be removed in v
 <img alt="_images/dd8568fff221e00672447f081ba31bb00ddecac62dba73e608f6c9a4d9f0d477.png" src="_images/dd8568fff221e00672447f081ba31bb00ddecac62dba73e608f6c9a4d9f0d477.png" />
 </div>
 </div>
+<p>Untuk menentukan tingkat ketidakseimbangan dataset, dilakukan perhitungan persentase distribusi kelas dan rasio ketidakseimbangan (Imbalance Ratio / IR).</p>
+<ul class="simple">
+<li><p>Kelas Abnormal (Mayoritas): 148 sampel (72.2%)</p></li>
+<li><p>Kelas Normal (Minoritas): 57 sampel (27.8%)</p></li>
+</ul>
+<p>Menurut literatur Machine Learning dari Google Developers (2022), tingkat ketidakseimbangan data dikategorikan sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Ringan (Mild)
+Ketidakseimbangan data berada pada kisaran 20%–40% kelas minoritas.
+Pada kondisi ini, bias terhadap kelas minoritas relatif kecil sehingga sering kali tidak memerlukan penanganan khusus.</p></li>
+<li><p>Sedang (Moderate)
+Proporsi kelas minoritas berada pada kisaran 1%–20%.
+Ketidakseimbangan mulai terlihat signifikan dan memerlukan teknik penanganan, seperti class weighting atau resampling.</p></li>
+<li><p>Ekstrem (Extreme)
+Proporsi kelas minoritas kurang dari 1%.
+Dataset sangat tidak seimbang sehingga membutuhkan penanganan khusus, misalnya pendekatan anomaly detection atau metode khusus lainnya</p></li>
+</ol>
+<p>Berdasarkan tabel di atas, dataset penelitian ini dengan proporsi kelas minoritas sebesar 27.8% masuk dalam kategori Ketidakseimbangan Ringan hingga Sedang (Mild to Moderate Imbalance).</p>
+<p>Meskipun belum masuk kategori ekstrem, rasio hampir 3:1 (148 banding 57) sudah cukup untuk mempengaruhi Hyperplane pada algoritma SVM. SVM standar cenderung memaksimalkan akurasi global dengan memprioritaskan kelas mayoritas, yang berisiko menyebabkan Recall rendah pada kelas Normal. Oleh karena itu, intervensi menggunakan metode Class Weighting tetap diperlukan untuk memastikan model berlaku adil terhadap kedua kelas.</p>
 </section>
 <section id="visualisasi-data-spectrogram">
 <h3>2.6 Visualisasi Data (Spectrogram)<a class="headerlink" href="#visualisasi-data-spectrogram" title="Link to this heading">#</a></h3>
@@ -752,6 +794,25 @@ Mengambil contoh &#39;normal&#39; di index 0
 <img alt="_images/95f0311768f7805ef92ff40b80eea10b13f3332f4eb68bffd74e5b6539daa4fa.png" src="_images/95f0311768f7805ef92ff40b80eea10b13f3332f4eb68bffd74e5b6539daa4fa.png" />
 </div>
 </div>
+<p>Pada visualisasi di atas, sumbu horizontal (X) merepresentasikan waktu (Timepoints) dan sumbu vertikal (Y) merepresentasikan pita frekuensi (Frequency Bands). Warna merepresentasikan intensitas atau energi suara, di mana warna gelap (Hitam/Ungu) menunjukkan energi rendah, sedangkan warna terang (Oranye/Kuning) menunjukkan energi tinggi.</p>
+<p>Berdasarkan pengamatan visual diatas, dapat dianalisis perbedaan spesifik sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Distribusi Energi Frekuensi: Pada dataset ini, energi suara dominan terkonsentrasi pada pita frekuensi tinggi (Band ke-50 hingga 60). Hal ini terlihat dari pola warna kuning terang yang berkumpul di bagian atas grafik.</p></li>
+<li><p>Karakteristik Pasien Normal (Index 0 - Grafik Bawah):</p></li>
+</ol>
+<ul class="simple">
+<li><p>Pola Ritmis yang Bersih: Terlihat adanya pola letupan (bursts) energi yang terpisah secara tegas. Letupan kuning ini merepresentasikan suara jantung utama (S1 dan S2).</p></li>
+<li><p>Interval Hening (Silence): Area di antara letupan energi cenderung berwarna gelap (ungu tua/hitam). Hal ini menunjukkan bahwa pada fase diastol dan sistol (saat jantung rileks atau memompa), tidak ada suara bising tambahan yang signifikan.</p></li>
+<li><p>Intensitas Energi: Skala intensitas maksimal pada pasien normal cenderung lebih rendah, yaitu sekitar 1.8 pada color bar.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Karakteristik Pasien Abnormal (Index 57 - Grafik Atas):</p></li>
+</ol>
+<ul class="simple">
+<li><p>Pola yang “Kotor” (Smearing): Berbeda dengan pasien normal, area di antara letupan suara utama tidak sepenuhnya gelap. Terdapat jejak energi (warna ungu/oranye samar) yang “menggantung” atau menyambung di antara detak jantung utama pada pita frekuensi 50-60 Hz.</p></li>
+<li><p>Indikasi Murmur: Adanya energi tambahan di antara fase detak jantung ini mengindikasikan keberadaan murmur (suara desising akibat aliran darah turbulen), yang merupakan tanda khas kelainan katup jantung. Sinyal suara tidak pernah benar-benar “hening” seperti pada pasien normal.</p></li>
+<li><p>Intensitas Energi Tinggi: Skala intensitas pada pasien abnormal mencapai angka 3.0, yang mengindikasikan bahwa suara patologis (kelainan) pada pasien ini memiliki amplitudo energi yang jauh lebih tinggi atau lebih keras dibandingkan suara jantung normal.</p></li>
+</ul>
 </section>
 </section>
 <section id="data-preprocessing">
@@ -936,7 +997,7 @@ Contoh data sesudah scaling (Baris 0, Fitur 0): -0.4583039815163842
 </div>
 </section>
 <section id="verifikasi-data-akhir">
-<h3>5. Verifikasi Data Akhir<a class="headerlink" href="#verifikasi-data-akhir" title="Link to this heading">#</a></h3>
+<h3>3.5 Verifikasi Data Akhir<a class="headerlink" href="#verifikasi-data-akhir" title="Link to this heading">#</a></h3>
 <p>Tahap terakhir bertujuan untuk memverifikasi bahwa seluruh proses preprocessing sudah berjalan dengan benar dan data telah siap digunakan pada tahap pemodelan. Pada tahap ini dilakukan:</p>
 <ol class="arabic simple">
 <li><p>Penyusunan nama fitur yang informatif, seperti Mean_F0, Std_F10, Max_F25, dan seterusnya.</p></li>
@@ -1446,6 +1507,10 @@ Status: SIAP UNTUK STREAMLIT.
 </div>
 </div>
 </section>
+<section id="hasil-deployment-streamlit">
+<h3>6.4 Hasil Deployment Streamlit<a class="headerlink" href="#hasil-deployment-streamlit" title="Link to this heading">#</a></h3>
+<p>link streamlit yang sudah di deploy : <a class="reference external" href="https://deteksisuarajantung.streamlit.app/">https://deteksisuarajantung.streamlit.app/</a></p>
+</section>
 </section>
 </section>
 
@@ -1513,7 +1578,10 @@ Status: SIAP UNTUK STREAMLIT.
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-memuat-dataset">2.2 Import Library &amp; Memuat Dataset</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembersihan-label-bytes-string">2.3 Pembersihan Label (Bytes → String)</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-dimensi-dan-struktur-data">2.4 Mengecek Dimensi dan Struktur Data</a></li>
@@ -1526,7 +1594,7 @@ Status: SIAP UNTUK STREAMLIT.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-statistik">3.2 Ekstraksi Fitur Statistik</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label-target">3.3 Encoding Label Target</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-fitur-scaling">3.4. Standarisasi Fitur (Scaling)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data-akhir">5. Verifikasi Data Akhir</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data-akhir">3.5 Verifikasi Data Akhir</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting"><strong>DATA SPLITTING</strong></a><ul class="nav section-nav flex-column">
@@ -1546,6 +1614,7 @@ Status: SIAP UNTUK STREAMLIT.
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-model-laporan-klasifikasi">6.1 Pengujian Model &amp; Laporan Klasifikasi</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-confusion-matrix">6.2 Visualisasi Confusion Matrix</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-deployment-ready">6.3 Menyimpan Model (Deployment Ready)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-deployment-streamlit">6.4 Hasil Deployment Streamlit</a></li>
 </ul>
 </li>
 </ul>
