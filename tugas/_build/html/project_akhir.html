@@ -567,7 +567,10 @@ data direkam dari lokasi tubuh yang berbeda (aorta, pulmonal, mitral, trikuspid)
 </section>
 <section id="landasan-matematis-rumus">
 <h5>2. Landasan Matematis (Rumus)<a class="headerlink" href="#landasan-matematis-rumus" title="Link to this heading">#</a></h5>
-<p>Dasar dari semua analisis frekuensi digital adalah Discrete Fourier Transform (DFT). Algoritma cepat untuk menghitung DFT disebut Fast Fourier Transform (FFT).Rumus DFT:$<span class="math notranslate nohighlight">\(X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j \frac{2\pi}{N} kn}\)</span>$</p>
+<p>Dasar dari semua analisis frekuensi digital adalah Discrete Fourier Transform (DFT). Algoritma cepat untuk menghitung DFT disebut Fast Fourier Transform (FFT).</p>
+<p>Rumus DFT:</p>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j \frac{2\pi}{N} kn}\]</div>
 <p>Dimana:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(x[n]\)</span>: Nilai sinyal pada titik waktu ke-<span class="math notranslate nohighlight">\(n\)</span>.</p></li>
@@ -575,7 +578,9 @@ data direkam dari lokasi tubuh yang berbeda (aorta, pulmonal, mitral, trikuspid)
 <li><p><span class="math notranslate nohighlight">\(N\)</span>: Total jumlah sampel data.</p></li>
 <li><p><span class="math notranslate nohighlight">\(e^{-j...}\)</span>: Identitas Euler (<span class="math notranslate nohighlight">\(\cos(\theta) - j\sin(\theta)\)</span>)</p></li>
 </ul>
-<p>yang membedah sinyal menjadi komponen sinus dan cosinus.Karena kita butuh informasi waktu, kita menggunakan Short-Time Fourier Transform (STFT). Sinyal dipotong-potong menggunakan fungsi jendela (window function) <span class="math notranslate nohighlight">\(w[n]\)</span>.Rumus STFT:$<span class="math notranslate nohighlight">\(STFT \{x[n]\}(m, k) = \sum_{n=-\infty}^{\infty} x[n] \cdot w[n-m] \cdot e^{-j \frac{2\pi}{N} kn}\)</span><span class="math notranslate nohighlight">\(Magnitudo Spectrogram: Nilai warna pada gambar Spectrogram diambil dari kuadrat magnitudonya: \)</span>|X(m,k)|^2$.</p>
+<p>yang membedah sinyal menjadi komponen sinus dan cosinus.Karena kita butuh informasi waktu, kita menggunakan Short-Time Fourier Transform (STFT). Sinyal dipotong-potong menggunakan fungsi jendela (window function) <span class="math notranslate nohighlight">\(w[n]\)</span>.</p>
+<p>Rumus STFT:$<span class="math notranslate nohighlight">\(STFT \{x[n]\}(m, k) = \sum_{n=-\infty}^{\infty} x[n] \cdot w[n-m] \cdot e^{-j \frac{2\pi}{N} kn}\)</span>$</p>
+<p>Magnitudo Spectrogram: Nilai warna pada gambar Spectrogram diambil dari kuadrat magnitudonya: <span class="math notranslate nohighlight">\(|X(m,k)|^2\)</span>.</p>
 </section>
 <section id="contoh-perhitungan-manual-sederhana">
 <h5>3. Contoh Perhitungan Manual (Sederhana)<a class="headerlink" href="#contoh-perhitungan-manual-sederhana" title="Link to this heading">#</a></h5>
@@ -857,7 +862,7 @@ Jumlah Data Testing       : 205 orang
 Rincian Jumlah Data: Counter({&#39;abnormal&#39;: 147, &#39;normal&#39;: 57})
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_31068\3621272935.py:9: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_33892\3621272935.py:9: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
