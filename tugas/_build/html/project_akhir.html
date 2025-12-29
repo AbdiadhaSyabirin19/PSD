@@ -615,13 +615,17 @@ X[1] &amp;= \mathbf{-2 - j}
 <section id="langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">
 <h4>Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)<a class="headerlink" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram" title="Link to this heading">#</a></h4>
 <p>Hasil di atas adalah bilangan kompleks. Spectrogram hanya menampilkan kekuatan sinyal (magnitude), yang dihitung dengan rumus Pythagoras <span class="math notranslate nohighlight">\(\sqrt{Real^2 + Imajiner^2}\)</span>.</p>
-<ul class="simple">
-<li><p><strong>Pixel Frekuensi 0:</strong>
-$<span class="math notranslate nohighlight">\(|X[0]| = |7| = \mathbf{7}\)</span>$
-<em>(Sangat Terang/Kuning)</em></p></li>
-<li><p><strong>Pixel Frekuensi 1:</strong>
-$<span class="math notranslate nohighlight">\(|X[1]| = \sqrt{(-2)^2 + (-1)^2} = \sqrt{4+1} \approx \mathbf{2.23}\)</span>$
-<em>(Agak Gelap/Ungu)</em></p></li>
+<ul>
+<li><p><strong>Pixel Frekuensi 0:</strong></p>
+<div class="math notranslate nohighlight">
+\[|X[0]| = |7| = \mathbf{7}\]</div>
+<p><em>(Sangat Terang/Kuning)</em></p>
+</li>
+<li><p><strong>Pixel Frekuensi 1:</strong></p>
+<div class="math notranslate nohighlight">
+\[|X[1]| = \sqrt{(-2)^2 + (-1)^2} = \sqrt{4+1} \approx \mathbf{2.23}\]</div>
+<p><em>(Agak Gelap/Ungu)</em></p>
+</li>
 </ul>
 <p><strong>Kesimpulan:</strong>
 Dalam potongan waktu tersebut, sinyal didominasi oleh energi frekuensi rendah (Nilai 7) dibandingkan frekuensi tinggi (Nilai 2.23). Inilah yang membuat bagian bawah Spectrogram warnanya lebih terang daripada bagian atas.</p>
@@ -853,7 +857,7 @@ Jumlah Data Testing       : 205 orang
 Rincian Jumlah Data: Counter({&#39;abnormal&#39;: 147, &#39;normal&#39;: 57})
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_10188\3621272935.py:9: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_31068\3621272935.py:9: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
