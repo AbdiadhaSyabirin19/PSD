@@ -1,0 +1,1577 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Forecasting &#8212; Proyek Sains Data A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Forecasting';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Forecasting dengan Auto Corelation" href="Forecasting%28autoCorelation%29.html" />
+    <link rel="prev" title="Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank" href="ketidakseimbanganData2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Proyek Sains Data A - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Proyek Sains Data A - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my learning site : “PROYEK SAINS DATA - A”
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE)</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData2.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank</strong></a></li>
+
+
+
+
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Forecasting NO2</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">KNN (Auto Correlation)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Voice Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_akhir.html">Project Akhir</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FForecasting.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Forecasting.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Forecasting</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-forecasting">- Apa itu Forecasting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-forecasting-penting">- Mengapa Forecasting penting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data">- Crawling Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libarary-yang-dibutuhkan">1. Import libarary yang dibutuhkan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025">2. Definisi kan koordinat di wilayah Kamal dan parameter waktu (2022-2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian">3. Loading data Sentinel-5P NO2 dan agregasi temporal harian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf">4. Melakukan eksekusi job batch processing untuk memproses data secara otomatis dan terjadwal, kemudian mengekspor hasilnya ke dalam format file NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan">5. Ubah data NetCDF ke CSV agar lebih mudah untuk digunakan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">- Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-tanggal-waktu">- Mengurutkan Data berdasarkan tanggal/waktu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatasi-missing-value-dengan-interpolasi">- Mengatasi Missing Value dengan interpolasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-time-series-ke-data-supervised">- Mengubah data time series ke data supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-menggunakan-zscore-dengan-standart-sklearn">- Normalisasi Data menggunakan zscore dengan standart sklearn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-regression">- KNN Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-yang-dibutuhkan">1. Import LIbrary yang dibutuhkan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explorasi-data">2. Explorasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-untuk-modelling">3. Persiapan Data untuk Modelling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-train-dan-test">4. Membagi data Train dan Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-model-knn-regression">5. Training Model KNN Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-pada-data-test">6. Prediksi pada Data Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">7. Evaluasi Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil">8. Visualisasi Hasil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-analysis">9. Residual Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning-mencari-k-optimal">10. Hyperparameter Tuning - Mencari K Optimal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dan-evaluasi-model-dengan-k-optimal">11. Training dan Evaluasi Model dengan K Optimal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-model-default-vs-optimal">12. Perbandingan Model Default vs Optimal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-model-optimal">13. Visualisasi Hasil Model optimal</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="forecasting">
+<h1>Forecasting<a class="headerlink" href="#forecasting" title="Link to this heading">#</a></h1>
+<section id="apa-itu-forecasting">
+<h2>- Apa itu Forecasting?<a class="headerlink" href="#apa-itu-forecasting" title="Link to this heading">#</a></h2>
+<p>Bayangkan Anda adalah seorang kapten kapal yang mencoba menavigasi lautan yang tidak pasti di depan. Untuk tahu ke mana harus berlayar, Anda tidak bisa hanya menebak-nebak; Anda harus melihat ke belakang, mempelajari catatan perjalanan sebelumnya, menganalisis pola angin musiman, dan data arus laut yang telah dikumpulkan. Inilah inti dari forecasting (peramalan): sebuah proses sistematis untuk memprediksi apa yang akan terjadi di masa depan dengan cara menggali dan menganalisis data historis serta tren masa lalu. Baik itu untuk memperkirakan cuaca besok, penjualan produk bulan depan, atau, seperti dalam kasus Anda, memprediksi tingkat polusi <span class="math notranslate nohighlight">\(NO_2\)</span>, tujuannya selalu sama—yaitu menggunakan wawasan dari masa lalu untuk mengurangi ketidakpastian dan membantu kita mengambil keputusan yang lebih cerdas dan lebih siap hari ini.</p>
+</section>
+<section id="mengapa-forecasting-penting">
+<h2>- Mengapa Forecasting penting?<a class="headerlink" href="#mengapa-forecasting-penting" title="Link to this heading">#</a></h2>
+<p>Pada intinya, kita melihat pola-pola yang terjadi di masa lalu (seperti tren musiman, siklus, atau kebiasaan) dan menggunakan pola tersebut untuk membuat perkiraan yang logis tentang apa yang akan terjadi selanjutnya.Tujuan utamanya adalah untuk mengurangi ketidakpastian dalam pengambilan keputusan. Dengan memiliki perkiraan yang berbasis data, sebuah organisasi atau individu dapat membuat perencanaan yang lebih matang, mengantisipasi risiko, dan mengalokasikan sumber daya secara lebih efisien.</p>
+</section>
+<section id="crawling-data">
+<h2>- Crawling Data<a class="headerlink" href="#crawling-data" title="Link to this heading">#</a></h2>
+<section id="import-libarary-yang-dibutuhkan">
+<h3>1. Import libarary yang dibutuhkan<a class="headerlink" href="#import-libarary-yang-dibutuhkan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">openeo</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">xarray</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">xr</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">openeo</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;openeo.dataspace.copernicus.eu&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">authenticate_oidc</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connected to Copernicus Data Space Ecosystem&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Authenticated using refresh token.
+Connected to Copernicus Data Space Ecosystem
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025">
+<h3>2. Definisi kan koordinat di wilayah Kamal dan parameter waktu (2022-2025)<a class="headerlink" href="#definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aoi</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;FeatureCollection&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Feature&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;properties&quot;</span><span class="p">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;geometry&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;coordinates&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="p">[</span>
+            <span class="p">[</span>
+              <span class="mf">112.71199080623381</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.151070739706199</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.71199080623381</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.168985131602568</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.73980259222657</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.168985131602568</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.73980259222657</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.151070739706199</span>
+            <span class="p">],</span>
+            <span class="p">[</span>
+              <span class="mf">112.71199080623381</span><span class="p">,</span>
+              <span class="o">-</span><span class="mf">7.151070739706199</span>
+            <span class="p">]</span>
+          <span class="p">]</span>
+        <span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;Polygon&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+
+<span class="c1"># Define spatial extent from AOI coordinates</span>
+<span class="n">spatial_extent</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;west&quot;</span><span class="p">:</span> <span class="mf">112.71199080623381</span><span class="p">,</span>
+    <span class="s2">&quot;south&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.168985131602568</span><span class="p">,</span>
+    <span class="s2">&quot;east&quot;</span><span class="p">:</span> <span class="mf">112.73980259222657</span><span class="p">,</span>
+    <span class="s2">&quot;north&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">7.151070739706199</span>
+<span class="p">}</span>
+
+<span class="n">start_date</span> <span class="o">=</span> <span class="s2">&quot;2022-10-23&quot;</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="s2">&quot;2025-10-23&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;AOI defined for coordinates: </span><span class="si">{</span><span class="n">spatial_extent</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Time range: </span><span class="si">{</span><span class="n">start_date</span><span class="si">}</span><span class="s2"> to </span><span class="si">{</span><span class="n">end_date</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Setup completed successfully&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>AOI defined for coordinates: {&#39;west&#39;: 112.71199080623381, &#39;south&#39;: -7.168985131602568, &#39;east&#39;: 112.73980259222657, &#39;north&#39;: -7.151070739706199}
+Time range: 2022-10-23 to 2025-10-23
+Setup completed successfully
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian">
+<h3>3. Loading data Sentinel-5P NO2 dan agregasi temporal harian<a class="headerlink" href="#loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loading Sentinel-5P NO2 data...&quot;</span><span class="p">)</span>
+
+<span class="n">s5p_no2</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">load_collection</span><span class="p">(</span>
+    <span class="s2">&quot;SENTINEL_5P_L2&quot;</span><span class="p">,</span>
+    <span class="n">temporal_extent</span><span class="o">=</span><span class="p">[</span><span class="n">start_date</span><span class="p">,</span> <span class="n">end_date</span><span class="p">],</span>
+    <span class="n">spatial_extent</span><span class="o">=</span><span class="n">spatial_extent</span><span class="p">,</span>
+    <span class="n">bands</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;NO2&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="n">s5p_monthly</span> <span class="o">=</span> <span class="n">s5p_no2</span><span class="o">.</span><span class="n">aggregate_temporal_period</span><span class="p">(</span>
+    <span class="n">period</span><span class="o">=</span><span class="s2">&quot;day&quot;</span><span class="p">,</span>
+    <span class="n">reducer</span><span class="o">=</span><span class="s2">&quot;mean&quot;</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data collection and aggregation configured successfully&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading Sentinel-5P NO2 data...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data collection and aggregation configured successfully
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf">
+<h3>4. Melakukan eksekusi job batch processing untuk memproses data secara otomatis dan terjadwal, kemudian mengekspor hasilnya ke dalam format file NetCDF<a class="headerlink" href="#melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Starting data processing job...&quot;</span><span class="p">)</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">s5p_monthly</span><span class="o">.</span><span class="n">execute_batch</span><span class="p">(</span>
+    <span class="n">title</span><span class="o">=</span><span class="s2">&quot;NO2 Averages 2021-2025&quot;</span><span class="p">,</span> 
+    <span class="n">outputfile</span><span class="o">=</span><span class="s2">&quot;no2_averages_4years.nc&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Starting data processing job...
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:00 Job &#39;j-25122901261640d0b9e9c817ad709f71&#39;: send &#39;start&#39;
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:15 Job &#39;j-25122901261640d0b9e9c817ad709f71&#39;: created (progress 0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:20 Job &#39;j-25122901261640d0b9e9c817ad709f71&#39;: created (progress 0%)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0:00:27 Job &#39;j-25122901261640d0b9e9c817ad709f71&#39;: created (progress 0%)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan">
+<h3>5. Ubah data NetCDF ke CSV agar lebih mudah untuk digunakan<a class="headerlink" href="#ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Buka file .nc Anda</span>
+<span class="c1"># Ganti &#39;openEO.nc&#39; jika nama filenya berbeda</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Dokumen</span><span class="se">\\</span><span class="s2">PSD</span><span class="se">\\</span><span class="s2">dataset</span><span class="se">\\</span><span class="s2">openEO.nc&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Konversi dataset xarray menjadi DataFrame pandas</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+
+<span class="c1"># 3. [PENTING] Ratakan Multi-Index</span>
+<span class="c1"># Data NetCDF biasanya punya banyak index (spt waktu, lat, lon).</span>
+<span class="c1"># &#39;reset_index()&#39; akan mengubah semua index itu menjadi kolom biasa.</span>
+<span class="n">df_flat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># 4. Simpan sebagai file CSV</span>
+<span class="n">df_flat</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;hasil_data_no2.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! File &#39;hasil_data_no2.csv&#39; telah dibuat.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! File &#39;hasil_data_no2.csv&#39; telah dibuat.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="preprocessing">
+<h2>- Preprocessing<a class="headerlink" href="#preprocessing" title="Link to this heading">#</a></h2>
+<section id="mengurutkan-data-berdasarkan-tanggal-waktu">
+<h3>- Mengurutkan Data berdasarkan tanggal/waktu<a class="headerlink" href="#mengurutkan-data-berdasarkan-tanggal-waktu" title="Link to this heading">#</a></h3>
+<p>Mengurutkan data berdasarkan tanggal/waktu (sortir kronologis) adalah langkah preprocessing yang fundamental, terutama untuk data time-series (data berurutan).</p>
+<p>Ini penting karena mengubah data yang acak menjadi sebuah alur cerita yang logis.</p>
+<p>Tujuannya adalah untuk memastikan bahwa setiap observasi (baris data) ditempatkan dalam urutan yang benar sesuai kejadiannya. Tanpa pengurutan ini, analisis seperti mencari tren, mengidentifikasi pola musiman, atau melakukan interpolasi (mengisi data hilang) akan menghasilkan kesimpulan yang salah, karena hubungan antar-waktu antar-titik data menjadi rusak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Baca file CSV</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;hasil_data_no2.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># 2. Ubah kolom &#39;t&#39; menjadi format datetime</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">])</span>
+
+<span class="c1"># 3. Urutkan DataFrame berdasarkan kolom &#39;t&#39;</span>
+<span class="n">df_sorted</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="c1"># 4. Menampilkan hasil pengirutan</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_sorted</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! Data telah diurutkan berdasarkan waktu dan disimpan di &#39;hasil_data_no2_sorted.csv&#39;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              t           x         y  crs       NO2
+0    2022-10-23  112.739273 -7.151624  b&#39;&#39;  0.000030
+1    2022-10-24  112.739273 -7.151624  b&#39;&#39;       NaN
+2    2022-10-25  112.739273 -7.151624  b&#39;&#39;  0.000070
+3    2022-10-26  112.739273 -7.151624  b&#39;&#39;       NaN
+4    2022-10-27  112.739273 -7.151624  b&#39;&#39;       NaN
+...         ...         ...       ...  ...       ...
+1085 2025-10-18  112.739273 -7.151624  b&#39;&#39;  0.000015
+1086 2025-10-19  112.739273 -7.151624  b&#39;&#39;  0.000056
+1087 2025-10-20  112.739273 -7.151624  b&#39;&#39;       NaN
+1088 2025-10-21  112.739273 -7.151624  b&#39;&#39;       NaN
+1089 2025-10-22  112.739273 -7.151624  b&#39;&#39;       NaN
+
+[1090 rows x 5 columns]
+Selesai! Data telah diurutkan berdasarkan waktu dan disimpan di &#39;hasil_data_no2_sorted.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengatasi-missing-value-dengan-interpolasi">
+<h3>- Mengatasi Missing Value dengan interpolasi<a class="headerlink" href="#mengatasi-missing-value-dengan-interpolasi" title="Link to this heading">#</a></h3>
+<p>Mengatasi <em>missing value</em> (data hilang) dengan <strong>interpolasi</strong> adalah teknik <em>preprocessing</em> untuk “menebak” nilai yang hilang secara cerdas.</p>
+<p>Cara kerjanya adalah dengan <strong>melihat nilai-nilai tetangga yang diketahui</strong> (misalnya, nilai sebelum dan sesudah data yang hilang) dan menarik garis lurus (atau kurva) di antara keduanya. Nilai yang hilang kemudian diisi dengan titik yang jatuh tepat di atas garis tersebut.</p>
+<p>Ini adalah metode yang sangat umum untuk data <em>time-series</em> (seperti data cuaca atau polusi) karena metode ini <strong>mempertahankan kelancaran dan tren data</strong> dari waktu ke waktu, alih-alih hanya mengisi dengan nilai rata-rata atau membuang baris data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_indexed</span> <span class="o">=</span> <span class="n">df_sorted</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;t&#39;</span><span class="p">)</span>
+
+<span class="c1"># 5. Lakukan interpolasi pada kolom &#39;NO2&#39;</span>
+<span class="n">df_indexed</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_indexed</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="c1"># 6. Kembalikan &#39;t&#39; menjadi kolom &amp; simpan di variabel baru</span>
+<span class="n">df_interpolated</span> <span class="o">=</span> <span class="n">df_indexed</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+
+<span class="c1"># --- Konfirmasi Hasil ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! Data sudah diinterpolasi dan disimpan dalam variabel &#39;df_interpolated&#39;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cuplikan 5 baris pertama dari data hasil interpolasi:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_interpolated</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Sisa missing values di kolom &#39;NO2&#39;: </span><span class="si">{</span><span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! Data sudah diinterpolasi dan disimpan dalam variabel &#39;df_interpolated&#39;.
+
+Cuplikan 5 baris pertama dari data hasil interpolasi:
+           t           x         y  crs       NO2
+0 2022-10-23  112.739273 -7.151624  b&#39;&#39;  0.000030
+1 2022-10-24  112.739273 -7.151624  b&#39;&#39;  0.000050
+2 2022-10-25  112.739273 -7.151624  b&#39;&#39;  0.000070
+3 2022-10-26  112.739273 -7.151624  b&#39;&#39;  0.000057
+4 2022-10-27  112.739273 -7.151624  b&#39;&#39;  0.000045
+
+Sisa missing values di kolom &#39;NO2&#39;: 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Analisis Nilai Outlier pada Data NO2</span>
+<span class="n">no2_values</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span>
+<span class="n">q1</span> <span class="o">=</span> <span class="n">no2_values</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">q3</span> <span class="o">=</span> <span class="n">no2_values</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.75</span><span class="p">)</span>
+<span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
+<span class="n">lower_bound</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">-</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span>
+<span class="n">upper_bound</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">+</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span>
+<span class="n">outliers</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[(</span><span class="n">no2_values</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">no2_values</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">)]</span>
+
+<span class="c1"># --- Konfirmasi Hasil ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selesai! Ditemukan </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outliers</span><span class="p">)</span><span class="si">}</span><span class="s2"> nilai outlier pada data NO2.&quot;</span><span class="p">)</span>
+<span class="c1"># Imputasi Nilai Outlier dengan Metode Median</span>
+<span class="n">df_no_outliers</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">median_no2</span> <span class="o">=</span> <span class="n">df_no_outliers</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">df_no_outliers</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">df_no_outliers</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">lower_bound</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_no_outliers</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">upper_bound</span><span class="p">),</span> <span class="s1">&#39;NO2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">median_no2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai! Nilai outlier telah diimputasi dengan median NO2.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! Ditemukan 51 nilai outlier pada data NO2.
+Selesai! Nilai outlier telah diimputasi dengan median NO2.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengubah-data-time-series-ke-data-supervised">
+<h3>- Mengubah data time series ke data supervised<a class="headerlink" href="#mengubah-data-time-series-ke-data-supervised" title="Link to this heading">#</a></h3>
+<p>Mengubah data time-series menjadi supervised adalah proses preprocessing untuk menggeser data (lagging) agar bisa digunakan untuk machine learning.Pada dasarnya, Anda mengubah satu kolom data (misalnya, <span class="math notranslate nohighlight">\(NO_2\)</span>) menjadi format “input-output”.Anda mengambil nilai-nilai dari hari-hari sebelumnya (misalnya, <span class="math notranslate nohighlight">\(t-1\)</span>, <span class="math notranslate nohighlight">\(t-2\)</span>, <span class="math notranslate nohighlight">\(t-3\)</span>) sebagai fitur (X), dan menggunakan nilai hari ini (<span class="math notranslate nohighlight">\(t\)</span>) sebagai target (y) yang ingin diprediksi.Proses ini mengubah data dari:[Nilai hari ini]Menjadi:[Nilai kemarin, Nilai 2 hari lalu, Nilai 3 hari lalu] -&gt; [Nilai hari ini]</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mulai dengan DataFrame &#39;df_interpolated&#39; dari langkah sebelumnya</span>
+<span class="c1"># 1. Pilih hanya kolom waktu (&#39;t&#39;) dan nilai (&#39;NO2&#39;)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">df_interpolated</span><span class="p">[[</span><span class="s1">&#39;t&#39;</span><span class="p">,</span> <span class="s1">&#39;NO2&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 2. Tentukan berapa banyak lag yang ingin Anda buat (misalnya: 3 hari sebelumnya)</span>
+<span class="n">N_LAGS</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># 3. Buat fitur lag (geser data ke bawah)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N_LAGS</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">data</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;NO2(t-</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;NO2&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+<span class="c1"># 4. Ganti nama kolom &#39;NO2&#39; asli menjadi target (y)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;NO2&#39;</span><span class="p">:</span> <span class="s1">&#39;NO2_target(t)&#39;</span><span class="p">},</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 5. Hapus baris yang mengandung NaN</span>
+<span class="c1"># Ini adalah N_LAGS baris pertama, yang tidak memiliki data historis</span>
+<span class="n">data</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 6. Reset index agar rapi</span>
+<span class="n">data</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 7. Simpan hasil akhir ke variabel baru &#39;df_supervised&#39;</span>
+<span class="n">df_supervised</span> <span class="o">=</span> <span class="n">data</span>
+
+<span class="c1"># 8. Tampilkan hasilnya</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selesai! DataFrame &#39;df_supervised&#39; telah dibuat dengan </span><span class="si">{</span><span class="n">N_LAGS</span><span class="si">}</span><span class="s2"> lag features.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cuplikan 5 baris pertama dari data supervised:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_supervised</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! DataFrame &#39;df_supervised&#39; telah dibuat dengan 3 lag features.
+
+Cuplikan 5 baris pertama dari data supervised:
+           t  NO2_target(t)  NO2(t-1)  NO2(t-2)  NO2(t-3)
+0 2022-10-26       0.000057  0.000070  0.000050  0.000030
+1 2022-10-27       0.000045  0.000057  0.000070  0.000050
+2 2022-10-28       0.000032  0.000045  0.000057  0.000070
+3 2022-10-29       0.000176  0.000032  0.000045  0.000057
+4 2022-10-30       0.000077  0.000176  0.000032  0.000045
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="normalisasi-data-menggunakan-zscore-dengan-standart-sklearn">
+<h3>- Normalisasi Data menggunakan zscore dengan standart sklearn<a class="headerlink" href="#normalisasi-data-menggunakan-zscore-dengan-standart-sklearn" title="Link to this heading">#</a></h3>
+<p>Menggunakan StandardScaler (metode Z-score) dari sklearn adalah teknik preprocessing untuk menstandardisasi fitur data Anda.Tujuannya adalah untuk mengubah skala setiap fitur sehingga memiliki:</p>
+<ol class="arabic simple">
+<li><p>Rata-rata (mean)</p></li>
+<li><p>Standar deviasi (standard deviation)</p></li>
+</ol>
+<p>Proses ini menghitung seberapa jauh setiap titik data dari rata-rata, diukur dalam satuan standar deviasi. Ini sangat penting untuk algoritma berbasis jarak (seperti kNN yang Anda gunakan) karena memastikan bahwa semua fitur memberikan kontribusi yang setara pada perhitungan jarak, terlepas dari apakah skala aslinya sangat besar (misal: ribuan) atau sangat kecil (misal: <span class="math notranslate nohighlight">\(0.001\)</span>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Pisahkan kolom fitur (X) dan target (y)</span>
+<span class="n">features_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_supervised</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;NO2(t-&#39;</span><span class="p">)]</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NO2_target(t)&#39;</span><span class="p">]</span>
+
+<span class="c1"># Buat scaler terpisah untuk fitur dan target</span>
+<span class="n">feature_scaler_z</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">target_scaler_z</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Buat salinan DataFrame</span>
+<span class="n">df_scaled_z</span> <span class="o">=</span> <span class="n">df_supervised</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Fit dan transform fitur</span>
+<span class="n">df_scaled_z</span><span class="p">[</span><span class="n">features_cols</span><span class="p">]</span> <span class="o">=</span> <span class="n">feature_scaler_z</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_scaled_z</span><span class="p">[</span><span class="n">features_cols</span><span class="p">])</span>
+<span class="c1"># Fit dan transform target</span>
+<span class="n">df_scaled_z</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_scaler_z</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df_scaled_z</span><span class="p">[</span><span class="n">target_col</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_scaled_z</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>           t  NO2_target(t)  NO2(t-1)  NO2(t-2)  NO2(t-3)
+0 2022-10-26       0.535182  0.944795  0.298461 -0.347360
+1 2022-10-27       0.124858  0.534596  0.945030  0.299243
+2 2022-10-28      -0.285465  0.124397  0.534803  0.945846
+3 2022-10-29       4.421931 -0.285802  0.124577  0.535598
+4 2022-10-30       1.177393  4.420169 -0.285650  0.125350
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="knn-regression">
+<h2>- KNN Regression<a class="headerlink" href="#knn-regression" title="Link to this heading">#</a></h2>
+<p>kNN Regression (K-Nearest Neighbors Regression) adalah algoritma supervised learning yang memprediksi sebuah nilai numerik (kontinu) berdasarkan ‘tetangga’ terdekatnya.</p>
+<p>Prinsipnya sederhana: Untuk menebak nilai dari sebuah data baru, model ini akan mencari ‘K’ buah data dari training set yang fitur-fiturnya (X) paling mirip (paling dekat jaraknya).</p>
+<p>Setelah ‘K’ tetangga terdekat ditemukan, model akan mengambil nilai target (y) dari semua tetangga tersebut dan menghitung nilai rata-ratanya. Hasil rata-rata inilah yang menjadi nilai prediksi untuk data baru tersebut.</p>
+<section id="import-library-yang-dibutuhkan">
+<h3>1. Import LIbrary yang dibutuhkan<a class="headerlink" href="#import-library-yang-dibutuhkan" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.neighbors</span><span class="w"> </span><span class="kn">import</span> <span class="n">KNeighborsRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explorasi-data">
+<h3>2. Explorasi Data<a class="headerlink" href="#explorasi-data" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menggunakan DataFrame &#39;df_scaled_z&#39; yang sudah dinormalisasi (Z-Score)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- 1. Informasi Tipe Data &amp; Non-Null ---&quot;</span><span class="p">)</span>
+<span class="c1"># .info() akan mencetak ringkasan DataFrame</span>
+<span class="n">df_scaled_z</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 2. Deskripsi Statistik ---&quot;</span><span class="p">)</span>
+<span class="c1"># .describe() akan memberikan statistik deskriptif</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_scaled_z</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 3. Pengecekan Missing Values ---&quot;</span><span class="p">)</span>
+<span class="c1"># .isna().sum() akan menghitung jumlah nilai NaN di setiap kolom</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_scaled_z</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- 1. Informasi Tipe Data &amp; Non-Null ---
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 1087 entries, 0 to 1086
+Data columns (total 5 columns):
+ #   Column         Non-Null Count  Dtype         
+---  ------         --------------  -----         
+ 0   t              1087 non-null   datetime64[ns]
+ 1   NO2_target(t)  1087 non-null   float64       
+ 2   NO2(t-1)       1087 non-null   float64       
+ 3   NO2(t-2)       1087 non-null   float64       
+ 4   NO2(t-3)       1087 non-null   float64       
+dtypes: datetime64[ns](1), float64(4)
+memory usage: 42.6 KB
+
+--- 2. Deskripsi Statistik ---
+                                   t  NO2_target(t)      NO2(t-1)  \
+count                           1087   1.087000e+03  1.087000e+03   
+mean   2024-04-23 16:00:26.494940160  -5.229385e-17  5.229385e-17   
+min              2022-10-26 00:00:00  -1.755056e+00 -1.754948e+00   
+25%              2023-07-24 12:00:00  -5.866419e-01 -5.868877e-01   
+50%              2024-04-24 00:00:00  -2.034010e-01 -2.037629e-01   
+75%              2025-01-21 12:00:00   3.565838e-01  3.560525e-01   
+max              2025-10-22 00:00:00   8.112356e+00  8.109476e+00   
+std                              NaN   1.000460e+00  1.000460e+00   
+
+           NO2(t-2)      NO2(t-3)  
+count  1.087000e+03  1.087000e+03  
+mean   1.307346e-16  7.844078e-17  
+min   -1.754895e+00 -1.754221e+00  
+25%   -5.867557e-01 -5.860203e-01  
+50%   -2.036051e-01 -2.030375e-01  
+75%    3.559660e-01  3.562650e-01  
+max    8.110192e+00  8.111385e+00  
+std    1.000460e+00  1.000460e+00  
+
+--- 3. Pengecekan Missing Values ---
+t                0
+NO2_target(t)    0
+NO2(t-1)         0
+NO2(t-2)         0
+NO2(t-3)         0
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="persiapan-data-untuk-modelling">
+<h3>3. Persiapan Data untuk Modelling<a class="headerlink" href="#persiapan-data-untuk-modelling" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Kita menggunakan DataFrame &#39;df_scaled_z&#39; (hasil Z-Score)</span>
+
+<span class="c1"># 1. Identifikasi Kolom Fitur (X)</span>
+<span class="c1"># Ini adalah variabel prediktor (data historis)</span>
+<span class="n">feature_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_scaled_z</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;NO2(t-&#39;</span><span class="p">)]</span>
+
+<span class="c1"># 2. Identifikasi Kolom Target (y)</span>
+<span class="c1"># Ini adalah variabel yang ingin diprediksi (data saat ini)</span>
+<span class="n">target_column</span> <span class="o">=</span> <span class="s1">&#39;NO2_target(t)&#39;</span>
+
+<span class="c1"># 3. Buat variabel X dan y</span>
+<span class="c1"># X (biasanya huruf besar) adalah DataFrame yang berisi semua fitur</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_scaled_z</span><span class="p">[</span><span class="n">feature_columns</span><span class="p">]</span>
+
+<span class="c1"># y (biasanya huruf kecil) adalah Series yang berisi target</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_scaled_z</span><span class="p">[</span><span class="n">target_column</span><span class="p">]</span>
+
+<span class="c1"># 4. Tampilkan konfirmasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Variabel Fitur (X) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kolom yang digunakan: </span><span class="si">{</span><span class="n">feature_columns</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Variabel Target (y) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kolom yang digunakan: </span><span class="si">{</span><span class="n">target_column</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Variabel Fitur (X) ---
+Kolom yang digunakan: [&#39;NO2(t-1)&#39;, &#39;NO2(t-2)&#39;, &#39;NO2(t-3)&#39;]
+   NO2(t-1)  NO2(t-2)  NO2(t-3)
+0  0.944795  0.298461 -0.347360
+1  0.534596  0.945030  0.299243
+2  0.124397  0.534803  0.945846
+3 -0.285802  0.124577  0.535598
+4  4.420169 -0.285650  0.125350
+
+--- Variabel Target (y) ---
+Kolom yang digunakan: NO2_target(t)
+0    0.535182
+1    0.124858
+2   -0.285465
+3    4.421931
+4    1.177393
+Name: NO2_target(t), dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="membagi-data-train-dan-test">
+<h3>4. Membagi data Train dan Test<a class="headerlink" href="#membagi-data-train-dan-test" title="Link to this heading">#</a></h3>
+<p>membagi data menjadi set Latih dan Uji. Karena ini data waktu, Anda membaginya secara berurutan (80% data awal untuk latih, 20% data akhir untuk uji), bukan secara acak.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Menggunakan X dan y dari langkah sebelumnya</span>
+
+<span class="c1"># 1. Tentukan ukuran data latih (misal: 80% dari total data)</span>
+<span class="c1"># &#39;int()&#39; untuk membulatkan ke angka terdekat</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">)</span>
+
+<span class="c1"># 2. Bagi data X (fitur)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">]</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)]</span>
+
+<span class="c1"># 3. Bagi data y (target)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">]</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)]</span>
+
+<span class="n">t_test</span> <span class="o">=</span> <span class="n">df_supervised</span><span class="p">[</span><span class="s1">&#39;t&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">train_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">df_supervised</span><span class="p">)]</span>
+
+<span class="c1"># 4. Tampilkan konfirmasi</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total data: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data Latih (Train): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris (80%)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah data Uji (Test): </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span><span class="si">}</span><span class="s2"> baris (20%)&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- X_train (cuplikan 5 baris terakhir) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">tail</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- X_test (cuplikan 5 baris pertama) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total data: 1087 baris
+Jumlah data Latih (Train): 869 baris (80%)
+Jumlah data Uji (Test): 218 baris (20%)
+
+--- X_train (cuplikan 5 baris terakhir) ---
+     NO2(t-1)  NO2(t-2)  NO2(t-3)
+864 -0.156374 -0.258660 -0.558482
+865 -0.053934 -0.156213 -0.257907
+866  0.048506 -0.053766 -0.155455
+867  0.150946  0.048681 -0.053003
+868  0.253386  0.151128  0.049450
+
+--- X_test (cuplikan 5 baris pertama) ---
+     NO2(t-1)  NO2(t-2)  NO2(t-3)
+869  0.355826  0.253575  0.151902
+870  0.458266  0.356022  0.254354
+871  0.560706  0.458468  0.356807
+872  0.663146  0.560915  0.459259
+873  0.657079  0.663362  0.561711
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-model-knn-regression">
+<h3>5. Training Model KNN Regression<a class="headerlink" href="#training-model-knn-regression" title="Link to this heading">#</a></h3>
+<p>Training Model Default. Anda menginisialisasi model KNeighborsRegressor dengan <span class="math notranslate nohighlight">\(k=5\)</span> dan melatihnya (.fit()) menggunakan X_train dan y_train.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- 2. Training Model kNN ---</span>
+<span class="c1"># Inisialisasi model (k=5)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Training model menggunakan data latih</span>
+<span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Selesai! Model kNN Regression (k=</span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">) telah berhasil di-training.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model disimpan dalam variabel &#39;knn_model&#39;.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! Model kNN Regression (k=5) telah berhasil di-training.
+Model disimpan dalam variabel &#39;knn_model&#39;.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediksi-pada-data-test">
+<h3>6. Prediksi pada Data Test<a class="headerlink" href="#prediksi-pada-data-test" title="Link to this heading">#</a></h3>
+<p>menggunakan model yang baru dilatih (knn_model) untuk membuat prediksi pada data yang belum pernah dilihatnya (X_test). Hasilnya disimpan di y_pred</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># --- 5. Tampilkan Hasil ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Selesai! Prediksi data test telah dibuat.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hasil prediksi disimpan dalam variabel &#39;y_pred&#39;.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Cuplikan 5 hasil prediksi pertama (y_pred):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y_pred</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Selesai! Prediksi data test telah dibuat.
+Hasil prediksi disimpan dalam variabel &#39;y_pred&#39;.
+
+Cuplikan 5 hasil prediksi pertama (y_pred):
+[0.39150028 0.44261862 0.61390497 0.51719298 0.63070358]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="evaluasi-model">
+<h3>7. Evaluasi Model<a class="headerlink" href="#evaluasi-model" title="Link to this heading">#</a></h3>
+<p>Evaluasi Model Default. Anda mengimpor metrik (MAE, MSE), mengembalikan nilai y_test dan y_pred ke skala <span class="math notranslate nohighlight">\(NO_2\)</span> aslinya (.inverse_transform()), lalu menghitung dan mencetak nilai error-nya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mengembalikan nilai ke skala asli (unit NO2)</span>
+<span class="n">y_test_reshaped</span> <span class="o">=</span> <span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_pred_reshaped</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">y_test_orig</span> <span class="o">=</span> <span class="n">target_scaler_z</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_test_reshaped</span><span class="p">)</span>
+<span class="n">y_pred_orig</span> <span class="o">=</span> <span class="n">target_scaler_z</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred_reshaped</span><span class="p">)</span>
+
+<span class="c1"># Hitung Metrik Evaluasi</span>
+<span class="n">mae</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_orig</span><span class="p">,</span> <span class="n">y_pred_orig</span><span class="p">)</span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_orig</span><span class="p">,</span> <span class="n">y_pred_orig</span><span class="p">)</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse</span><span class="p">)</span>
+
+<span class="c1"># --- 9. TAMPILKAN OUTPUT SEPERTI GAMBAR ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Evaluasi Model ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE:  </span><span class="si">{</span><span class="n">mae</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE:  </span><span class="si">{</span><span class="n">mse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- Evaluasi Model ---
+MAE:  1.3510274767139384e-05
+MSE:  4.5551355754466205e-10
+RMSE: 2.1342763587330064e-05
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-hasil">
+<h3>8. Visualisasi Hasil<a class="headerlink" href="#visualisasi-hasil" title="Link to this heading">#</a></h3>
+<p>memvisualisasikan hasil (k=5). Anda memplot data aktual (biru) dan data prediksi (oranye) dalam satu grafik untuk melihat seberapa baik model mengikuti data aslinya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Membuat visualisasi perbandingan...&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_test</span><span class="p">,</span> <span class="n">y_test_orig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Aktual (Asli)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_test</span><span class="p">,</span> <span class="n">y_pred_orig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Prediksi (kNN)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Perbandingan Data Aktual vs Prediksi kNN pada Data Uji&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasi NO2 (Unit Asli)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Membuat visualisasi perbandingan...
+</pre></div>
+</div>
+<img alt="_images/4e77ddb81fafb24f03fe80daa232476337ae7eeb1ca9872c1ce4be2560a6dc08.png" src="_images/4e77ddb81fafb24f03fe80daa232476337ae7eeb1ca9872c1ce4be2560a6dc08.png" />
+</div>
+</div>
+</section>
+<section id="residual-analysis">
+<h3>9. Residual Analysis<a class="headerlink" href="#residual-analysis" title="Link to this heading">#</a></h3>
+<p>melakukan Analisis Residual (k=5). Anda menghitung error untuk setiap titik data (residual), lalu memplotnya dalam bentuk scatter plot dan histogram untuk memeriksa apakah ada pola dalam error tersebut.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Membuat visualisasi analisis residual...&quot;</span><span class="p">)</span>
+
+<span class="c1"># A. Hitung Residuals (Actual - Predicted)</span>
+<span class="n">residuals</span> <span class="o">=</span> <span class="n">y_test_orig</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="o">-</span> <span class="n">y_pred_orig</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># B. Hitung Mean dan Std Residual (Permintaan Baru Anda)</span>
+<span class="n">mean_resid</span> <span class="o">=</span> <span class="n">residuals</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">std_resid</span> <span class="o">=</span> <span class="n">residuals</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Metrik Residual ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Residual: </span><span class="si">{</span><span class="n">mean_resid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Std Dev Residual: </span><span class="si">{</span><span class="n">std_resid</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Catatan: Mean residual yang mendekati 0 adalah pertanda baik.&quot;</span><span class="p">)</span>
+
+<span class="c1"># C. Buat Plot Residual (Scatter Plot)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred_orig</span><span class="p">,</span> <span class="n">residuals</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Plot Residual (Prediksi vs Residuals)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nilai Prediksi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Residuals (Actual - Predicted)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="c1"># D. Buat Histogram Residual</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">residuals</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="c1"># Tambahkan garis Mean di histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mean_resid</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Mean = </span><span class="si">{</span><span class="n">mean_resid</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram dari Residuals&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Nilai Residual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Membuat visualisasi analisis residual...
+
+--- Metrik Residual ---
+Mean Residual: -1.842606915427177e-06
+Std Dev Residual: 2.126307497282277e-05
+Catatan: Mean residual yang mendekati 0 adalah pertanda baik.
+</pre></div>
+</div>
+<img alt="_images/970603c91f5789f05c5b38d701bf98274c668b5806febf6491e745f43bf5dacc.png" src="_images/970603c91f5789f05c5b38d701bf98274c668b5806febf6491e745f43bf5dacc.png" />
+<img alt="_images/8f1f27a78853830d45424c296953538cbd72b740d0725ed5962f98cb27e76e0b.png" src="_images/8f1f27a78853830d45424c296953538cbd72b740d0725ed5962f98cb27e76e0b.png" />
+</div>
+</div>
+</section>
+<section id="hyperparameter-tuning-mencari-k-optimal">
+<h3>10. Hyperparameter Tuning - Mencari K Optimal<a class="headerlink" href="#hyperparameter-tuning-mencari-k-optimal" title="Link to this heading">#</a></h3>
+<p>melakukan Hyperparameter Tuning. Anda menguji model dengan berbagai nilai <span class="math notranslate nohighlight">\(K\)</span> (dari 1 sampai 30) dalam sebuah loop. Untuk setiap <span class="math notranslate nohighlight">\(K\)</span>, Anda melatih, memprediksi, dan menghitung RMSE. Tujuannya adalah menemukan nilai <span class="math notranslate nohighlight">\(K\)</span> yang menghasilkan RMSE terendah.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Memulai pencarian K optimal...&quot;</span><span class="p">)</span>
+<span class="n">rmse_values</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># Untuk menyimpan nilai RMSE</span>
+<span class="n">range_k</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">)</span> <span class="c1"># Kita akan tes K dari 1 sampai 30</span>
+
+<span class="c1"># Mengembalikan y_test ke skala asli (hanya perlu sekali)</span>
+<span class="n">y_test_orig</span> <span class="o">=</span> <span class="n">target_scaler_z</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">range_k</span><span class="p">:</span>
+    <span class="c1"># 1. Training model dengan K saat ini</span>
+    <span class="n">knn_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">knn_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="c1"># 2. Prediksi data test</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">knn_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Kembalikan prediksi ke skala asli</span>
+    <span class="n">y_pred_orig</span> <span class="o">=</span> <span class="n">target_scaler_z</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    
+    <span class="c1"># 4. Hitung RMSE</span>
+    <span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_orig</span><span class="p">,</span> <span class="n">y_pred_orig</span><span class="p">))</span>
+    
+    <span class="c1"># 5. Simpan RMSE</span>
+    <span class="n">rmse_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rmse</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;k = </span><span class="si">{</span><span class="n">k</span><span class="si">}</span><span class="s2">, RMSE = </span><span class="si">{</span><span class="n">rmse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pencarian K selesai.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 7. Cari K Terbaik ---</span>
+<span class="n">best_rmse</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">rmse_values</span><span class="p">)</span>
+<span class="c1"># +1 karena index list mulai dari 0, tapi K kita mulai dari 1</span>
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">rmse_values</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="n">best_rmse</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- HASIL K-OPTIMAL ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nilai K terbaik adalah: </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dengan nilai RMSE terendah: </span><span class="si">{</span><span class="n">best_rmse</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 8. Visualisasi Elbow Method ---</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">range_k</span><span class="p">,</span> <span class="n">rmse_values</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RMSE per K&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;RMSE vs. K Value (Elbow Method)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;K Value (n_neighbors)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Root Mean Squared Error (RMSE)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># Tandai K terbaik</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">best_k</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Optimal K = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1"> (RMSE: </span><span class="si">{</span><span class="n">best_rmse</span><span class="si">:</span><span class="s1">.6f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Memulai pencarian K optimal...
+k = 1, RMSE = 2.6110790289918788e-05
+k = 2, RMSE = 2.3823519942292477e-05
+k = 3, RMSE = 2.272535808330053e-05
+k = 4, RMSE = 2.2100872722504976e-05
+k = 5, RMSE = 2.1342763587330064e-05
+k = 6, RMSE = 2.160283882394288e-05
+k = 7, RMSE = 2.141195982111723e-05
+k = 8, RMSE = 2.1736663650633034e-05
+k = 9, RMSE = 2.1472494527213278e-05
+k = 10, RMSE = 2.1081726076145036e-05
+k = 11, RMSE = 2.0409567396384075e-05
+k = 12, RMSE = 2.042050394222557e-05
+k = 13, RMSE = 2.030703542354463e-05
+k = 14, RMSE = 2.0093375402622358e-05
+k = 15, RMSE = 1.9974066321189194e-05
+k = 16, RMSE = 2.0079445584598758e-05
+k = 17, RMSE = 1.9973108879526394e-05
+k = 18, RMSE = 2.0003464435529218e-05
+k = 19, RMSE = 1.9908382830895104e-05
+k = 20, RMSE = 1.979955523236225e-05
+k = 21, RMSE = 1.973602791538617e-05
+k = 22, RMSE = 1.9643544993867e-05
+k = 23, RMSE = 1.96469938392496e-05
+k = 24, RMSE = 1.9577378225537016e-05
+k = 25, RMSE = 1.967001822130577e-05
+k = 26, RMSE = 1.9603916531512254e-05
+k = 27, RMSE = 1.9527107798490872e-05
+k = 28, RMSE = 1.9568148675579026e-05
+k = 29, RMSE = 1.9571643592053636e-05
+k = 30, RMSE = 1.960009118127033e-05
+Pencarian K selesai.
+
+--- HASIL K-OPTIMAL ---
+Nilai K terbaik adalah: 27
+Dengan nilai RMSE terendah: 1.9527107798490872e-05
+</pre></div>
+</div>
+<img alt="_images/3a110ecd3505677db8420d76bfd4c1bf3d37e6125ed0221b4f44457a7871fc87.png" src="_images/3a110ecd3505677db8420d76bfd4c1bf3d37e6125ed0221b4f44457a7871fc87.png" />
+</div>
+</div>
+</section>
+<section id="training-dan-evaluasi-model-dengan-k-optimal">
+<h3>11. Training dan Evaluasi Model dengan K Optimal<a class="headerlink" href="#training-dan-evaluasi-model-dengan-k-optimal" title="Link to this heading">#</a></h3>
+<p>melatih Model Optimal. Setelah menemukan best_k dari sel sebelumnya, Anda membuat dan melatih model baru (final_knn_model) menggunakan nilai <span class="math notranslate nohighlight">\(K\)</span> terbaik tersebut.mengevaluasi Model Optimal. Sama seperti evaluasi k=5, Anda membuat prediksi (y_pred_final), mengembalikannya ke skala asli, dan menghitung metrik MAE, MSE, dan RMSE yang baru.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- 8. EVALUASI MODEL OPTIMAL (K=best_k) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 3. Evaluasi Model Optimal (K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2">) ---&quot;</span><span class="p">)</span>
+<span class="n">optimal_model</span> <span class="o">=</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">best_k</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">optimal_model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">y_pred_optimal</span> <span class="o">=</span> <span class="n">optimal_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_pred_optimal_orig</span> <span class="o">=</span> <span class="n">target_scaler_z</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">y_pred_optimal</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">mae_optimal</span> <span class="o">=</span> <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y_test_orig</span><span class="p">,</span> <span class="n">y_pred_optimal_orig</span><span class="p">)</span>
+<span class="n">mse_optimal</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test_orig</span><span class="p">,</span> <span class="n">y_pred_optimal_orig</span><span class="p">)</span>
+<span class="n">rmse_optimal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mse_optimal</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE (K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2">):  </span><span class="si">{</span><span class="n">mae_optimal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE (K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2">):  </span><span class="si">{</span><span class="n">mse_optimal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE (K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">rmse_optimal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- 3. Evaluasi Model Optimal (K=27) ---
+MAE (K=27):  1.1978986182215528e-05
+MSE (K=27):  3.813079389738831e-10
+RMSE (K=27): 1.9527107798490872e-05
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="perbandingan-model-default-vs-optimal">
+<h3>12. Perbandingan Model Default vs Optimal<a class="headerlink" href="#perbandingan-model-default-vs-optimal" title="Link to this heading">#</a></h3>
+<p>membandingkan performa kedua model (k=5 vs k=optimal) secara berdampingan dalam sebuah tabel teks yang rapi.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- 9. PERBANDINGAN AKHIR ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- 4. Perbandingan Performa ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;                       K=5 (Default)   |   K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2"> (Optimal)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---------------------------------------------------------------&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAE:                   </span><span class="si">{</span><span class="n">mae</span><span class="si">:</span><span class="s2">&lt;15.10f</span><span class="si">}</span><span class="s2"> |   </span><span class="si">{</span><span class="n">mae_optimal</span><span class="si">:</span><span class="s2">&lt;15.10f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MSE:                   </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s2">&lt;15.10f</span><span class="si">}</span><span class="s2"> |   </span><span class="si">{</span><span class="n">mse_optimal</span><span class="si">:</span><span class="s2">&lt;15.10f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;RMSE:                  </span><span class="si">{</span><span class="n">rmse</span><span class="si">:</span><span class="s2">&lt;15.10f</span><span class="si">}</span><span class="s2"> |   </span><span class="si">{</span><span class="n">rmse_optimal</span><span class="si">:</span><span class="s2">&lt;15.10f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Peningkatan Performa (Nilai Lebih Rendah Lebih Baik) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peningkatan MAE:  </span><span class="si">{</span><span class="n">mae</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mae_optimal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peningkatan MSE:  </span><span class="si">{</span><span class="n">mse</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mse_optimal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Peningkatan RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">rmse_optimal</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- 4. Perbandingan Performa ---
+                       K=5 (Default)   |   K=27 (Optimal)
+---------------------------------------------------------------
+MAE:                   0.0000135103    |   0.0000119790   
+MSE:                   0.0000000005    |   0.0000000004   
+RMSE:                  0.0000196001    |   0.0000195271   
+
+--- Peningkatan Performa (Nilai Lebih Rendah Lebih Baik) ---
+Peningkatan MAE:  1.5312885849238556e-06
+Peningkatan MSE:  7.420561857077896e-11
+Peningkatan RMSE: 7.29833827794584e-08
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualisasi-hasil-model-optimal">
+<h3>13. Visualisasi Hasil Model optimal<a class="headerlink" href="#visualisasi-hasil-model-optimal" title="Link to this heading">#</a></h3>
+<p>memvisualisasikan hasil Model Optimal. Ini adalah plot yang sama dengan sebelumnya, tetapi sekarang menggunakan prediksi dari model k=best_k Anda, yang seharusnya menunjukkan hasil yang (semoga) sedikit lebih baik.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Membuat visualisasi perbandingan model optimal...&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="c1"># Plot data aktual</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_test</span><span class="p">,</span> <span class="n">y_test_orig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data Aktual (Asli)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+<span class="c1"># Plot data prediksi dari model optimal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_test</span><span class="p">,</span> <span class="n">y_pred_optimal_orig</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Data Prediksi (K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1"> Optimal)&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Perbandingan Data Aktual vs Prediksi Model Optimal (K=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Tanggal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Konsentrasi NO2 (Unit Asli)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Membuat visualisasi perbandingan model optimal...
+</pre></div>
+</div>
+<img alt="_images/0ea16b6dfcae69d060901a5a6fff7b1a944aabb9787b9408ff8df362fe579f75.png" src="_images/0ea16b6dfcae69d060901a5a6fff7b1a944aabb9787b9408ff8df362fe579f75.png" />
+</div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ketidakseimbanganData2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank</strong></p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Forecasting%28autoCorelation%29.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Forecasting dengan Auto Corelation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apa-itu-forecasting">- Apa itu Forecasting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mengapa-forecasting-penting">- Mengapa Forecasting penting?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crawling-data">- Crawling Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libarary-yang-dibutuhkan">1. Import libarary yang dibutuhkan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definisi-kan-koordinat-di-wilayah-kamal-dan-parameter-waktu-2022-2025">2. Definisi kan koordinat di wilayah Kamal dan parameter waktu (2022-2025)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data-sentinel-5p-no2-dan-agregasi-temporal-harian">3. Loading data Sentinel-5P NO2 dan agregasi temporal harian</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#melakukan-eksekusi-job-batch-processing-untuk-memproses-data-secara-otomatis-dan-terjadwal-kemudian-mengekspor-hasilnya-ke-dalam-format-file-netcdf">4. Melakukan eksekusi job batch processing untuk memproses data secara otomatis dan terjadwal, kemudian mengekspor hasilnya ke dalam format file NetCDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ubah-data-netcdf-ke-csv-agar-lebih-mudah-untuk-digunakan">5. Ubah data NetCDF ke CSV agar lebih mudah untuk digunakan</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing">- Preprocessing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengurutkan-data-berdasarkan-tanggal-waktu">- Mengurutkan Data berdasarkan tanggal/waktu</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengatasi-missing-value-dengan-interpolasi">- Mengatasi Missing Value dengan interpolasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengubah-data-time-series-ke-data-supervised">- Mengubah data time series ke data supervised</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#normalisasi-data-menggunakan-zscore-dengan-standart-sklearn">- Normalisasi Data menggunakan zscore dengan standart sklearn</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#knn-regression">- KNN Regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-yang-dibutuhkan">1. Import LIbrary yang dibutuhkan</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explorasi-data">2. Explorasi Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-untuk-modelling">3. Persiapan Data untuk Modelling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membagi-data-train-dan-test">4. Membagi data Train dan Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-model-knn-regression">5. Training Model KNN Regression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prediksi-pada-data-test">6. Prediksi pada Data Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-model">7. Evaluasi Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil">8. Visualisasi Hasil</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#residual-analysis">9. Residual Analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hyperparameter-tuning-mencari-k-optimal">10. Hyperparameter Tuning - Mencari K Optimal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dan-evaluasi-model-dengan-k-optimal">11. Training dan Evaluasi Model dengan K Optimal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#perbandingan-model-default-vs-optimal">12. Perbandingan Model Default vs Optimal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-hasil-model-optimal">13. Visualisasi Hasil Model optimal</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdiadha Syabirin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

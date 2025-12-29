@@ -1,0 +1,1835 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>PROJECT AKHIR &#8212; Proyek Sains Data A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'project_akhir';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Analisis Suara" href="test.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Proyek Sains Data A - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Proyek Sains Data A - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my learning site : “PROYEK SAINS DATA - A”
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE)</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData2.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank</strong></a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Forecasting.html">Forecasting NO2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">KNN (Auto Correlation)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html">Voice Analysis</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Project Akhir</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fproject_akhir.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/project_akhir.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>PROJECT AKHIR</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding"><strong>BUSINESS UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-masalah">1.1 Latar Belakang Masalah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bisnis-business-objectives">1.2 Tujuan Bisnis (Business Objectives)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-teknis-data-mining-goals">1.3 Tujuan Teknis (Data Mining Goals)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penilaian-situasi-assess-situation">1.4 Penilaian Situasi (Assess Situation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rencana-deployment">1.5 Rencana Deployment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-transformasi">1. Konsep Dasar Transformasi</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#landasan-matematis-rumus">2. Landasan Matematis (Rumus)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-manual-sederhana">3. Contoh Perhitungan Manual (Sederhana)</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menghitung-frekuensi-0-rata-rata-dc-component">Langkah 1: Menghitung Frekuensi 0 (Rata-rata / DC Component)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghitung-frekuensi-1-fundamental-frequency">Langkah 2: Menghitung Frekuensi 1 (Fundamental Frequency)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-memuat-dataset">2.2 Import Library &amp; Memuat Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembersihan-label-bytes-string">2.3 Pembersihan Label (Bytes → String)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-dimensi-dan-struktur-data">2.4 Mengecek Dimensi dan Struktur Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-keseimbangan-kelas-class-imbalance">2.5 Analisis Keseimbangan Kelas (Class Imbalance)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-spectrogram">2.6 Visualisasi Data (Spectrogram)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>DATA PREPROCESSING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-fungsi-ekstraksi-fitur">3.1 Membuat Fungsi Ekstraksi Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-statistik">3.2 Ekstraksi Fitur Statistik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label-target">3.3 Encoding Label Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-fitur-scaling">3.4. Standarisasi Fitur (Scaling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data-akhir">3.5 Verifikasi Data Akhir</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting"><strong>DATA SPLITTING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-mengacak-data-test-asli">4.1 Memuat &amp; Mengacak Data Test Asli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logika-pembagian-data-80-20">4.2 Logika Pembagian Data (80:20)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-test-baru">4.3 Preprocessing Data Test Baru</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-data-demo-untuk-streamlit">4.4 Menyimpan Data Demo untuk Streamlit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-modeling-pemodelan"><strong>DATA MODELING (PEMODELAN)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-skenario-pelatihan-hyperparameter-grid">5.1 Menentukan Skenario Pelatihan (Hyperparameter Grid)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-training-model-otomatis">5.2 Proses Training Model (Otomatis)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-model-terbaik-best-model">5.3 Menentukan Model Terbaik (Best Model)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-deployment"><strong>EVALUASI &amp; DEPLOYMENT</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-model-laporan-klasifikasi">6.1 Pengujian Model &amp; Laporan Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-confusion-matrix">6.2 Visualisasi Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-deployment-ready">6.3 Menyimpan Model (Deployment Ready)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-deployment-streamlit">6.4 Hasil Deployment Streamlit</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="project-akhir">
+<h1><strong>PROJECT AKHIR</strong><a class="headerlink" href="#project-akhir" title="Link to this heading">#</a></h1>
+<section id="business-understanding">
+<h2><strong>BUSINESS UNDERSTANDING</strong><a class="headerlink" href="#business-understanding" title="Link to this heading">#</a></h2>
+<section id="latar-belakang-masalah">
+<h3>1.1 Latar Belakang Masalah<a class="headerlink" href="#latar-belakang-masalah" title="Link to this heading">#</a></h3>
+<p>Penyakit kardiovaskular (Cardiovascular Disease/CVD) merupakan salah satu penyebab utama mortalitas secara global. Deteksi dini kelainan jantung sangat krusial untuk penanganan yang efektif. Salah satu metode diagnosis awal yang paling umum, murah, dan mudah diakses adalah auskultasi jantung menggunakan stetoskop untuk menganalisis sinyal Phonocardiogram (PCG).</p>
+<p>Namun, interpretasi suara jantung secara manual memiliki keterbatasan yang signifikan. Seperti disebutkan dalam penelitian Liu et al. (2016) pada PhysioNet/Computing in Cardiology Challenge, akurasi auskultasi sangat bergantung pada keahlian dan pendengaran dokter (subjektif). Selain itu, perekaman di lingkungan non-klinis sering kali terkontaminasi oleh noise atau gangguan suara eksternal, yang mempersulit diagnosis.</p>
+<p>Oleh karena itu, diperlukan sistem Computer-Aided Diagnosis (CAD) yang objektif untuk mengklasifikasikan suara jantung menjadi kategori Normal atau Abnormal. Penelitian ini bertujuan membangun model klasifikasi otomatis menggunakan algoritma Support Vector Machine (SVM) dengan memanfaatkan data yang telah dikonversi menjadi representasi frekuensi (Spectrogram), sehingga pola patologis dapat dideteksi dengan lebih akurat dibandingkan analisis manual.</p>
+</section>
+<section id="tujuan-bisnis-business-objectives">
+<h3>1.2 Tujuan Bisnis (Business Objectives)<a class="headerlink" href="#tujuan-bisnis-business-objectives" title="Link to this heading">#</a></h3>
+<p>Tujuan utama pengembangan sistem ini adalah:</p>
+<ol class="arabic simple">
+<li><p>Deteksi Dini :
+Menyediakan alat bantu yang dapat mendeteksi kelainan suara jantung sejak awal sehingga pasien dapat segera mendapatkan pemeriksaan lanjutan.</p></li>
+<li><p>Efisiensi Diagnostik :
+Mengurangi beban dokter spesialis dengan menyeleksi pasien yang memang memerlukan penanganan lebih lanjut.</p></li>
+<li><p>Aksesibilitas :
+Memungkinkan tenaga medis di fasilitas kesehatan sederhana untuk melakukan pemeriksaan awal tanpa memerlukan alat mahal, karena data yang digunakan berasal dari berbagai lingkungan termasuk tempat non-klinis.</p></li>
+</ol>
+</section>
+<section id="tujuan-teknis-data-mining-goals">
+<h3>1.3 Tujuan Teknis (Data Mining Goals)<a class="headerlink" href="#tujuan-teknis-data-mining-goals" title="Link to this heading">#</a></h3>
+<p>Untuk mencapai tujuan bisnis tersebut, tujuan teknis proyek ini adalah:</p>
+<ol class="arabic simple">
+<li><p>Membangun Model Klasifikasi : Mengembangkan model Machine Learning yang dapat membedakan suara jantung Normal dan Abnormal.</p></li>
+<li><p>Memanfaatkan Spectrogram sebagai Fitur : Dataset yang digunakan sudah berupa spectrogram multivariate, di mana setiap fitur merepresentasikan pita frekuensi suara jantung, bukan gelombang suara mentah.Karena itu, fokus pemrosesan data lebih kepada penyusunan fitur agar siap digunakan model, bukan ekstraksi audio dari nol.</p></li>
+<li><p>Mengoptimalkan Metrik Evaluasi:</p></li>
+</ol>
+<p>Model harus mencapai nilai yang baik pada metrik:</p>
+<ul class="simple">
+<li><p>Akurasi</p></li>
+<li><p>Presisi</p></li>
+<li><p>Recall</p></li>
+</ul>
+<p>Penekanan utama adalah pada Recall kelas Abnormal untuk menghindari kasus False Negative (pasien sakit tetapi diklasifikasikan sehat).</p>
+</section>
+<section id="penilaian-situasi-assess-situation">
+<h3>1.4 Penilaian Situasi (Assess Situation)<a class="headerlink" href="#penilaian-situasi-assess-situation" title="Link to this heading">#</a></h3>
+<p>Beberapa kondisi penting yang perlu dipertimbangkan:</p>
+<ol class="arabic simple">
+<li><p>Struktur Dataset : Data berbentuk spectrogram multivariate, bukan sinyal audio mentah.
+Setiap instance mewakili potongan suara jantung selama 5 detik dalam bentuk intensitas frekuensi.</p></li>
+<li><p>Ketidakseimbangan Kelas</p></li>
+</ol>
+<p>Jumlah data tidak seimbang:</p>
+<ul class="simple">
+<li><p>Normal: 57 data</p></li>
+<li><p>Abnormal: 147 data</p></li>
+<li><p>Model berpotensi bias memprediksi “Abnormal”, sehingga teknik seperti:</p></li>
+<li><p>penentuan bobot kelas (class weight)</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Variasi Data yang Tinggi</p></li>
+</ol>
+<p>Data direkam dari berbagai lokasi tubuh (aorta, pulmonal, dll) dan dari berbagai rentang usia. Hal ini membuat data sangat bervariasi sehingga model harus cukup tangguh terhadap perbedaan karakteristik rekaman.</p>
+</section>
+<section id="rencana-deployment">
+<h3>1.5 Rencana Deployment<a class="headerlink" href="#rencana-deployment" title="Link to this heading">#</a></h3>
+<p>Model yang dihasilkan akan diimplementasikan pada aplikasi berbasis web (Streamlit). Aplikasi tersebut akan menyediakan fitur:</p>
+<ol class="arabic simple">
+<li><p>mengunggah file suara jantung dalam format dataset,</p></li>
+<li><p>memproses data menjadi input bagi model,</p></li>
+<li><p>menampilkan hasil klasifikasi Normal atau Abnormal,</p></li>
+<li><p>menyertakan visualisasi pendukung seperti spectrogram.</p></li>
+</ol>
+<p>Aplikasi ini ditujukan untuk digunakan tenaga medis sebagai alat bantu skrining awal, bukan sebagai pengganti diagnosis dokter.</p>
+</section>
+</section>
+<section id="data-understanding">
+<h2><strong>DATA UNDERSTANDING</strong><a class="headerlink" href="#data-understanding" title="Link to this heading">#</a></h2>
+<p>Bagian ini menjelaskan proses pemahaman data yang digunakan pada penelitian, mulai dari pemuatan data, pemeriksaan struktur, distribusi kelas, hingga eksplorasi visual terhadap bentuk spectrogram. Seluruh proses dijelaskan secara bertahap agar memberikan gambaran menyeluruh tentang karakteristik dataset.</p>
+<section id="penjelasan-dataset-spectrogram">
+<h3>2.1 Penjelasan Dataset (Spectrogram)<a class="headerlink" href="#penjelasan-dataset-spectrogram" title="Link to this heading">#</a></h3>
+<p>Dataset yang digunakan dalam penelitian ini diadopsi dari beberapa sumber dataset seperti :</p>
+<p>Referensi Dataset :</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://open.umich.edu/find/open-educational-resources/medical/heart-sound-murmur-library">https://open.umich.edu/find/open-educational-resources/medical/heart-sound-murmur-library</a></p></li>
+<li><p><a class="reference external" href="https://istethoscope.peterjbentley.com/heartchallenge/index.html">https://istethoscope.peterjbentley.com/heartchallenge/index.html</a></p></li>
+<li><p><a class="reference external" href="https://physionet.org/content/circor-heart-sound/1.0.0/">https://physionet.org/content/circor-heart-sound/1.0.0/</a></p></li>
+</ul>
+<p>Data ini merupakan kumpulan rekaman suara jantung yang dikumpulkan dari berbagai sumber di seluruh dunia, mencakup subjek sehat dan pasien dengan kondisi patologis (seperti kelainan katup jantung dan penyakit arteri koroner).Berbeda dengan data audio mentah (raw wav), dataset yang digunakan dalam penelitian ini telah melalui proses transformasi menjadi format Multivariate Spectrogram.</p>
+<ul class="simple">
+<li><p>Struktur Data: Data disimpan dalam format runtun waktu (Time Series) dengan dimensi 61 x 405, di mana 61 merepresentasikan pita frekuensi (frequency bands) dan 405 merepresentasikan titik waktu (timepoints).</p></li>
+<li><p>Kategori Label: Data terbagi menjadi dua kelas, yaitu Normal (subjek sehat) dan Abnormal (subjek dengan diagnosis jantung dikonfirmasi).</p></li>
+<li><p>Karakteristik: Dataset ini memiliki tantangan berupa ketidakseimbangan kelas (class imbalance) dan variasi sinyal yang tinggi karena
+data direkam dari lokasi tubuh yang berbeda (aorta, pulmonal, mitral, trikuspid).</p></li>
+</ul>
+<p>Penggunaan representasi spectrogram dipilih karena mampu memvisualisasikan intensitas energi pada berbagai frekuensi, yang mana fitur ini sangat relevan untuk mendeteksi murmur atau suara tambahan pada jantung abnormal.</p>
+<section id="transformasi-sinyal-jantung-ke-spectrogram">
+<h4>2.1.1 Transformasi Sinyal Jantung ke Spectrogram<a class="headerlink" href="#transformasi-sinyal-jantung-ke-spectrogram" title="Link to this heading">#</a></h4>
+<p>Analisis sinyal suara jantung memerlukan pemahaman mendalam tentang kandungan frekuensi yang berubah seiring waktu. Berikut adalah rincian proses transformasi dari sinyal mentah hingga menjadi citra Spectrogram.</p>
+<section id="konsep-dasar-transformasi">
+<h5>1. Konsep Dasar Transformasi<a class="headerlink" href="#konsep-dasar-transformasi" title="Link to this heading">#</a></h5>
+<p>Proses perubahan ini melewati tiga tahapan visualisasi:</p>
+<ul class="simple">
+<li><p>Time Domain (Domain Waktu): Grafik amplitudo terhadap waktu. Kita bisa melihat kapan suara keras terjadi, tapi tidak tahu apakah itu suara rendah (bass) atau tinggi (treble).</p></li>
+<li><p>Frequency Domain (FFT): Grafik amplitudo terhadap frekuensi. Kita tahu apa nada yang muncul (misal ada murmur di 200Hz), tapi informasi waktunya hilang (tidak tahu murmur itu terjadi di detik keberapa).</p></li>
+<li><p>Spectrogram (STFT): Gabungan keduanya. Kita tahu apa frekuensinya dan kapan munculnya.</p></li>
+</ul>
+</section>
+<section id="landasan-matematis-rumus">
+<h5>2. Landasan Matematis (Rumus)<a class="headerlink" href="#landasan-matematis-rumus" title="Link to this heading">#</a></h5>
+<p>Dasar dari semua analisis frekuensi digital adalah Discrete Fourier Transform (DFT). Algoritma cepat untuk menghitung DFT disebut Fast Fourier Transform (FFT).</p>
+<p>Rumus DFT:</p>
+<div class="math notranslate nohighlight">
+\[X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j \frac{2\pi}{N} kn}\]</div>
+<p>Dimana:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x[n]\)</span>: Nilai sinyal pada titik waktu ke-<span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X[k]\)</span>: Nilai sinyal pada frekuensi ke-<span class="math notranslate nohighlight">\(k\)</span> (bilangan kompleks).</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span>: Total jumlah sampel data.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-j...}\)</span>: Identitas Euler (<span class="math notranslate nohighlight">\(\cos(\theta) - j\sin(\theta)\)</span>)</p></li>
+</ul>
+<p>yang membedah sinyal menjadi komponen sinus dan cosinus.Karena kita butuh informasi waktu, kita menggunakan Short-Time Fourier Transform (STFT). Sinyal dipotong-potong menggunakan fungsi jendela (window function) <span class="math notranslate nohighlight">\(w[n]\)</span>.</p>
+<p>Rumus STFT:$<span class="math notranslate nohighlight">\(STFT \{x[n]\}(m, k) = \sum_{n=-\infty}^{\infty} x[n] \cdot w[n-m] \cdot e^{-j \frac{2\pi}{N} kn}\)</span>$</p>
+<p>Magnitudo Spectrogram: Nilai warna pada gambar Spectrogram diambil dari kuadrat magnitudonya: <span class="math notranslate nohighlight">\(|X(m,k)|^2\)</span>.</p>
+</section>
+<section id="contoh-perhitungan-manual-sederhana">
+<h5>3. Contoh Perhitungan Manual (Sederhana)<a class="headerlink" href="#contoh-perhitungan-manual-sederhana" title="Link to this heading">#</a></h5>
+<p>Untuk memahami bagaimana komputer mengubah angka menjadi grafik, mari kita hitung secara manual menggunakan 1 potong sinyal kecil (Window) yang hanya berisi 4 data sampel (<span class="math notranslate nohighlight">\(N=4\)</span>).</p>
+<p>Misalkan amplitudo sinyal suara jantung pada 4 titik waktu adalah:
+$<span class="math notranslate nohighlight">\(x = [1, 2, 3, 1]\)</span>$</p>
+<p>Kita akan menghitung komponen frekuensi (<span class="math notranslate nohighlight">\(X[k]\)</span>) menggunakan rumus DFT.</p>
+</section>
+</section>
+<section id="langkah-1-menghitung-frekuensi-0-rata-rata-dc-component">
+<h4>Langkah 1: Menghitung Frekuensi 0 (Rata-rata / DC Component)<a class="headerlink" href="#langkah-1-menghitung-frekuensi-0-rata-rata-dc-component" title="Link to this heading">#</a></h4>
+<p>Untuk <span class="math notranslate nohighlight">\(k=0\)</span> (Frekuensi terendah):</p>
+<div class="math notranslate nohighlight">
+\[
+X[0] = \sum_{n=0}^{3} x[n] \cdot 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X[0] = 1 + 2 + 3 + 1 = \mathbf{7}
+\]</div>
+</section>
+<section id="langkah-2-menghitung-frekuensi-1-fundamental-frequency">
+<h4>Langkah 2: Menghitung Frekuensi 1 (Fundamental Frequency)<a class="headerlink" href="#langkah-2-menghitung-frekuensi-1-fundamental-frequency" title="Link to this heading">#</a></h4>
+<p>Untuk <span class="math notranslate nohighlight">\(k=1\)</span>, kita gunakan basis DFT dimana <span class="math notranslate nohighlight">\(W_4 = e^{-j2\pi/4} = -j\)</span>.
+Perhitungannya adalah:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+X[1] &amp;= 1(e^0) + 2(e^{-j\pi/2}) + 3(e^{-j\pi}) + 1(e^{-j3\pi/2}) \\
+X[1] &amp;= 1(1) + 2(-j) + 3(-1) + 1(j) \\
+X[1] &amp;= 1 - 2j - 3 + j \\
+X[1] &amp;= (1-3) + (-2j+j) \\
+X[1] &amp;= \mathbf{-2 - j}
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">
+<h4>Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)<a class="headerlink" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram" title="Link to this heading">#</a></h4>
+<p>Hasil di atas adalah bilangan kompleks. Spectrogram hanya menampilkan kekuatan sinyal (magnitude), yang dihitung dengan rumus Pythagoras <span class="math notranslate nohighlight">\(\sqrt{Real^2 + Imajiner^2}\)</span>.</p>
+<ul>
+<li><p><strong>Pixel Frekuensi 0:</strong></p>
+<div class="math notranslate nohighlight">
+\[|X[0]| = |7| = \mathbf{7}\]</div>
+<p><em>(Sangat Terang/Kuning)</em></p>
+</li>
+<li><p><strong>Pixel Frekuensi 1:</strong></p>
+<div class="math notranslate nohighlight">
+\[|X[1]| = \sqrt{(-2)^2 + (-1)^2} = \sqrt{4+1} \approx \mathbf{2.23}\]</div>
+<p><em>(Agak Gelap/Ungu)</em></p>
+</li>
+</ul>
+<p><strong>Kesimpulan:</strong>
+Dalam potongan waktu tersebut, sinyal didominasi oleh energi frekuensi rendah (Nilai 7) dibandingkan frekuensi tinggi (Nilai 2.23). Inilah yang membuat bagian bawah Spectrogram warnanya lebih terang daripada bagian atas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa.display</span>
+
+<span class="c1"># 1. MEMBUAT SINYAL JANTUNG SINTETIS (CONTOH)</span>
+<span class="c1"># Kita buat sinyal dummy: &quot;Lub-Dub&quot; (Frekuensi rendah) + &quot;Murmur&quot; (Frekuensi tinggi)</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Sample rate</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">2.0</span>    <span class="c1"># Durasi 2 detik</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="n">sr</span><span class="p">))</span>
+
+<span class="c1"># Sinyal S1 &amp; S2 (Frekuensi Rendah 30Hz - 50Hz)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Lub</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Dub</span>
+<span class="c1"># Sinyal Murmur (Frekuensi Tinggi 200Hz, muncul di antara S1 dan S2)</span>
+<span class="n">murmur</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">200</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.35</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Gabungkan sinyal</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">murmur</span>
+
+<span class="c1"># 2. PROSES FFT (FREQUENCY DOMAIN)</span>
+<span class="c1"># Mengubah seluruh sinyal ke frekuensi (Hilang info waktu)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">sr</span><span class="p">)</span>
+<span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yf</span><span class="p">[:</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Ambil separuh (positif saja)</span>
+
+<span class="c1"># 3. PROSES STFT (SPECTROGRAM)</span>
+<span class="c1"># Mengubah ke Waktu &amp; Frekuensi</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">hop_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="n">S_db</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">amplitude_to_db</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">D</span><span class="p">),</span> <span class="n">ref</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
+
+<span class="c1"># 4. PLOTTING (VISUALISASI 3 TAHAP)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Time Domain (Persis gambar Truk bagian atas)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;A. Time Domain (Sinyal Suara Jantung)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitudo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Waktu (detik)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Plot 2: Frequency Domain / FFT (Persis gambar Truk bagian bawah)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf</span><span class="p">[:</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">],</span> <span class="n">magnitude</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;B. Frequency Domain (FFT Spectrum)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitudo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span> <span class="c1"># Fokus ke 0-300 Hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span><span class="o">*</span><span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;S1 &amp; S2 (Low Freq)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;Murmur (High Freq)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 3: Spectrogram (Hasil Akhir)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">specshow</span><span class="p">(</span><span class="n">S_db</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">hop_length</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="s1">&#39;hz&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;C. Spectrogram (STFT)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%+2.0f</span><span class="s1"> dB&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1464807530d8e4abcff145fd278c4c0bb8efa83155468daf3558bebdd863c340.png" src="_images/1464807530d8e4abcff145fd278c4c0bb8efa83155468daf3558bebdd863c340.png" />
+</div>
+</div>
+<p>Penjelasan Gambar grafik:</p>
+<ul class="simple">
+<li><p>Grafik A (Time Domain): Kamu melihat gelombang naik turun. Kamu bisa melihat kapan detak jantung terjadi (detik 0.2 dan 0.5), tapi sulit membedakan mana yang murmur.</p></li>
+<li><p>Grafik B (Frequency Domain/FFT): Kamu melihat lonjakan garis tajam.Ada lonjakan besar di kiri (30-50Hz) <span class="math notranslate nohighlight">\(\rightarrow\)</span> Itu suara jantung normal.Ada lonjakan kecil di kanan (200Hz) <span class="math notranslate nohighlight">\(\rightarrow\)</span> Itu suara murmur.Kekurangannya: Kamu tidak tahu kapan murmur 200Hz itu terjadi.</p></li>
+<li><p>Grafik C (Spectrogram): Ini solusinya.Sumbu X adalah Waktu.Sumbu Y adalah Frekuensi.Kamu bisa melihat warna kuning (S1 &amp; S2) di bawah, dan ada bercak oranye (Murmur) di tengah-tengahnya pada frekuensi 200Hz.</p></li>
+</ul>
+</section>
+</section>
+<section id="import-library-memuat-dataset">
+<h3>2.2 Import Library &amp; Memuat Dataset<a class="headerlink" href="#import-library-memuat-dataset" title="Link to this heading">#</a></h3>
+<p>Langkah pertama adalah menyiapkan semua library yang dibutuhkan, lalu memuat dataset time series dari file .ts.Dataset menggunakan format .ts (Time Series), sehingga tidak bisa dibaca dengan read_csv.Oleh karena itu, kita memakai fungsi khusus load_from_tsfile dari library sktime.
+Data dikembalikan dalam bentuk 3 dimensi:</p>
+<ol class="arabic simple">
+<li><p>Sampel / Pasien</p></li>
+<li><p>Fitur (frekuensi)</p></li>
+<li><p>Waktu</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sktime.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_from_tsfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- PROSES 1: LOAD DATASET ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Tentukan lokasi file (Sesuaikan jika beda folder)</span>
+<span class="n">train_file</span> <span class="o">=</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Dokumen</span><span class="se">\\</span><span class="s2">PSD</span><span class="se">\\</span><span class="s2">proyek akhir</span><span class="se">\\</span><span class="s2">datasest</span><span class="se">\\</span><span class="s2">Heartbeat_TRAIN.ts&quot;</span>
+<span class="n">test_file</span> <span class="o">=</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Dokumen</span><span class="se">\\</span><span class="s2">PSD</span><span class="se">\\</span><span class="s2">proyek akhir</span><span class="se">\\</span><span class="s2">datasest</span><span class="se">\\</span><span class="s2">Heartbeat_TEST.ts&quot;</span>
+
+<span class="c1"># 2. Muat Data</span>
+<span class="c1"># return_data_type=&quot;numpy3d&quot; artinya kita minta format 3 Dimensi (Pasien, Fitur, Waktu)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sedang memuat data... (Mohon tunggu)&quot;</span><span class="p">)</span>
+<span class="n">X_train_raw</span><span class="p">,</span> <span class="n">y_train_raw</span> <span class="o">=</span> <span class="n">load_from_tsfile</span><span class="p">(</span><span class="n">train_file</span><span class="p">,</span> <span class="n">return_data_type</span><span class="o">=</span><span class="s2">&quot;numpy3d&quot;</span><span class="p">)</span>
+<span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">load_from_tsfile</span><span class="p">(</span><span class="n">test_file</span><span class="p">,</span> <span class="n">return_data_type</span><span class="o">=</span><span class="s2">&quot;numpy3d&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[SUKSES] Data berhasil dimuat ke memori.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 1: LOAD DATASET ---
+Sedang memuat data... (Mohon tunggu)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[SUKSES] Data berhasil dimuat ke memori.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pembersihan-label-bytes-string">
+<h3>2.3 Pembersihan Label (Bytes → String)<a class="headerlink" href="#pembersihan-label-bytes-string" title="Link to this heading">#</a></h3>
+<p>Pada beberapa dataset, label kelas masih berbentuk bytes seperti b’Normal’.
+Jika tidak diperbaiki, ini bisa menyebabkan error saat visualisasi atau modeling.
+Kita mengecek apakah label masih bertipe bytes.
+Jika iya, label diubah menjadi string biasa (‘Normal’, ‘Abnormal’).
+Langkah ini penting agar proses analisis dan visualisasi berjalan lancar.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 2: CLEANING LABEL (BYTES TO STRING) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Cek apakah data pertama berupa bytes?</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Terdeteksi format bytes. Sedang memperbaiki...&quot;</span><span class="p">)</span>
+    <span class="c1"># Decode Train</span>
+    <span class="n">y_train_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_train_raw</span><span class="p">])</span>
+    <span class="c1"># Decode Test</span>
+    <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_test_raw</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO] Label berhasil diubah menjadi String biasa.&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO] Format label sudah aman (String).&quot;</span><span class="p">)</span>
+
+<span class="c1"># Tampilkan contoh label</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh Label: </span><span class="si">{</span><span class="n">y_train_raw</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 2: CLEANING LABEL (BYTES TO STRING) ---
+[INFO] Format label sudah aman (String).
+Contoh Label: [&#39;normal&#39; &#39;normal&#39; &#39;normal&#39; &#39;normal&#39; &#39;normal&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mengecek-dimensi-dan-struktur-data">
+<h3>2.4 Mengecek Dimensi dan Struktur Data<a class="headerlink" href="#mengecek-dimensi-dan-struktur-data" title="Link to this heading">#</a></h3>
+<p>Pada tahap ini, kita memastikan ukuran dan struktur dataset yang kita gunakan.Dataset ini berbentuk Multivariate Time Series 3D, di mana setiap sampel merepresentasikan satu rekaman suara jantung yang terdiri dari beberapa pita frekuensi dan urutan waktu tertentu.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 3: CEK DIMENSI DATA (SHAPE) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># .shape akan menghasilkan (Jumlah Sampel, Jumlah Fitur, Panjang Waktu)</span>
+<span class="n">n_samples</span><span class="p">,</span> <span class="n">n_freqs</span><span class="p">,</span> <span class="n">n_times</span> <span class="o">=</span> <span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk Data Training Asli : </span><span class="si">{</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1. Jumlah Pasien (Sampel) : </span><span class="si">{</span><span class="n">n_samples</span><span class="si">}</span><span class="s2"> orang&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2. Jumlah Pita Frekuensi  : </span><span class="si">{</span><span class="n">n_freqs</span><span class="si">}</span><span class="s2"> pita (Fitur Spektral)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3. Durasi Waktu (Time)    : </span><span class="si">{</span><span class="n">n_times</span><span class="si">}</span><span class="s2"> titik waktu&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Jumlah Data Testing       : </span><span class="si">{</span><span class="n">X_test_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> orang&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 3: CEK DIMENSI DATA (SHAPE) ---
+Bentuk Data Training Asli : (204, 61, 405)
+----------------------------------------
+1. Jumlah Pasien (Sampel) : 204 orang
+2. Jumlah Pita Frekuensi  : 61 pita (Fitur Spektral)
+3. Durasi Waktu (Time)    : 405 titik waktu
+----------------------------------------
+Jumlah Data Testing       : 205 orang
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="analisis-keseimbangan-kelas-class-imbalance">
+<h3>2.5 Analisis Keseimbangan Kelas (Class Imbalance)<a class="headerlink" href="#analisis-keseimbangan-kelas-class-imbalance" title="Link to this heading">#</a></h3>
+<p>Langkah ini bertujuan untuk melihat apakah jumlah data Normal dan Abnormal seimbang atau tidak.Grafik ini menunjukkan perbandingan jumlah data tiap kelas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 4: CEK KESEIMBANGAN KELAS (VISUALISASI) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hitung jumlah masing-masing</span>
+<span class="n">jumlah_kelas</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rincian Jumlah Data: </span><span class="si">{</span><span class="n">jumlah_kelas</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Buat Grafik Batang</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">y_train_raw</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tambahkan angka di atas batang biar jelas</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">:</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="mf">0.35</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribusi Kelas: Normal vs Abnormal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Kondisi Jantung&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Jumlah Pasien&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 4: CEK KESEIMBANGAN KELAS (VISUALISASI) ---
+Rincian Jumlah Data: Counter({&#39;abnormal&#39;: 147, &#39;normal&#39;: 57})
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_33892\3621272935.py:9: FutureWarning: 
+
+Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
+
+  ax = sns.countplot(x=y_train_raw, palette=&#39;viridis&#39;)
+</pre></div>
+</div>
+<img alt="_images/dd8568fff221e00672447f081ba31bb00ddecac62dba73e608f6c9a4d9f0d477.png" src="_images/dd8568fff221e00672447f081ba31bb00ddecac62dba73e608f6c9a4d9f0d477.png" />
+</div>
+</div>
+<p>Untuk menentukan tingkat ketidakseimbangan dataset, dilakukan perhitungan persentase distribusi kelas dan rasio ketidakseimbangan (Imbalance Ratio / IR).</p>
+<ul class="simple">
+<li><p>Kelas Abnormal (Mayoritas): 148 sampel (72.2%)</p></li>
+<li><p>Kelas Normal (Minoritas): 57 sampel (27.8%)</p></li>
+</ul>
+<p>Menurut literatur Machine Learning dari Google Developers (2022), tingkat ketidakseimbangan data dikategorikan sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Ringan (Mild)
+Ketidakseimbangan data berada pada kisaran 20%–40% kelas minoritas.
+Pada kondisi ini, bias terhadap kelas minoritas relatif kecil sehingga sering kali tidak memerlukan penanganan khusus.</p></li>
+<li><p>Sedang (Moderate)
+Proporsi kelas minoritas berada pada kisaran 1%–20%.
+Ketidakseimbangan mulai terlihat signifikan dan memerlukan teknik penanganan, seperti class weighting atau resampling.</p></li>
+<li><p>Ekstrem (Extreme)
+Proporsi kelas minoritas kurang dari 1%.
+Dataset sangat tidak seimbang sehingga membutuhkan penanganan khusus, misalnya pendekatan anomaly detection atau metode khusus lainnya</p></li>
+</ol>
+<p>Berdasarkan tabel di atas, dataset penelitian ini dengan proporsi kelas minoritas sebesar 27.8% masuk dalam kategori Ketidakseimbangan Ringan hingga Sedang (Mild to Moderate Imbalance).</p>
+<p>Meskipun belum masuk kategori ekstrem, rasio hampir 3:1 (148 banding 57) sudah cukup untuk mempengaruhi Hyperplane pada algoritma SVM. SVM standar cenderung memaksimalkan akurasi global dengan memprioritaskan kelas mayoritas, yang berisiko menyebabkan Recall rendah pada kelas Normal. Oleh karena itu, intervensi menggunakan metode Class Weighting tetap diperlukan untuk memastikan model berlaku adil terhadap kedua kelas.</p>
+</section>
+<section id="visualisasi-data-spectrogram">
+<h3>2.6 Visualisasi Data (Spectrogram)<a class="headerlink" href="#visualisasi-data-spectrogram" title="Link to this heading">#</a></h3>
+<p>Agar tidak hanya melihat angka, kita menampilkan visualisasi spectrogram dari data suara jantung.</p>
+<p>Visualisasi spectrogram memperlihatkan pola energi suara jantung.
+Sumbu horizontal menunjukkan waktu, sumbu vertikal menunjukkan frekuensi, dan warna menunjukkan intensitas sinyal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 5: VISUALISASI SPECTROGRAM (HEATMAP) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. CEK DULU NAMA LABELNYA</span>
+<span class="n">unique_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Label yang tersedia di data: </span><span class="si">{</span><span class="n">unique_labels</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. CARI INDEX BERDASARKAN LABEL YANG BENAR</span>
+<span class="c1"># Kita pakai logika otomatis: Ambil label pertama dan kedua dari daftar di atas</span>
+<span class="n">label_1</span> <span class="o">=</span> <span class="n">unique_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Biasanya &#39;abnormal&#39;</span>
+<span class="n">label_2</span> <span class="o">=</span> <span class="n">unique_labels</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Biasanya &#39;normal&#39;</span>
+
+<span class="c1"># Cari lokasi data</span>
+<span class="n">idx_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_train_raw</span> <span class="o">==</span> <span class="n">label_1</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">idx_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_train_raw</span> <span class="o">==</span> <span class="n">label_2</span><span class="p">)[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mengambil contoh &#39;</span><span class="si">{</span><span class="n">label_1</span><span class="si">}</span><span class="s2">&#39; di index </span><span class="si">{</span><span class="n">idx_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mengambil contoh &#39;</span><span class="si">{</span><span class="n">label_2</span><span class="si">}</span><span class="s2">&#39; di index </span><span class="si">{</span><span class="n">idx_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. FUNGSI GAMBAR</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_spectrogram</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">judul</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">judul</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Waktu (Timepoints)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Frekuensi (Hz Bands)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Intensitas&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 4. TAMPILKAN</span>
+<span class="n">plot_spectrogram</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">[</span><span class="n">idx_1</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;Spectrogram Pasien </span><span class="si">{</span><span class="n">label_1</span><span class="si">}</span><span class="s2"> (Index </span><span class="si">{</span><span class="n">idx_1</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plot_spectrogram</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">[</span><span class="n">idx_2</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&quot;Spectrogram Pasien </span><span class="si">{</span><span class="n">label_2</span><span class="si">}</span><span class="s2"> (Index </span><span class="si">{</span><span class="n">idx_2</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 5: VISUALISASI SPECTROGRAM (HEATMAP) ---
+Label yang tersedia di data: [&#39;abnormal&#39; &#39;normal&#39;]
+Mengambil contoh &#39;abnormal&#39; di index 57
+Mengambil contoh &#39;normal&#39; di index 0
+</pre></div>
+</div>
+<img alt="_images/c5f0b4d5dba4af65c5a62cd9c568ef5fdfa0671853d53d6098c1bce28455eadf.png" src="_images/c5f0b4d5dba4af65c5a62cd9c568ef5fdfa0671853d53d6098c1bce28455eadf.png" />
+<img alt="_images/95f0311768f7805ef92ff40b80eea10b13f3332f4eb68bffd74e5b6539daa4fa.png" src="_images/95f0311768f7805ef92ff40b80eea10b13f3332f4eb68bffd74e5b6539daa4fa.png" />
+</div>
+</div>
+<p>Pada visualisasi di atas, sumbu horizontal (X) merepresentasikan waktu (Timepoints) dan sumbu vertikal (Y) merepresentasikan pita frekuensi (Frequency Bands). Warna merepresentasikan intensitas atau energi suara, di mana warna gelap (Hitam/Ungu) menunjukkan energi rendah, sedangkan warna terang (Oranye/Kuning) menunjukkan energi tinggi.</p>
+<p>Berdasarkan pengamatan visual diatas, dapat dianalisis perbedaan spesifik sebagai berikut:</p>
+<ol class="arabic simple">
+<li><p>Distribusi Energi Frekuensi: Pada dataset ini, energi suara dominan terkonsentrasi pada pita frekuensi tinggi (Band ke-50 hingga 60). Hal ini terlihat dari pola warna kuning terang yang berkumpul di bagian atas grafik.</p></li>
+<li><p>Karakteristik Pasien Normal (Index 0 - Grafik Bawah):</p></li>
+</ol>
+<ul class="simple">
+<li><p>Pola Ritmis yang Bersih: Terlihat adanya pola letupan (bursts) energi yang terpisah secara tegas. Letupan kuning ini merepresentasikan suara jantung utama (S1 dan S2).</p></li>
+<li><p>Interval Hening (Silence): Area di antara letupan energi cenderung berwarna gelap (ungu tua/hitam). Hal ini menunjukkan bahwa pada fase diastol dan sistol (saat jantung rileks atau memompa), tidak ada suara bising tambahan yang signifikan.</p></li>
+<li><p>Intensitas Energi: Skala intensitas maksimal pada pasien normal cenderung lebih rendah, yaitu sekitar 1.8 pada color bar.</p></li>
+</ul>
+<ol class="arabic simple" start="3">
+<li><p>Karakteristik Pasien Abnormal (Index 57 - Grafik Atas):</p></li>
+</ol>
+<ul class="simple">
+<li><p>Pola yang “Kotor” (Smearing): Berbeda dengan pasien normal, area di antara letupan suara utama tidak sepenuhnya gelap. Terdapat jejak energi (warna ungu/oranye samar) yang “menggantung” atau menyambung di antara detak jantung utama pada pita frekuensi 50-60 Hz.</p></li>
+<li><p>Indikasi Murmur: Adanya energi tambahan di antara fase detak jantung ini mengindikasikan keberadaan murmur (suara desising akibat aliran darah turbulen), yang merupakan tanda khas kelainan katup jantung. Sinyal suara tidak pernah benar-benar “hening” seperti pada pasien normal.</p></li>
+<li><p>Intensitas Energi Tinggi: Skala intensitas pada pasien abnormal mencapai angka 3.0, yang mengindikasikan bahwa suara patologis (kelainan) pada pasien ini memiliki amplitudo energi yang jauh lebih tinggi atau lebih keras dibandingkan suara jantung normal.</p></li>
+</ul>
+</section>
+</section>
+<section id="data-preprocessing">
+<h2><strong>DATA PREPROCESSING</strong><a class="headerlink" href="#data-preprocessing" title="Link to this heading">#</a></h2>
+<p>Pada tahap Data Preprocessing, kita akan mengolah data mentah yang sebelumnya masih berbentuk spectrogram 3 dimensi menjadi data tabel 2 dimensi yang rapi dan siap digunakan untuk proses pelatihan model machine learning.</p>
+<p>Tujuan utama tahap ini adalah:</p>
+<ol class="arabic simple">
+<li><p>Menyederhanakan data time series</p></li>
+<li><p>Mengubah data menjadi bentuk numerik yang bisa dipahami algoritma</p></li>
+<li><p>Menyeragamkan skala data agar model bekerja optimal</p></li>
+</ol>
+<section id="membuat-fungsi-ekstraksi-fitur">
+<h3>3.1 Membuat Fungsi Ekstraksi Fitur<a class="headerlink" href="#membuat-fungsi-ekstraksi-fitur" title="Link to this heading">#</a></h3>
+<p>Data awal masih memiliki dimensi waktu (405 titik).
+Karena algoritma seperti SVM tidak bisa langsung membaca data gelombang, kita perlu meringkas informasi waktu tersebut menjadi beberapa angka statistik.</p>
+<p>Statistik yang digunakan:</p>
+<ul class="simple">
+<li><p>Mean (Rata-rata) → menunjukkan kekuatan sinyal secara umum</p></li>
+<li><p>Standard Deviation (Std) → menunjukkan kestabilan atau variasi sinyal</p></li>
+<li><p>Maximum (Max) → menunjukkan lonjakan tertinggi sinyal</p></li>
+<li><p>Minimum (Min) → menunjukkan nilai terendah sinyal</p></li>
+</ul>
+<p>Data Setelah di ekstraksi Fitur:</p>
+<ul class="simple">
+<li><p>Kolom 0-60: Adalah Mean (Rata-rata) tiap frekuensi.</p></li>
+<li><p>Kolom 61-121: Adalah Std (Standar Deviasi).</p></li>
+<li><p>Kolom 122-182: Adalah Max.</p></li>
+<li><p>Kolom 183-243: Adalah Min.</p></li>
+<li><p>Kolom Terakhir: Label Target (0 atau 1).</p></li>
+</ul>
+<p>Setiap pasien awalnya memiliki 61 × 405 nilai.Setelah diringkas, setiap pasien hanya diwakili oleh 244 angka.Ini membuat data jauh lebih ringan dan mudah diproses model</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- PROSES 1: DEFINISI FUNGSI EKSTRAKSI FITUR ---&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_features</span><span class="p">(</span><span class="n">X_data</span><span class="p">):</span>
+    <span class="c1"># X_data shape: (Jumlah Pasien, 61 Frekuensi, 405 Waktu)</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="p">[]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Memproses </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_data</span><span class="p">)</span><span class="si">}</span><span class="s2"> sampel data...&quot;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">X_data</span><span class="p">)):</span>
+        <span class="n">spectrogram</span> <span class="o">=</span> <span class="n">X_data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="c1"># Hitung statistik sepanjang waktu (axis=1)</span>
+        <span class="c1"># Artinya: Kita ringkas 405 titik waktu menjadi 1 angka statistik</span>
+        <span class="n">mean_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">spectrogram</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Rata-rata kekuatan sinyal</span>
+        <span class="n">std_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">spectrogram</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Kestabilan sinyal</span>
+        <span class="n">max_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">spectrogram</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Lonjakan tertinggi</span>
+        <span class="n">min_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">spectrogram</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>   <span class="c1"># Titik terendah</span>
+        
+        <span class="c1"># Gabungkan semua statistik jadi satu baris panjang</span>
+        <span class="c1"># 4 Statistik x 61 Frekuensi = 244 Fitur</span>
+        <span class="n">patient_features</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">mean_val</span><span class="p">,</span> <span class="n">std_val</span><span class="p">,</span> <span class="n">max_val</span><span class="p">,</span> <span class="n">min_val</span><span class="p">])</span>
+        <span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">patient_features</span><span class="p">)</span>
+        
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[SUKSES] Fungsi &#39;extract_features&#39; berhasil dibuat.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 1: DEFINISI FUNGSI EKSTRAKSI FITUR ---
+[SUKSES] Fungsi &#39;extract_features&#39; berhasil dibuat.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekstraksi-fitur-statistik">
+<h3>3.2 Ekstraksi Fitur Statistik<a class="headerlink" href="#ekstraksi-fitur-statistik" title="Link to this heading">#</a></h3>
+<p>Ekstraksi Fitur pada Data Training</p>
+<p>Setelah fungsi dibuat, kita terapkan pada data training mentah.
+Proses ini menjadi inti dari preprocessing karena secara efektif mengubah sinyal deret waktu menjadi representasi numerik ringkas yang tetap mempertahankan karakteristik penting dari data.
+Jika bentuk akhirnya (jumlah_pasien, 244), berarti proses berhasil,Data sudah berubah dari gelombang 3D → tabel 2D.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 2: EKSEKUSI EKSTRAKSI FITUR (TRAIN) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Terapkan fungsi ke data mentah</span>
+<span class="n">X_train_processed</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">X_train_raw</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk Data SEBELUM (3D) : </span><span class="si">{</span><span class="n">X_train_raw</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk Data SESUDAH (2D) : </span><span class="si">{</span><span class="n">X_train_processed</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Artinya: Sekarang setiap pasien diwakili oleh 244 angka statistik.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 2: EKSEKUSI EKSTRAKSI FITUR (TRAIN) ---
+Memproses 204 sampel data...
+----------------------------------------
+Bentuk Data SEBELUM (3D) : (204, 61, 405)
+Bentuk Data SESUDAH (2D) : (204, 244)
+----------------------------------------
+Artinya: Sekarang setiap pasien diwakili oleh 244 angka statistik.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="encoding-label-target">
+<h3>3.3 Encoding Label Target<a class="headerlink" href="#encoding-label-target" title="Link to this heading">#</a></h3>
+<p>Model Machine Learning tidak dapat memahami format label berupa teks (misalnya “Normal” dan “Abnormal”). Oleh sebab itu, dilakukan proses Label Encoding untuk mengubah label kategori menjadi representasi numerik.</p>
+<p>Dalam proses ini, setiap kelas diberikan angka berbeda—misalnya:</p>
+<ol class="arabic simple">
+<li><p>Abnormal → 0</p></li>
+<li><p>Normal → 1</p></li>
+</ol>
+<p>Urutan pemetaan ini ditentukan secara otomatis oleh library berdasarkan urutan alfabet. Langkah ini memastikan label dapat diproses oleh algoritma klasifikasi pada tahap selanjutnya.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 3: LABEL ENCODING ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi Encoder</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+
+<span class="c1"># Ubah label teks jadi angka</span>
+<span class="n">y_train_encoded</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y_train_raw</span><span class="p">)</span>
+
+<span class="c1"># Cek hasil terjemahan</span>
+<span class="n">mapping</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kamus Terjemahan : </span><span class="si">{</span><span class="n">mapping</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh 5 Label Asli : </span><span class="si">{</span><span class="n">y_train_raw</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Contoh 5 Label Angka: </span><span class="si">{</span><span class="n">y_train_encoded</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 3: LABEL ENCODING ---
+Kamus Terjemahan : {&#39;abnormal&#39;: 0, &#39;normal&#39;: 1}
+Contoh 5 Label Asli : [&#39;normal&#39; &#39;normal&#39; &#39;normal&#39; &#39;normal&#39; &#39;normal&#39;]
+Contoh 5 Label Angka: [1 1 1 1 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="standarisasi-fitur-scaling">
+<h3>3.4. Standarisasi Fitur (Scaling)<a class="headerlink" href="#standarisasi-fitur-scaling" title="Link to this heading">#</a></h3>
+<p>Standarisasi merupakan langkah penting terutama untuk algoritma seperti Support Vector Machine (SVM) yang sangat bergantung pada perhitungan jarak antar data. Jika fitur memiliki skala nilai yang berbeda jauh, maka fitur dengan rentang besar akan mendominasi proses perhitungan dan menyebabkan bias pada model.</p>
+<p>Untuk mengatasi hal tersebut, digunakan StandardScaler, yang mengubah seluruh fitur menjadi memiliki:</p>
+<ul class="simple">
+<li><p>mean = 0</p></li>
+<li><p>standard deviation = 1</p></li>
+</ul>
+<p>Proses fit dilakukan hanya pada data latih untuk menghindari data leakage, kemudian informasi skala tersebut diterapkan pada data uji. Dengan demikian, seluruh fitur memiliki skala yang seragam sehingga algoritma dapat bekerja secara optimal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 4: SCALING (STANDARISASI) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi Scaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+
+<span class="c1"># Pelajari pola data train, lalu ubah nilainya</span>
+<span class="n">X_train_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_processed</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contoh data sebelum scaling (Baris 0, Fitur 0):&quot;</span><span class="p">,</span> <span class="n">X_train_processed</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Contoh data sesudah scaling (Baris 0, Fitur 0):&quot;</span><span class="p">,</span> <span class="n">X_train_scaled</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[SUKSES] Data sudah dinormalisasi (Mean=0, Std=1).&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 4: SCALING (STANDARISASI) ---
+Contoh data sebelum scaling (Baris 0, Fitur 0): 0.0011163358024691358
+Contoh data sesudah scaling (Baris 0, Fitur 0): -0.4583039815163842
+[SUKSES] Data sudah dinormalisasi (Mean=0, Std=1).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="verifikasi-data-akhir">
+<h3>3.5 Verifikasi Data Akhir<a class="headerlink" href="#verifikasi-data-akhir" title="Link to this heading">#</a></h3>
+<p>Tahap terakhir bertujuan untuk memverifikasi bahwa seluruh proses preprocessing sudah berjalan dengan benar dan data telah siap digunakan pada tahap pemodelan. Pada tahap ini dilakukan:</p>
+<ol class="arabic simple">
+<li><p>Penyusunan nama fitur yang informatif, seperti Mean_F0, Std_F10, Max_F25, dan seterusnya.</p></li>
+<li><p>Penyusunan data ke dalam bentuk DataFrame sehingga lebih mudah dianalisis.</p></li>
+<li><p>Pemeriksaan dimensi akhir data untuk memastikan jumlah fitur dan sampel telah sesuai dengan rancangan.</p></li>
+</ol>
+<p>Data akhir memiliki 244 fitur hasil ekstraksi, ditambah 1 kolom target, sehingga siap digunakan untuk melatih model Machine Learning.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 5: MENAMPILKAN DATA SIAP LATIH ---&quot;</span><span class="p">)</span>
+
+<span class="n">n_freqs</span> <span class="o">=</span> <span class="mi">61</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">([</span><span class="sa">f</span><span class="s2">&quot;Mean_F</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_freqs</span><span class="p">)]</span> <span class="o">+</span> 
+        <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Std_F</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_freqs</span><span class="p">)]</span> <span class="o">+</span> 
+        <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Max_F</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_freqs</span><span class="p">)]</span> <span class="o">+</span> 
+        <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;Min_F</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_freqs</span><span class="p">)])</span>
+
+<span class="c1"># Buat DataFrame</span>
+<span class="n">df_final_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">cols</span><span class="p">)</span>
+<span class="n">df_final_train</span><span class="p">[</span><span class="s1">&#39;TARGET_LABEL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_train_encoded</span>
+
+<span class="c1"># Tampilkan 5 baris pertama</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tabel Data Preprocessing (5 Baris Pertama):&quot;</span><span class="p">)</span>
+<span class="c1"># Kita tampilin beberapa kolom aja biar muat di layar</span>
+<span class="n">kolom_tampil</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Mean_F0&#39;</span><span class="p">,</span> <span class="s1">&#39;Std_F0&#39;</span><span class="p">,</span> <span class="s1">&#39;Max_F0&#39;</span><span class="p">,</span> <span class="s1">&#39;Min_F0&#39;</span><span class="p">,</span> <span class="s1">&#39;TARGET_LABEL&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_final_train</span><span class="p">[</span><span class="n">kolom_tampil</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">to_markdown</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Total Fitur Input: </span><span class="si">{</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Pasien     : </span><span class="si">{</span><span class="n">X_train_scaled</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 5: MENAMPILKAN DATA SIAP LATIH ---
+Tabel Data Preprocessing (5 Baris Pertama):
+|    Mean_F0 |     Std_F0 |     Max_F0 |    Min_F0 |   TARGET_LABEL |
+|-----------:|-----------:|-----------:|----------:|---------------:|
+| -0.458304  | -0.447182  | -0.445061  | -0.442851 |              1 |
+|  0.906293  |  0.116471  | -0.0359569 |  2.00212  |              1 |
+| -0.354999  | -0.268734  | -0.306436  | -0.509532 |              1 |
+| -0.107073  | -0.0862004 | -0.0590663 | -0.456743 |              1 |
+| -0.0475289 | -0.0757501 | -0.101441  |  0.229516 |              1 |
+
+Total Fitur Input: 244
+Total Pasien     : 204
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-splitting">
+<h2><strong>DATA SPLITTING</strong><a class="headerlink" href="#data-splitting" title="Link to this heading">#</a></h2>
+<p>Pada tahap ini, kita melakukan penataan ulang pembagian data agar sesuai dengan standar akademik dan praktik machine learning yang umum digunakan.</p>
+<p>Dataset bawaan sebenarnya sudah memiliki data Train dan Test, tetapi pembagiannya 50% : 50% (204 : 205).
+Pembagian ini kurang lazim untuk penelitian karena:</p>
+<ul class="simple">
+<li><p>Data latih terlalu sedikit</p></li>
+<li><p>Model berisiko kurang belajar pola</p></li>
+</ul>
+<p>Oleh karena itu, kita akan menyusun ulang pembagian data menjadi:</p>
+<ul class="simple">
+<li><p>80% Data Training</p></li>
+<li><p>20% Data Testing</p></li>
+</ul>
+<p>Langkah ini menunjukkan bahwa kamu memahami metodologi, bukan sekadar mengikuti dataset mentah.</p>
+<section id="memuat-mengacak-data-test-asli">
+<h3>4.1 Memuat &amp; Mengacak Data Test Asli<a class="headerlink" href="#memuat-mengacak-data-test-asli" title="Link to this heading">#</a></h3>
+<p>Pertama, kita memuat data test bawaan, lalu mengacak urutan datanya.Agar data yang diambil nanti acak dan representatif.Menghindari bias akibat urutan data asli</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">shuffle</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sktime.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_from_tsfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- PROSES 1: LOAD &amp; SHUFFLE DATA TEST ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Load Data Test Mentah</span>
+<span class="c1"># Pastikan nama file sesuai</span>
+<span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">load_from_tsfile</span><span class="p">(</span><span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Dokumen</span><span class="se">\\</span><span class="s2">PSD</span><span class="se">\\</span><span class="s2">proyek akhir</span><span class="se">\\</span><span class="s2">datasest</span><span class="se">\\</span><span class="s2">Heartbeat_TEST.ts&quot;</span><span class="p">,</span> <span class="n">return_data_type</span><span class="o">=</span><span class="s2">&quot;numpy3d&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Perbaiki Label (Bytes -&gt; String)</span>
+<span class="c1"># Sama seperti Bab 1, kita jaga-jaga kalau formatnya bytes</span>
+<span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">y_test_raw</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">bytes</span><span class="p">):</span>
+    <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_test_raw</span><span class="p">])</span>
+
+<span class="c1"># 3. Acak Posisi Data (PENTING!)</span>
+<span class="c1"># random_state=42 agar hasil acakannya konsisten (tidak berubah tiap di-run)</span>
+<span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_test_raw</span> <span class="o">=</span> <span class="n">shuffle</span><span class="p">(</span><span class="n">X_test_raw</span><span class="p">,</span> <span class="n">y_test_raw</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[INFO] Data Test berhasil dimuat dan diacak.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Data Test Tersedia: </span><span class="si">{</span><span class="n">X_test_raw</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> sampel&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 1: LOAD &amp; SHUFFLE DATA TEST ---
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[INFO] Data Test berhasil dimuat dan diacak.
+Total Data Test Tersedia: 205 sampel
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="logika-pembagian-data-80-20">
+<h3>4.2 Logika Pembagian Data (80:20)<a class="headerlink" href="#logika-pembagian-data-80-20" title="Link to this heading">#</a></h3>
+<p>Sekarang kita terapkan logika matematis pembagian data.</p>
+<p>📊 Perhitungan</p>
+<ul class="simple">
+<li><p>Data training yang sudah kita punya: 204 sampel</p></li>
+<li><p>Kita anggap ini sebagai 80%</p></li>
+<li><p>Maka 20% ≈ 51 sampel</p></li>
+<li><p>Total data test awal: 205 sampel</p></li>
+<li><p>Sisa data: 154 sampel</p></li>
+</ul>
+<p>Data sisa ini tidak dibuang, melainkan disimpan untuk demo aplikasi Streamlit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 2: PEMBAGIAN DATA (SPLITTING 80:20) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Target jumlah data test agar rasio 80:20 terpenuhi</span>
+<span class="n">jumlah_test_official</span> <span class="o">=</span> <span class="mi">51</span>
+
+<span class="c1"># 1. Ambil 51 data pertama untuk &quot;Ujian Skripsi&quot; (Laporan)</span>
+<span class="n">X_test_final</span> <span class="o">=</span> <span class="n">X_test_raw</span><span class="p">[:</span><span class="n">jumlah_test_official</span><span class="p">]</span>
+<span class="n">y_test_final</span> <span class="o">=</span> <span class="n">y_test_raw</span><span class="p">[:</span><span class="n">jumlah_test_official</span><span class="p">]</span>
+
+<span class="c1"># 2. Ambil sisanya untuk &quot;Mainan Streamlit&quot; (Demo)</span>
+<span class="n">X_demo_streamlit</span> <span class="o">=</span> <span class="n">X_test_raw</span><span class="p">[</span><span class="n">jumlah_test_official</span><span class="p">:]</span>
+<span class="n">y_demo_streamlit</span> <span class="o">=</span> <span class="n">y_test_raw</span><span class="p">[</span><span class="n">jumlah_test_official</span><span class="p">:]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;REKAPITULASI PEMBAGIAN DATA:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;1. Data Training (Tetap)     : 204 Sampel (80%) -&gt; Dipakai Latih Model&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2. Data Testing Baru (Ujian) : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_test_final</span><span class="p">)</span><span class="si">}</span><span class="s2">  Sampel (20%) -&gt; Dipakai Evaluasi&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;3. Data Sisa (Untuk Demo)    : </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_demo_streamlit</span><span class="p">)</span><span class="si">}</span><span class="s2"> Sampel (Disimpan) -&gt; Dipakai Streamlit&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 2: PEMBAGIAN DATA (SPLITTING 80:20) ---
+REKAPITULASI PEMBAGIAN DATA:
+1. Data Training (Tetap)     : 204 Sampel (80%) -&gt; Dipakai Latih Model
+2. Data Testing Baru (Ujian) : 51  Sampel (20%) -&gt; Dipakai Evaluasi
+3. Data Sisa (Untuk Demo)    : 154 Sampel (Disimpan) -&gt; Dipakai Streamlit
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preprocessing-data-test-baru">
+<h3>4.3 Preprocessing Data Test Baru<a class="headerlink" href="#preprocessing-data-test-baru" title="Link to this heading">#</a></h3>
+<p>Data test baru (51 sampel) masih berbentuk spectrogram 3D, sehingga perlu diproses sama seperti data training.</p>
+<p>Catatan :</p>
+<ul class="simple">
+<li><p>Kita tidak boleh menghitung ulang scaler dan encoder</p></li>
+<li><p>Data uji harus mengikuti aturan yang dipelajari dari data latih</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 3: PREPROCESSING DATA TEST BARU ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Ekstraksi Fitur (Ubah 3D jadi 2D Statistik)</span>
+<span class="c1"># Kita panggil fungsi &#39;extract_features&#39; yang sudah kita buat di Bab 2</span>
+<span class="n">X_test_final_features</span> <span class="o">=</span> <span class="n">extract_features</span><span class="p">(</span><span class="n">X_test_final</span><span class="p">)</span>
+
+<span class="c1"># 2. Scaling (Standarisasi)</span>
+<span class="c1"># PENTING: Gunakan &#39;scaler&#39; yang sudah dilatih di Bab 2!</span>
+<span class="n">X_test_final_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_final_features</span><span class="p">)</span>
+
+<span class="c1"># 3. Encoding Label (Ubah Normal jadi Angka)</span>
+<span class="c1"># PENTING: Gunakan &#39;le&#39; yang sudah dilatih di Bab 2!</span>
+<span class="n">y_test_final_encoded</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">y_test_final</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[SUKSES] Data Test Baru siap. Bentuk: </span><span class="si">{</span><span class="n">X_test_final_scaled</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 3: PREPROCESSING DATA TEST BARU ---
+Memproses 51 sampel data...
+[SUKSES] Data Test Baru siap. Bentuk: (51, 244)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menyimpan-data-demo-untuk-streamlit">
+<h3>4.4 Menyimpan Data Demo untuk Streamlit<a class="headerlink" href="#menyimpan-data-demo-untuk-streamlit" title="Link to this heading">#</a></h3>
+<p>Sisa data (154 sampel) kita simpan ke dalam file agar bisa digunakan pada aplikasi demo Streamlit.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 4: SIMPAN DATA DEMO STREAMLIT ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Bungkus data mentah dan labelnya dalam Dictionary</span>
+<span class="n">paket_demo</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;X_raw&quot;</span><span class="p">:</span> <span class="n">X_demo_streamlit</span><span class="p">,</span>  <span class="c1"># Data mentah (masih bentuk spectrogram)</span>
+    <span class="s2">&quot;y_label&quot;</span><span class="p">:</span> <span class="n">y_demo_streamlit</span> <span class="c1"># Label asli</span>
+<span class="p">}</span>
+
+<span class="n">nama_file_demo</span> <span class="o">=</span> <span class="s2">&quot;data_demo_streamlit.pkl&quot;</span>
+
+<span class="c1"># Simpan ke file</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">nama_file_demo</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">paket_demo</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[SUKSES] File &#39;</span><span class="si">{</span><span class="n">nama_file_demo</span><span class="si">}</span><span class="s2">&#39; berhasil dibuat!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simpan file ini. Nanti akan kita upload saat demo aplikasi.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 4: SIMPAN DATA DEMO STREAMLIT ---
+[SUKSES] File &#39;data_demo_streamlit.pkl&#39; berhasil dibuat!
+Simpan file ini. Nanti akan kita upload saat demo aplikasi.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-modeling-pemodelan">
+<h2><strong>DATA MODELING (PEMODELAN)</strong><a class="headerlink" href="#data-modeling-pemodelan" title="Link to this heading">#</a></h2>
+<p>Pada tahap Data Modeling, kita mulai melatih model machine learning agar mampu mengenali pola antara suara jantung normal dan abnormal.
+Tahap ini bisa diibaratkan sebagai melatih “otak” komputer supaya bisa mengambil keputusan dengan benar.</p>
+<p>Berdasarkan hasil eksperimen sebelumnya, kita menetapkan strategi berikut:</p>
+<ol class="arabic simple">
+<li><p>Algoritma yang digunakan:
+Support Vector Machine (SVM) — kuat untuk data berdimensi tinggi.</p></li>
+<li><p>Penanganan data tidak seimbang:
+Class Weighting, karena terbukti lebih stabil dibandingkan SMOTE.</p></li>
+<li><p>Optimasi model:
+GridSearchCV, agar pencarian parameter terbaik dilakukan secara otomatis dan objektif.</p></li>
+</ol>
+<p>Proses ini dibagi menjadi 3 langkah utama.</p>
+<section id="menentukan-skenario-pelatihan-hyperparameter-grid">
+<h3>5.1 Menentukan Skenario Pelatihan (Hyperparameter Grid)<a class="headerlink" href="#menentukan-skenario-pelatihan-hyperparameter-grid" title="Link to this heading">#</a></h3>
+<p>SVM memiliki beberapa parameter penting, seperti:</p>
+<ul class="simple">
+<li><p>C → Mengatur seberapa ketat model memisahkan kelas</p></li>
+<li><p>gamma → Mengatur detail bentuk batas pemisah</p></li>
+<li><p>kernel → Jenis fungsi pemisah (kita gunakan RBF)</p></li>
+<li><p>class_weight → Menyeimbangkan pengaruh kelas Normal &amp; Abnormal</p></li>
+</ul>
+<p>Karena kita tidak tahu kombinasi mana yang paling optimal, kita menyiapkan daftar kombinasi parameter yang akan diuji satu per satu oleh komputer.</p>
+<ul class="simple">
+<li><p>GridSearch akan mencoba semua kombinasi parameter</p></li>
+<li><p>Total ada 16 model berbeda yang akan diuji</p></li>
+<li><p>Pendekatan ini lebih ilmiah dibanding memilih parameter secara manual</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.svm</span><span class="w"> </span><span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">GridSearchCV</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- PROSES 1: MENYIAPKAN SKENARIO (GRID SEARCH) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Daftar parameter yang akan diadu</span>
+<span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;C&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span>          <span class="c1"># Ketetatan batas (Regularization)</span>
+    <span class="s1">&#39;gamma&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>  <span class="c1"># Detail lekukan batas (Kernel Coefficient)</span>
+    <span class="s1">&#39;kernel&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;rbf&#39;</span><span class="p">],</span>               <span class="c1"># Tipe Kernel (Tetap RBF)</span>
+    <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">]</span>     <span class="c1"># [PENTING] Solusi Imbalance tanpa SMOTE</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Skenario siap.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Komputer akan mencoba </span><span class="si">{</span><span class="mi">4</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">4</span><span class="si">}</span><span class="s2"> kombinasi model berbeda.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tujuannya: Mencari kombinasi yang paling adil (Recall Normal &amp; Abnormal seimbang).&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 1: MENYIAPKAN SKENARIO (GRID SEARCH) ---
+Skenario siap.
+Komputer akan mencoba 16 kombinasi model berbeda.
+Tujuannya: Mencari kombinasi yang paling adil (Recall Normal &amp; Abnormal seimbang).
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="proses-training-model-otomatis">
+<h3>5.2 Proses Training Model (Otomatis)<a class="headerlink" href="#proses-training-model-otomatis" title="Link to this heading">#</a></h3>
+<p>Di tahap ini, komputer akan:</p>
+<ul class="simple">
+<li><p>Melatih model berkali-kali</p></li>
+<li><p>Menguji tiap kombinasi parameter</p></li>
+<li><p>Menilai performanya menggunakan Cross Validation</p></li>
+</ul>
+<p>Kita menggunakan Cross Validation 3-fold (cv=3), artinya:</p>
+<ul class="simple">
+<li><p>Data training dibagi menjadi 3 bagian</p></li>
+<li><p>Model diuji secara bergantian</p></li>
+<li><p>Tujuannya agar model tidak sekadar menghafal data</p></li>
+</ul>
+<p>Catatan :</p>
+<p>refit=True → model terbaik akan dilatih ulang menggunakan seluruh data training</p>
+<p>verbose=1 → menampilkan progres agar kita tahu model sedang bekerja</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 2: EKSEKUSI TRAINING (MOHON TUNGGU) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Inisialisasi Grid Search</span>
+<span class="c1"># refit=True artinya: Setelah ketemu pemenangnya, latih ulang model itu sampai full power.</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">SVC</span><span class="p">(),</span> <span class="n">param_grid</span><span class="p">,</span> <span class="n">refit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Mulai Belajar!</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled</span><span class="p">,</span> <span class="n">y_train_encoded</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">[SUKSES] Pelatihan selesai!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 2: EKSEKUSI TRAINING (MOHON TUNGGU) ---
+Fitting 3 folds for each of 16 candidates, totalling 48 fits
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[SUKSES] Pelatihan selesai!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="menentukan-model-terbaik-best-model">
+<h3>5.3 Menentukan Model Terbaik (Best Model)<a class="headerlink" href="#menentukan-model-terbaik-best-model" title="Link to this heading">#</a></h3>
+<p>Setelah semua kombinasi diuji, kita ambil model dengan performa terbaik berdasarkan hasil validasi.</p>
+<ul class="simple">
+<li><p>best_params_ → kombinasi parameter paling optimal</p></li>
+<li><p>best_score_ → performa rata-rata saat training (cross validation)</p></li>
+<li><p>model_final → model SVM terbaik yang akan digunakan di tahap evaluasi</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 3: HASIL MODEL TERBAIK ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Ambil parameter juara</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_params_</span>
+<span class="n">best_score</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Settingan Juara : </span><span class="si">{</span><span class="n">best_params</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Skor Validasi   : </span><span class="si">{</span><span class="n">best_score</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> (Rata-rata akurasi saat latihan)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simpan model juara ke variabel khusus</span>
+<span class="n">model_final</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">40</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model &#39;model_final&#39; sekarang siap untuk diuji di Bab Evaluasi.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 3: HASIL MODEL TERBAIK ---
+Settingan Juara : {&#39;C&#39;: 100, &#39;class_weight&#39;: &#39;balanced&#39;, &#39;gamma&#39;: 0.001, &#39;kernel&#39;: &#39;rbf&#39;}
+Skor Validasi   : 74.51% (Rata-rata akurasi saat latihan)
+----------------------------------------
+Model &#39;model_final&#39; sekarang siap untuk diuji di Bab Evaluasi.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="evaluasi-deployment">
+<h2><strong>EVALUASI &amp; DEPLOYMENT</strong><a class="headerlink" href="#evaluasi-deployment" title="Link to this heading">#</a></h2>
+<p>Model akan diuji menggunakan 51 data uji murni, yaitu data yang:</p>
+<ul class="simple">
+<li><p>tidak pernah dilihat model saat training</p></li>
+<li><p>benar-benar baru dan objektif</p></li>
+</ul>
+<section id="pengujian-model-laporan-klasifikasi">
+<h3>6.1 Pengujian Model &amp; Laporan Klasifikasi<a class="headerlink" href="#pengujian-model-laporan-klasifikasi" title="Link to this heading">#</a></h3>
+<p>Pada proses ini dilakukan beberapa hal:</p>
+<ol class="arabic simple">
+<li><p>Menyuruh model memprediksi kondisi jantung</p></li>
+<li><p>Membandingkan hasil prediksi dengan label asli</p></li>
+<li><p>Mengukur performa model secara kuantitatif</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- PROSES 1: PENGUJIAN MODEL (TESTING) ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Prediksi (Model menebak)</span>
+<span class="n">y_pred_final</span> <span class="o">=</span> <span class="n">model_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_final_scaled</span><span class="p">)</span>
+
+<span class="c1"># 2. Hitung Akurasi Total</span>
+<span class="n">acc</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test_final_encoded</span><span class="p">,</span> <span class="n">y_pred_final</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi pada Data Uji (20%): </span><span class="si">{</span><span class="n">acc</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 3. Tampilkan Laporan Detail</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- CLASSIFICATION REPORT (MASUKKAN KE SKRIPSI) ---&quot;</span><span class="p">)</span>
+<span class="c1"># target_names agar laporan memunculkan tulisan &#39;Abnormal&#39; &amp; &#39;Normal&#39;, bukan 0 &amp; 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test_final_encoded</span><span class="p">,</span> <span class="n">y_pred_final</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 1: PENGUJIAN MODEL (TESTING) ---
+Akurasi pada Data Uji (20%): 78.43%
+
+--- CLASSIFICATION REPORT (MASUKKAN KE SKRIPSI) ---
+              precision    recall  f1-score   support
+
+    abnormal       0.89      0.82      0.85        39
+      normal       0.53      0.67      0.59        12
+
+    accuracy                           0.78        51
+   macro avg       0.71      0.74      0.72        51
+weighted avg       0.81      0.78      0.79        51
+</pre></div>
+</div>
+</div>
+</div>
+<p>Perhatikan Classification Report, terutama:</p>
+<p>Recall kelas Normal :</p>
+<ul class="simple">
+<li><p>Jika nilainya ≥ 0.60, berarti model makaTidak bias ke kelas Abnormal,dan Berhasil menangani imbalance data</p></li>
+</ul>
+<p>Precision &amp; F1-score :</p>
+<ul class="simple">
+<li><p>Menunjukkan keseimbangan antara salah dan benar prediksi</p></li>
+</ul>
+</section>
+<section id="visualisasi-confusion-matrix">
+<h3>6.2 Visualisasi Confusion Matrix<a class="headerlink" href="#visualisasi-confusion-matrix" title="Link to this heading">#</a></h3>
+<p>Agar hasil evaluasi mudah dipahami secara visual, kita gunakan Confusion Matrix.Confusion Matrix menunjukkan bahwa sebagian besar data dapat diprediksi dengan benar oleh model, dengan kesalahan prediksi yang relatif kecil pada kedua kelas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 2: VISUALISASI CONFUSION MATRIX ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># Buat Matriks</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test_final_encoded</span><span class="p">,</span> <span class="n">y_pred_final</span><span class="p">)</span>
+
+<span class="c1"># Gambar Heatmap</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">,</span> 
+            <span class="n">xticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">,</span> <span class="n">yticklabels</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Confusion Matrix (Evaluasi Split 80:20)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Kunci Jawaban Asli&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Prediksi Model&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 2: VISUALISASI CONFUSION MATRIX ---
+</pre></div>
+</div>
+<img alt="_images/dc774790e8490c94d20aed022d372f4f092ff19b136a2228d0a135814f36e642.png" src="_images/dc774790e8490c94d20aed022d372f4f092ff19b136a2228d0a135814f36e642.png" />
+</div>
+</div>
+</section>
+<section id="menyimpan-model-deployment-ready">
+<h3>6.3 Menyimpan Model (Deployment Ready)<a class="headerlink" href="#menyimpan-model-deployment-ready" title="Link to this heading">#</a></h3>
+<p>Setelah model terbukti bekerja dengan baik, kita simpan model tersebut agar bisa digunakan kembali tanpa perlu training ulang.</p>
+<p>Kita menyimpan tiga komponen penting:</p>
+<ul class="simple">
+<li><p>Model SVM → untuk melakukan prediksi</p></li>
+<li><p>Scaler → untuk menyesuaikan skala data baru</p></li>
+<li><p>Label Encoder → untuk mengubah hasil prediksi angka menjadi teks</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- PROSES 3: SIMPAN MODEL FINAL (.PKL) ---&quot;</span><span class="p">)</span>
+
+<span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;model_jantung_svm.pkl&#39;</span>
+
+<span class="c1"># Bungkus jadi satu paket</span>
+<span class="n">model_packet</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model_final</span><span class="p">,</span>
+    <span class="s2">&quot;scaler&quot;</span><span class="p">:</span> <span class="n">scaler</span><span class="p">,</span>
+    <span class="s2">&quot;encoder&quot;</span><span class="p">:</span> <span class="n">le</span>
+<span class="p">}</span>
+
+<span class="c1"># Simpan ke hardisk</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model_packet</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;[SUKSES] File &#39;</span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2">&#39; berhasil disimpan!&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Lokasi: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Status: SIAP UNTUK STREAMLIT.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- PROSES 3: SIMPAN MODEL FINAL (.PKL) ---
+[SUKSES] File &#39;model_jantung_svm.pkl&#39; berhasil disimpan!
+Lokasi: C:\Dokumen\PSD\coba\tugas
+Status: SIAP UNTUK STREAMLIT.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="hasil-deployment-streamlit">
+<h3>6.4 Hasil Deployment Streamlit<a class="headerlink" href="#hasil-deployment-streamlit" title="Link to this heading">#</a></h3>
+<p>link streamlit yang sudah di deploy : <a class="reference external" href="https://deteksisuarajantung.streamlit.app/">https://deteksisuarajantung.streamlit.app/</a></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="test.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><strong>Analisis Suara</strong></p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#business-understanding"><strong>BUSINESS UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#latar-belakang-masalah">1.1 Latar Belakang Masalah</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-bisnis-business-objectives">1.2 Tujuan Bisnis (Business Objectives)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tujuan-teknis-data-mining-goals">1.3 Tujuan Teknis (Data Mining Goals)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penilaian-situasi-assess-situation">1.4 Penilaian Situasi (Assess Situation)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rencana-deployment">1.5 Rencana Deployment</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-transformasi">1. Konsep Dasar Transformasi</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#landasan-matematis-rumus">2. Landasan Matematis (Rumus)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-manual-sederhana">3. Contoh Perhitungan Manual (Sederhana)</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menghitung-frekuensi-0-rata-rata-dc-component">Langkah 1: Menghitung Frekuensi 0 (Rata-rata / DC Component)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghitung-frekuensi-1-fundamental-frequency">Langkah 2: Menghitung Frekuensi 1 (Fundamental Frequency)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-memuat-dataset">2.2 Import Library &amp; Memuat Dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pembersihan-label-bytes-string">2.3 Pembersihan Label (Bytes → String)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mengecek-dimensi-dan-struktur-data">2.4 Mengecek Dimensi dan Struktur Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analisis-keseimbangan-kelas-class-imbalance">2.5 Analisis Keseimbangan Kelas (Class Imbalance)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-data-spectrogram">2.6 Visualisasi Data (Spectrogram)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preprocessing"><strong>DATA PREPROCESSING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#membuat-fungsi-ekstraksi-fitur">3.1 Membuat Fungsi Ekstraksi Fitur</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-statistik">3.2 Ekstraksi Fitur Statistik</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#encoding-label-target">3.3 Encoding Label Target</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standarisasi-fitur-scaling">3.4. Standarisasi Fitur (Scaling)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#verifikasi-data-akhir">3.5 Verifikasi Data Akhir</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-splitting"><strong>DATA SPLITTING</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memuat-mengacak-data-test-asli">4.1 Memuat &amp; Mengacak Data Test Asli</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logika-pembagian-data-80-20">4.2 Logika Pembagian Data (80:20)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocessing-data-test-baru">4.3 Preprocessing Data Test Baru</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-data-demo-untuk-streamlit">4.4 Menyimpan Data Demo untuk Streamlit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-modeling-pemodelan"><strong>DATA MODELING (PEMODELAN)</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-skenario-pelatihan-hyperparameter-grid">5.1 Menentukan Skenario Pelatihan (Hyperparameter Grid)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proses-training-model-otomatis">5.2 Proses Training Model (Otomatis)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menentukan-model-terbaik-best-model">5.3 Menentukan Model Terbaik (Best Model)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluasi-deployment"><strong>EVALUASI &amp; DEPLOYMENT</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pengujian-model-laporan-klasifikasi">6.1 Pengujian Model &amp; Laporan Klasifikasi</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualisasi-confusion-matrix">6.2 Visualisasi Confusion Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#menyimpan-model-deployment-ready">6.3 Menyimpan Model (Deployment Ready)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hasil-deployment-streamlit">6.4 Hasil Deployment Streamlit</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdiadha Syabirin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

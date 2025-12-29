@@ -1,0 +1,1575 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Analisis Suara &#8212; Proyek Sains Data A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css?v=6644e6bb" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'test';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="PROJECT AKHIR" href="project_akhir.html" />
+    <link rel="prev" title="Forecasting dengan Auto Corelation" href="Forecasting%28autoCorelation%29.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Proyek Sains Data A - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Proyek Sains Data A - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my learning site : “PROYEK SAINS DATA - A”
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Business Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE)</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData2.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank</strong></a></li>
+
+
+
+
+<li class="toctree-l1 has-children"><a class="reference internal" href="Forecasting.html">Forecasting NO2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">KNN (Auto Correlation)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Voice Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project_akhir.html">Project Akhir</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ftest.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/test.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analisis Suara</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-dan-import-library"><strong>1. Setup dan Import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dari-dataset-audio"><strong>2. Ekstraksi Fitur dari Dataset Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-dan-pembagian-train-test-split"><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dengan-keseluruhan-fitur"><strong>4. Training dengan Keseluruhan Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-information-gain"><strong>5. Seleksi Fitur (Information Gain)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-dengan-pca"><strong>6. Transformasi dengan PCA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-akhir-dan-visualisasi-perbandingan"><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="analisis-suara">
+<h1><strong>Analisis Suara</strong><a class="headerlink" href="#analisis-suara" title="Link to this heading">#</a></h1>
+<section id="setup-dan-import-library">
+<h2><strong>1. Setup dan Import Library</strong><a class="headerlink" href="#setup-dan-import-library" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import library standar</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+
+<span class="c1"># Import untuk audio &amp; ekstraksi fitur</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tsfel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span> <span class="c1"># Untuk progress bar yang rapi</span>
+
+<span class="c1"># Import untuk Machine Learning (sklearn)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">SelectKBest</span><span class="p">,</span> <span class="n">mutual_info_classif</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.decomposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">PCA</span>
+
+<span class="c1"># Mengatur agar plot tampil rapi dan warning tidak mengganggu</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Semua library berhasil di-import.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Semua library berhasil di-import.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekstraksi-fitur-dari-dataset-audio">
+<h2><strong>2. Ekstraksi Fitur dari Dataset Audio</strong><a class="headerlink" href="#ekstraksi-fitur-dari-dataset-audio" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- Konfigurasi TSFEL ---</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">get_features_by_domain</span><span class="p">()</span>
+    <span class="n">N_FEATURES</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">cfg</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;TSFEL dikonfigurasi untuk mengekstrak </span><span class="si">{</span><span class="n">N_FEATURES</span><span class="si">}</span><span class="s2"> fitur.&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal memuat TSFEL: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">N_FEATURES</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">cfg</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># --- Path Dataset ---</span>
+<span class="c1"># Menggunakan path relatif, pastikan folder &#39;data&#39; sejajar dengan script Anda</span>
+<span class="n">DATASET_PATH</span> <span class="o">=</span> <span class="s2">&quot;data/dataset-audio&quot;</span>
+
+<span class="c1"># --- TAHAP 1: Kumpulkan daftar file ---</span>
+<span class="n">file_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">if</span> <span class="n">N_FEATURES</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">dirs</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">DATASET_PATH</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file_name</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file_name</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s2">&quot;.wav&quot;</span><span class="p">,</span> <span class="s2">&quot;.mp3&quot;</span><span class="p">,</span> <span class="s2">&quot;.flac&quot;</span><span class="p">)):</span>
+                <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+                <span class="n">parts</span> <span class="o">=</span> <span class="n">file_path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">)</span>
+                <span class="n">command</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+                <span class="n">person</span> <span class="o">=</span> <span class="n">parts</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">person</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">command</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">file_list</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">file_path</span><span class="p">,</span> <span class="n">label</span><span class="p">))</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;TSFEL tidak terkonfigurasi.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- TAHAP 2: Ekstraksi fitur dengan TQDM &amp; penangkap nama fitur ---</span>
+<span class="n">X_list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># List untuk fitur</span>
+<span class="n">y_list</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># List untuk label</span>
+<span class="n">feature_names</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Untuk menyimpan nama fitur TSFEL</span>
+
+<span class="k">if</span> <span class="n">file_list</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Ditemukan </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">file_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> file. Memulai ekstraksi fitur...&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># VISUALISASI: Progress bar TQDM</span>
+    <span class="k">for</span> <span class="n">file_path</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Mengekstrak Fitur&quot;</span><span class="p">):</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">y_audio</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+            <span class="n">signal_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;signal&#39;</span><span class="p">:</span> <span class="n">y_audio</span><span class="p">})</span>
+            
+            <span class="c1"># &#39;verbose=0&#39; untuk mematikan progress bar internal tsfel</span>
+            <span class="n">features_df</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">signal_df</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+            
+            <span class="c1"># Ambil nama fitur (kolom) HANYA satu kali</span>
+            <span class="k">if</span> <span class="n">feature_names</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">feature_names</span> <span class="o">=</span> <span class="n">features_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+            <span class="c1"># Tambahkan fitur dan label</span>
+            <span class="n">X_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features_df</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">y_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Gagal memproses </span><span class="si">{</span><span class="n">file_path</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># Lewati file yang error</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Selesai! </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">X_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> sampel audio berhasil diekstrak.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">feature_names</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Nama fitur berhasil ditangkap (Total: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> nama).&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tidak ada file yang ditemukan.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TSFEL dikonfigurasi untuk mengekstrak 4 fitur.
+Tidak ada file yang ditemukan.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="persiapan-data-dan-pembagian-train-test-split">
+<h2><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong><a class="headerlink" href="#persiapan-data-dan-pembagian-train-test-split" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_list</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">y_list</span><span class="p">)</span>
+
+<span class="c1"># Cek hasil</span>
+<span class="k">if</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Bentuk data (X): </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># (jumlah_sampel, 155)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk label (y): </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Kelas yang ditemukan: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Bagi data</span>
+    <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+        <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+        <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> 
+        <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> 
+        <span class="n">stratify</span><span class="o">=</span><span class="n">y</span> <span class="c1"># Penting agar proporsi kelas seimbang</span>
+    <span class="p">)</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Data berhasil dibagi:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data Latih: </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> sampel&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data Uji: </span><span class="si">{</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> sampel&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;ERROR: Tidak ada data (X) untuk diproses. Cek Bagian 2.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ERROR: Tidak ada data (X) untuk diproses. Cek Bagian 2.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="training-dengan-keseluruhan-fitur">
+<h2><strong>4. Training dengan Keseluruhan Fitur</strong><a class="headerlink" href="#training-dengan-keseluruhan-fitur" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- EKSPERIMEN 1: Melatih dengan SEMUA </span><span class="si">{</span><span class="n">N_FEATURES</span><span class="si">}</span><span class="s2"> FITUR TSFEL ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Scaling data</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melakukan scaling data...&quot;</span><span class="p">)</span>
+<span class="n">scaler_all</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_train_scaled_all</span> <span class="o">=</span> <span class="n">scaler_all</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">X_test_scaled_all</span> <span class="o">=</span> <span class="n">scaler_all</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+
+<span class="c1"># 2. Latih model</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melatih model &#39;model_all_features&#39;...&quot;</span><span class="p">)</span>
+<span class="n">model_all_features</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_all_features</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled_all</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 3. Prediksi dan hitung akurasi</span>
+<span class="n">y_pred_all</span> <span class="o">=</span> <span class="n">model_all_features</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_scaled_all</span><span class="p">)</span>
+<span class="n">acc_all_features</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_all</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hasil Akurasi (Semua Fitur): </span><span class="si">{</span><span class="n">acc_all_features</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- EKSPERIMEN 1: Melatih dengan SEMUA 4 FITUR TSFEL ---
+Melakukan scaling data...
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Melakukan scaling data...&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">scaler_all</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">X_train_scaled_all</span> <span class="o">=</span> <span class="n">scaler_all</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">X_test_scaled_all</span> <span class="o">=</span> <span class="n">scaler_all</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># 2. Latih model</span>
+
+<span class="ne">NameError</span>: name &#39;X_train&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="seleksi-fitur-information-gain">
+<h2><strong>5. Seleksi Fitur (Information Gain)</strong><a class="headerlink" href="#seleksi-fitur-information-gain" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- EKSPERIMEN 2: Mencari &#39;k&#39; Fitur Terbaik ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Langkah 5a: Menghitung ranking fitur (Information Gain)...&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Tentukan threshold ---</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Menggunakan threshold Information Gain: </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hitung skor IG pada data latih (non-scaled)</span>
+<span class="n">feature_scores</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># --- MEMBUAT DAFTAR PERINGKAT (DI ATAS THRESHOLD) ---</span>
+<span class="n">combined_features</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">feature_scores</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">))</span>
+<span class="n">filtered_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">combined_features</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">sorted_features</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filtered_features</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+
+<span class="c1"># --- MEMFILTER DATA UNTUK LOOPING (Bagian 5c) ---</span>
+<span class="n">fitur_penting_mask</span> <span class="o">=</span> <span class="n">feature_scores</span> <span class="o">&gt;=</span> <span class="n">threshold</span>
+<span class="n">k_penting</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">fitur_penting_mask</span><span class="p">)</span>
+<span class="n">fitur_dihapus</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">k_penting</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur asli: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fitur dihapus (skor &lt; </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">fitur_dihapus</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sisa fitur (skor &gt;= </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">k_penting</span><span class="si">}</span><span class="s2"> (Ini adalah &#39;k_penting&#39; kita)&quot;</span><span class="p">)</span>
+
+<span class="c1"># (Scaling data tidak diperlukan di sel ini, hanya di sel looping)</span>
+
+<span class="c1"># --- (Bagian 5b) Menampilkan Daftar Peringkat Fitur (SKOR &gt;= 0.5) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Langkah 5b: Daftar Peringkat Fitur (Skor IG &gt;= </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">) - FITUR PENTING&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Peringkat&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Skor IG&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Nama Fitur&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">sorted_features</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sorted_features</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">&lt;15.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tidak ada fitur yang memiliki skor &gt;= </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_features</span><span class="p">)</span><span class="si">}</span><span class="s2"> fitur memiliki skor &gt;= </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># --- (TAMBAHAN) Daftar Fitur yang Dihapus (Skor &lt; 0.5) ---</span>
+
+<span class="c1"># --- MEMBUAT DAFTAR PERINGKAT (DI BAWAH THRESHOLD) ---</span>
+<span class="n">dropped_features</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">combined_features</span> <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">threshold</span><span class="p">]</span>
+<span class="n">sorted_dropped_features</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dropped_features</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># --------------------------------------------------</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Langkah 5c: Daftar Peringkat Fitur (Skor IG &lt; </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">) - DIHAPUS&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Peringkat&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Skor IG&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Nama Fitur&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">sorted_dropped_features</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sorted_dropped_features</span><span class="p">):</span>
+        <span class="c1"># Tampilkan keseluruhan 79 fitur yang dihapus</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">&lt;15.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tidak ada fitur yang memiliki skor &lt; </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">sorted_dropped_features</span><span class="p">)</span><span class="si">}</span><span class="s2"> fitur memiliki skor &lt; </span><span class="si">{</span><span class="n">threshold</span><span class="si">}</span><span class="s2">.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- EKSPERIMEN 2: Mencari &#39;k&#39; Fitur Terbaik ---
+Langkah 5a: Menghitung ranking fitur (Information Gain)...
+Menggunakan threshold Information Gain: 0.5
+Fitur asli: 156
+Fitur dihapus (skor &lt; 0.5): 80
+Sisa fitur (skor &gt;= 0.5): 76 (Ini adalah &#39;k_penting&#39; kita)
+
+======================================================================
+Langkah 5b: Daftar Peringkat Fitur (Skor IG &gt;= 0.5) - FITUR PENTING
+======================================================================
+Peringkat  | Skor IG         | Nama Fitur
+----------------------------------------------------------------------
+1          | 0.942928        | signal_Spectrogram mean coefficient_13161.29Hz
+2          | 0.893474        | signal_Neighbourhood peaks
+3          | 0.844954        | signal_Signal distance
+4          | 0.843808        | signal_ECDF_3
+5          | 0.831539        | signal_ECDF_7
+6          | 0.825025        | signal_ECDF Percentile Count_0
+7          | 0.819105        | signal_ECDF_0
+8          | 0.812222        | signal_ECDF_5
+9          | 0.811170        | signal_ECDF_1
+10         | 0.810008        | signal_Wavelet variance_12000.0Hz
+11         | 0.806974        | signal_ECDF_4
+12         | 0.806426        | signal_Spectral decrease
+13         | 0.805812        | signal_Wavelet energy_12000.0Hz
+14         | 0.805812        | signal_Wavelet standard deviation_12000.0Hz
+15         | 0.799141        | signal_ECDF_8
+16         | 0.791033        | signal_Spectrogram mean coefficient_13935.48Hz
+17         | 0.787993        | signal_ECDF_9
+18         | 0.786174        | signal_ECDF_2
+19         | 0.785134        | signal_ECDF Percentile Count_1
+20         | 0.778473        | signal_Entropy
+21         | 0.776016        | signal_Spectrogram mean coefficient_3096.77Hz
+22         | 0.774976        | signal_Spectrogram mean coefficient_10838.71Hz
+23         | 0.772207        | signal_ECDF_6
+24         | 0.758870        | signal_Spectrogram mean coefficient_14709.68Hz
+25         | 0.751647        | signal_Spectral slope
+26         | 0.749754        | signal_Mean
+27         | 0.740961        | signal_Spectrogram mean coefficient_17032.26Hz
+28         | 0.738245        | signal_Median absolute diff
+29         | 0.730183        | signal_Spectral distance
+30         | 0.729022        | signal_Spectrogram mean coefficient_774.19Hz
+31         | 0.721770        | signal_Wavelet variance_2000.0Hz
+32         | 0.718795        | signal_Spectral positive turning points
+33         | 0.718735        | signal_Wavelet variance_3000.0Hz
+34         | 0.717562        | signal_Wavelet energy_3000.0Hz
+35         | 0.717562        | signal_Wavelet standard deviation_3000.0Hz
+36         | 0.715940        | signal_Wavelet energy_2000.0Hz
+37         | 0.715940        | signal_Wavelet standard deviation_2000.0Hz
+38         | 0.707599        | signal_Wavelet energy_2400.0Hz
+39         | 0.707599        | signal_Wavelet standard deviation_2400.0Hz
+40         | 0.707388        | signal_Wavelet variance_2400.0Hz
+41         | 0.701414        | signal_Wavelet variance_6000.0Hz
+42         | 0.701298        | signal_Wavelet variance_1714.29Hz
+43         | 0.701236        | signal_Wavelet energy_1714.29Hz
+44         | 0.701236        | signal_Wavelet standard deviation_1714.29Hz
+45         | 0.699844        | signal_Wavelet energy_6000.0Hz
+46         | 0.699844        | signal_Wavelet standard deviation_6000.0Hz
+47         | 0.697715        | signal_Wavelet energy_4000.0Hz
+48         | 0.697715        | signal_Wavelet standard deviation_4000.0Hz
+49         | 0.694759        | signal_Wavelet variance_4000.0Hz
+50         | 0.688863        | signal_Wavelet absolute mean_12000.0Hz
+51         | 0.673929        | signal_Wavelet absolute mean_3000.0Hz
+52         | 0.671111        | signal_Median
+53         | 0.661513        | signal_Autocorrelation
+54         | 0.660425        | signal_Negative turning points
+55         | 0.652378        | signal_Spectrogram mean coefficient_1548.39Hz
+56         | 0.647807        | signal_Spectrogram mean coefficient_2322.58Hz
+57         | 0.641829        | signal_MFCC_0
+58         | 0.630696        | signal_Positive turning points
+59         | 0.630585        | signal_Wavelet absolute mean_4000.0Hz
+60         | 0.624963        | signal_Wavelet absolute mean_6000.0Hz
+61         | 0.605633        | signal_Spectrogram mean coefficient_0.0Hz
+62         | 0.585734        | signal_MFCC_6
+63         | 0.576764        | signal_MFCC_1
+64         | 0.574302        | signal_Wavelet absolute mean_2400.0Hz
+65         | 0.557367        | signal_Spectrogram mean coefficient_3870.97Hz
+66         | 0.555039        | signal_MFCC_9
+67         | 0.532927        | signal_MFCC_10
+68         | 0.530338        | signal_Wavelet energy_1500.0Hz
+69         | 0.530338        | signal_Wavelet standard deviation_1500.0Hz
+70         | 0.527334        | signal_Wavelet variance_1500.0Hz
+71         | 0.511079        | signal_Spectrogram mean coefficient_15483.87Hz
+72         | 0.511042        | signal_MFCC_11
+73         | 0.507574        | signal_Spectral roll-off
+74         | 0.507313        | signal_Maximum frequency
+75         | 0.503689        | signal_MFCC_8
+76         | 0.502027        | signal_Fundamental frequency
+----------------------------------------------------------------------
+Total 76 fitur memiliki skor &gt;= 0.5.
+
+======================================================================
+Langkah 5c: Daftar Peringkat Fitur (Skor IG &lt; 0.5) - DIHAPUS
+======================================================================
+Peringkat  | Skor IG         | Nama Fitur
+----------------------------------------------------------------------
+1          | 0.499884        | signal_MFCC_5
+2          | 0.499740        | signal_Min
+3          | 0.487903        | signal_MFCC_7
+4          | 0.487284        | signal_Spectrogram mean coefficient_16258.06Hz
+5          | 0.486702        | signal_Spectrogram mean coefficient_17806.45Hz
+6          | 0.485730        | signal_MFCC_4
+7          | 0.476673        | signal_Spectral spread
+8          | 0.466588        | signal_Spectrogram mean coefficient_18580.65Hz
+9          | 0.444056        | signal_Median frequency
+10         | 0.432319        | signal_LPCC_1
+11         | 0.432319        | signal_LPCC_11
+12         | 0.426159        | signal_Spectrogram mean coefficient_19354.84Hz
+13         | 0.422789        | signal_Mean absolute diff
+14         | 0.417628        | signal_Interquartile range
+15         | 0.407267        | signal_Median absolute deviation
+16         | 0.398539        | signal_Spectrogram mean coefficient_11612.9Hz
+17         | 0.398357        | signal_Mean diff
+18         | 0.388237        | signal_Wavelet energy_1333.33Hz
+19         | 0.388237        | signal_Wavelet standard deviation_1333.33Hz
+20         | 0.388038        | signal_Wavelet variance_1333.33Hz
+21         | 0.376002        | signal_Power bandwidth
+22         | 0.372021        | signal_Wavelet absolute mean_1333.33Hz
+23         | 0.370975        | signal_Spectrogram mean coefficient_22451.61Hz
+24         | 0.368688        | signal_Spectrogram mean coefficient_12387.1Hz
+25         | 0.364684        | signal_Spectrogram mean coefficient_21677.42Hz
+26         | 0.363314        | signal_Spectrogram mean coefficient_20129.03Hz
+27         | 0.357008        | signal_Skewness
+28         | 0.352469        | signal_MFCC_2
+29         | 0.349001        | signal_Spectral variation
+30         | 0.346765        | signal_LPCC_10
+31         | 0.346765        | signal_LPCC_2
+32         | 0.330268        | signal_Peak to peak distance
+33         | 0.313278        | signal_Sum absolute diff
+34         | 0.298926        | signal_Zero crossing rate
+35         | 0.290571        | signal_Spectral kurtosis
+36         | 0.289267        | signal_Spectrogram mean coefficient_23225.81Hz
+37         | 0.276975        | signal_Spectrogram mean coefficient_20903.23Hz
+38         | 0.275752        | signal_Spectrogram mean coefficient_4645.16Hz
+39         | 0.274305        | signal_Max power spectrum
+40         | 0.273468        | signal_Spectral roll-on
+41         | 0.271330        | signal_Wavelet absolute mean_1500.0Hz
+42         | 0.266298        | signal_Spectrogram mean coefficient_10064.52Hz
+43         | 0.265860        | signal_MFCC_3
+44         | 0.255561        | signal_LPCC_4
+45         | 0.255561        | signal_LPCC_8
+46         | 0.251146        | signal_Spectrogram mean coefficient_5419.35Hz
+47         | 0.247496        | signal_Kurtosis
+48         | 0.245034        | signal_Centroid
+49         | 0.242777        | signal_Spectrogram mean coefficient_24000.0Hz
+50         | 0.233463        | signal_ECDF Percentile_0
+51         | 0.228140        | signal_Slope
+52         | 0.223324        | signal_Absolute energy
+53         | 0.217690        | signal_ECDF Percentile_1
+54         | 0.210106        | signal_Spectral centroid
+55         | 0.209303        | signal_Spectrogram mean coefficient_8516.13Hz
+56         | 0.208548        | signal_Max
+57         | 0.194422        | signal_Wavelet entropy
+58         | 0.193866        | signal_LPCC_5
+59         | 0.193866        | signal_LPCC_7
+60         | 0.190594        | signal_Spectral skewness
+61         | 0.183858        | signal_Median diff
+62         | 0.181993        | signal_Variance
+63         | 0.181951        | signal_Root mean square
+64         | 0.181781        | signal_Standard deviation
+65         | 0.179919        | signal_Mean absolute deviation
+66         | 0.176249        | signal_Wavelet absolute mean_1714.29Hz
+67         | 0.175389        | signal_Spectrogram mean coefficient_6193.55Hz
+68         | 0.160318        | signal_Spectrogram mean coefficient_9290.32Hz
+69         | 0.159840        | signal_Human range energy
+70         | 0.152747        | signal_LPCC_3
+71         | 0.152747        | signal_LPCC_9
+72         | 0.152486        | signal_Average power
+73         | 0.139533        | signal_Spectral entropy
+74         | 0.133729        | signal_Wavelet absolute mean_2000.0Hz
+75         | 0.131933        | signal_LPCC_6
+76         | 0.117545        | signal_Spectrogram mean coefficient_7741.94Hz
+77         | 0.096001        | signal_LPCC_0
+78         | 0.094732        | signal_Spectrogram mean coefficient_6967.74Hz
+79         | 0.091311        | signal_Area under the curve
+80         | 0.040245        | signal_Histogram mode
+----------------------------------------------------------------------
+Total 80 fitur memiliki skor &lt; 0.5.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Langkah 5c: Mempersiapkan peringkat fitur (Information Gain) untuk looping...&quot;</span><span class="p">)</span>
+
+<span class="c1"># 1. Hitung skor IG untuk SEMUA 156 fitur (pada data non-scaled)</span>
+<span class="n">all_feature_scores</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 2. Dapatkan INDEKS (urutan) fitur, dari skor tertinggi ke terendah</span>
+<span class="c1"># Ini adalah Peringkat IG yang Anda maksud, dibuat SEBELUM looping</span>
+<span class="n">sorted_feature_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">all_feature_scores</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># 3. Siapkan data scaled (dari Cell 4)</span>
+<span class="c1"># Kita akan mengambil (slice) dari data ini</span>
+<span class="n">X_train_scaled_sorted</span> <span class="o">=</span> <span class="n">X_train_scaled_all</span><span class="p">[:,</span> <span class="n">sorted_feature_indices</span><span class="p">]</span>
+<span class="n">X_test_scaled_sorted</span> <span class="o">=</span> <span class="n">X_test_scaled_all</span><span class="p">[:,</span> <span class="n">sorted_feature_indices</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Looping dari k=</span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> (Semua Fitur) TURUN ke k=</span><span class="si">{</span><span class="n">k_penting</span><span class="si">}</span><span class="s2"> (Fitur Penting)...&quot;</span><span class="p">)</span>
+
+<span class="n">accuracies_loop</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># Loop dari 156 turun ke 77</span>
+<span class="n">k_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">k_penting</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
+<span class="n">k_values_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">k_values</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">k_values_list</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Menguji Jumlah Fitur (k)&quot;</span><span class="p">):</span>
+    <span class="c1"># 1. Pilih k fitur teratas (mengambil k kolom pertama dari data yang sudah diurutkan)</span>
+    <span class="n">X_train_k</span> <span class="o">=</span> <span class="n">X_train_scaled_sorted</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">X_test_k</span> <span class="o">=</span> <span class="n">X_test_scaled_sorted</span><span class="p">[:,</span> <span class="p">:</span><span class="n">k</span><span class="p">]</span>
+    
+    <span class="c1"># 2. Latih model</span>
+    <span class="n">model_loop</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">model_loop</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_k</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Prediksi dan simpan akurasi</span>
+    <span class="n">acc_k</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">model_loop</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_k</span><span class="p">))</span>
+    <span class="n">accuracies_loop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc_k</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Looping selesai.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Tampilkan Daftar Peringkat Akurasi (sesuai permintaan Anda) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Langkah 5d: Daftar Akurasi vs. Jumlah Fitur (k)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Jml Fitur (k)&#39;</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Akurasi&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">accuracies_loop</span><span class="p">)):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">k_values_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c1"># k (misal: 156, 155, ...)</span>
+    <span class="n">acc</span> <span class="o">=</span> <span class="n">accuracies_loop</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s2">&lt;20</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">acc</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">&lt;15.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="c1"># -----------------------------------------------------------------------</span>
+
+<span class="c1"># --- Cari Hasil Terbaik ---</span>
+<span class="n">best_k_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">accuracies_loop</span><span class="p">)</span> 
+<span class="n">best_k</span> <span class="o">=</span> <span class="n">k_values_list</span><span class="p">[</span><span class="n">best_k_index</span><span class="p">]</span>
+<span class="n">best_acc_loop</span> <span class="o">=</span> <span class="n">accuracies_loop</span><span class="p">[</span><span class="n">best_k_index</span><span class="p">]</span>
+
+<span class="c1"># --- Balikkan List agar Grafik (Cell 7) Benar ---</span>
+<span class="n">k_values</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">k_values_list</span><span class="p">))</span>
+<span class="n">accuracies_loop</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">accuracies_loop</span><span class="p">))</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hasil Looping Seleksi Fitur (Range </span><span class="si">{</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">k_penting</span><span class="si">}</span><span class="s2">) ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi tertinggi adalah </span><span class="si">{</span><span class="n">best_acc_loop</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Didapatkan saat menggunakan </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2"> fitur terbaik.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Langkah 5c: Mempersiapkan peringkat fitur (Information Gain) untuk looping...
+Looping dari k=156 (Semua Fitur) TURUN ke k=76 (Fitur Penting)...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menguji Jumlah Fitur (k): 100%|██████████| 81/81 [00:10&lt;00:00,  7.98it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Looping selesai.
+
+======================================================================
+Langkah 5d: Daftar Akurasi vs. Jumlah Fitur (k)
+======================================================================
+Jml Fitur (k)        | Akurasi        
+----------------------------------------------------------------------
+156                  | 97.50          %
+155                  | 92.50          %
+154                  | 98.75          %
+153                  | 97.50          %
+152                  | 96.25          %
+151                  | 95.00          %
+150                  | 97.50          %
+149                  | 95.00          %
+148                  | 96.25          %
+147                  | 95.00          %
+146                  | 97.50          %
+145                  | 97.50          %
+144                  | 95.00          %
+143                  | 97.50          %
+142                  | 96.25          %
+141                  | 96.25          %
+140                  | 96.25          %
+139                  | 100.00         %
+138                  | 97.50          %
+137                  | 97.50          %
+136                  | 95.00          %
+135                  | 97.50          %
+134                  | 96.25          %
+133                  | 97.50          %
+132                  | 96.25          %
+131                  | 97.50          %
+130                  | 97.50          %
+129                  | 96.25          %
+128                  | 95.00          %
+127                  | 97.50          %
+126                  | 95.00          %
+125                  | 95.00          %
+124                  | 93.75          %
+123                  | 96.25          %
+122                  | 95.00          %
+121                  | 93.75          %
+120                  | 96.25          %
+119                  | 98.75          %
+118                  | 96.25          %
+117                  | 96.25          %
+116                  | 97.50          %
+115                  | 97.50          %
+114                  | 95.00          %
+113                  | 95.00          %
+112                  | 96.25          %
+111                  | 92.50          %
+110                  | 95.00          %
+109                  | 95.00          %
+108                  | 96.25          %
+107                  | 93.75          %
+106                  | 93.75          %
+105                  | 95.00          %
+104                  | 93.75          %
+103                  | 95.00          %
+102                  | 95.00          %
+101                  | 97.50          %
+100                  | 93.75          %
+99                   | 95.00          %
+98                   | 95.00          %
+97                   | 96.25          %
+96                   | 96.25          %
+95                   | 95.00          %
+94                   | 96.25          %
+93                   | 95.00          %
+92                   | 95.00          %
+91                   | 95.00          %
+90                   | 95.00          %
+89                   | 93.75          %
+88                   | 95.00          %
+87                   | 93.75          %
+86                   | 93.75          %
+85                   | 95.00          %
+84                   | 96.25          %
+83                   | 93.75          %
+82                   | 91.25          %
+81                   | 93.75          %
+80                   | 91.25          %
+79                   | 93.75          %
+78                   | 92.50          %
+77                   | 93.75          %
+76                   | 96.25          %
+----------------------------------------------------------------------
+
+--- Hasil Looping Seleksi Fitur (Range 156-76) ---
+Akurasi tertinggi adalah 100.00%
+Didapatkan saat menggunakan 139 fitur terbaik.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># --- 1. Ambil k terbaik (sesuai hasil Cell 6) ---</span>
+<span class="c1"># (Variabel &#39;best_k&#39; sudah ada di memori dari sel sebelumnya)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Menggunakan k = </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2"> fitur terbaik (hasil looping).&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 2. Buat Peringkat Final (berdasarkan SEMUA data X, y) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menghitung ranking IG final berdasarkan SEMUA data (X, y)...&quot;</span><span class="p">)</span>
+<span class="n">final_scores</span> <span class="o">=</span> <span class="n">mutual_info_classif</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">final_combined</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">final_scores</span><span class="p">,</span> <span class="n">feature_names</span><span class="p">))</span>
+<span class="n">final_sorted_features</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">final_combined</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Ambil NAMA dan SKOR dari {best_k} fitur teratas</span>
+<span class="n">selected_feature_names</span> <span class="o">=</span> <span class="p">[</span><span class="n">name</span> <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">final_sorted_features</span><span class="p">[:</span><span class="n">best_k</span><span class="p">]]</span>
+<span class="n">selected_feature_scores</span> <span class="o">=</span> <span class="p">[</span><span class="n">score</span> <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">final_sorted_features</span><span class="p">[:</span><span class="n">best_k</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Daftar </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_feature_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> fitur terbaik telah disiapkan.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 3. TAMPILKAN TABEL (Sesuai Permintaan Anda) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Langkah 11a: Daftar Fitur Terbaik (k=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2">) yang Digunakan untuk Model Final&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">70</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Peringkat&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Skor IG&#39;</span><span class="si">:</span><span class="s2">&lt;15</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Nama Fitur&#39;</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">selected_feature_names</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">selected_feature_scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;15.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">selected_feature_names</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">70</span><span class="p">)</span>
+
+<span class="c1"># --- 4. Persiapan Data Final (Menggunakan &#39;X&#39; dan &#39;y&#39;) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Mempersiapkan data final untuk pelatihan...&quot;</span><span class="p">)</span>
+<span class="n">X_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
+<span class="n">X_final_selected</span> <span class="o">=</span> <span class="n">X_df</span><span class="p">[</span><span class="n">selected_feature_names</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bentuk data latih final: </span><span class="si">{</span><span class="n">X_final_selected</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 5. Latih Scaler &amp; Model FINAL ---</span>
+<span class="n">scaler_final</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_final_scaled</span> <span class="o">=</span> <span class="n">scaler_final</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_final_selected</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Scaler final telah dilatih.&quot;</span><span class="p">)</span>
+
+<span class="n">model_final</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model_final</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_final_scaled</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model final telah dilatih.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 6. HITUNG AKURASI TRAINING ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Menghitung akurasi training (pada semua data)...&quot;</span><span class="p">)</span>
+<span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">model_final</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_final_scaled</span><span class="p">)</span>
+<span class="n">train_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred_train</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi Training (pada </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="si">}</span><span class="s2"> data): </span><span class="si">{</span><span class="n">train_accuracy</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- 7. Simpan Artefak (untuk app.py) ---</span>
+<span class="n">artifacts</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;tsfel_cfg&#39;</span><span class="p">:</span> <span class="n">cfg</span><span class="p">,</span>
+    <span class="s1">&#39;feature_names&#39;</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span>
+    <span class="s1">&#39;selected_feature_names&#39;</span><span class="p">:</span> <span class="n">selected_feature_names</span><span class="p">,</span> <span class="c1"># Daftar {best_k} nama TERBAIK</span>
+    <span class="s1">&#39;scaler&#39;</span><span class="p">:</span> <span class="n">scaler_final</span><span class="p">,</span>
+    <span class="s1">&#39;model&#39;</span><span class="p">:</span> <span class="n">model_final</span><span class="p">,</span>
+    <span class="s1">&#39;labels&#39;</span><span class="p">:</span> <span class="n">model_final</span><span class="o">.</span><span class="n">classes_</span>
+<span class="p">}</span>
+
+<span class="n">output_filename</span> <span class="o">=</span> <span class="s1">&#39;model_artifacts.joblib&#39;</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">artifacts</span><span class="p">,</span> <span class="n">output_filename</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Model dan artefak baru berhasil disimpan ke: </span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menggunakan k = 139 fitur terbaik (hasil looping).
+Menghitung ranking IG final berdasarkan SEMUA data (X, y)...
+Daftar 139 fitur terbaik telah disiapkan.
+
+======================================================================
+Langkah 11a: Daftar Fitur Terbaik (k=139) yang Digunakan untuk Model Final
+======================================================================
+Peringkat  | Skor IG         | Nama Fitur
+----------------------------------------------------------------------
+1          | 0.938712        | signal_Spectrogram mean coefficient_13161.29Hz
+2          | 0.887738        | signal_Neighbourhood peaks
+3          | 0.852379        | signal_Signal distance
+4          | 0.835120        | signal_ECDF_6
+5          | 0.831665        | signal_ECDF_0
+6          | 0.824969        | signal_Spectral decrease
+7          | 0.823628        | signal_ECDF_3
+8          | 0.814561        | signal_ECDF_4
+9          | 0.811253        | signal_Spectrogram mean coefficient_13935.48Hz
+10         | 0.808378        | signal_Wavelet variance_12000.0Hz
+11         | 0.808359        | signal_ECDF_7
+12         | 0.805825        | signal_Wavelet energy_12000.0Hz
+13         | 0.805825        | signal_Wavelet standard deviation_12000.0Hz
+14         | 0.803974        | signal_ECDF_8
+15         | 0.803245        | signal_ECDF_1
+16         | 0.798868        | signal_ECDF Percentile Count_0
+17         | 0.789948        | signal_ECDF_2
+18         | 0.784093        | signal_ECDF_9
+19         | 0.778419        | signal_ECDF Percentile Count_1
+20         | 0.776094        | signal_ECDF_5
+21         | 0.770541        | signal_Spectrogram mean coefficient_14709.68Hz
+22         | 0.761896        | signal_Spectrogram mean coefficient_10838.71Hz
+23         | 0.759662        | signal_Entropy
+24         | 0.758592        | signal_Spectrogram mean coefficient_774.19Hz
+25         | 0.749342        | signal_Wavelet variance_3000.0Hz
+26         | 0.748352        | signal_Wavelet energy_3000.0Hz
+27         | 0.748352        | signal_Wavelet standard deviation_3000.0Hz
+28         | 0.747859        | signal_Spectral slope
+29         | 0.745545        | signal_Spectrogram mean coefficient_17032.26Hz
+30         | 0.745299        | signal_Spectral distance
+31         | 0.737147        | signal_Spectrogram mean coefficient_3096.77Hz
+32         | 0.730265        | signal_Wavelet variance_2000.0Hz
+33         | 0.729475        | signal_Mean
+34         | 0.728523        | signal_Spectral positive turning points
+35         | 0.725837        | signal_Wavelet energy_2000.0Hz
+36         | 0.725837        | signal_Wavelet standard deviation_2000.0Hz
+37         | 0.722179        | signal_Median absolute diff
+38         | 0.702960        | signal_Wavelet energy_1714.29Hz
+39         | 0.702960        | signal_Wavelet standard deviation_1714.29Hz
+40         | 0.701611        | signal_Wavelet variance_1714.29Hz
+41         | 0.695576        | signal_Wavelet variance_6000.0Hz
+42         | 0.695489        | signal_Wavelet energy_6000.0Hz
+43         | 0.695489        | signal_Wavelet standard deviation_6000.0Hz
+44         | 0.692803        | signal_Wavelet variance_2400.0Hz
+45         | 0.689861        | signal_Wavelet energy_2400.0Hz
+46         | 0.689861        | signal_Wavelet standard deviation_2400.0Hz
+47         | 0.685420        | signal_Wavelet variance_4000.0Hz
+48         | 0.684973        | signal_Wavelet energy_4000.0Hz
+49         | 0.684973        | signal_Wavelet standard deviation_4000.0Hz
+50         | 0.677629        | signal_Spectrogram mean coefficient_1548.39Hz
+51         | 0.670741        | signal_Wavelet absolute mean_12000.0Hz
+52         | 0.668628        | signal_Negative turning points
+53         | 0.660761        | signal_Positive turning points
+54         | 0.655924        | signal_Median
+55         | 0.645521        | signal_Wavelet absolute mean_3000.0Hz
+56         | 0.642980        | signal_Autocorrelation
+57         | 0.638353        | signal_MFCC_0
+58         | 0.634387        | signal_Spectrogram mean coefficient_2322.58Hz
+59         | 0.621344        | signal_Wavelet absolute mean_4000.0Hz
+60         | 0.620158        | signal_Spectrogram mean coefficient_0.0Hz
+61         | 0.603546        | signal_Wavelet absolute mean_2400.0Hz
+62         | 0.597589        | signal_Wavelet absolute mean_6000.0Hz
+63         | 0.570024        | signal_Spectrogram mean coefficient_15483.87Hz
+64         | 0.559422        | signal_MFCC_1
+65         | 0.557327        | signal_MFCC_9
+66         | 0.544606        | signal_Fundamental frequency
+67         | 0.544592        | signal_Spectrogram mean coefficient_3870.97Hz
+68         | 0.533880        | signal_MFCC_6
+69         | 0.533097        | signal_Spectrogram mean coefficient_17806.45Hz
+70         | 0.531914        | signal_MFCC_11
+71         | 0.526886        | signal_MFCC_7
+72         | 0.522285        | signal_MFCC_10
+73         | 0.519967        | signal_Maximum frequency
+74         | 0.519342        | signal_Spectral roll-off
+75         | 0.517732        | signal_MFCC_8
+76         | 0.512398        | signal_Spectrogram mean coefficient_16258.06Hz
+77         | 0.509129        | signal_Wavelet variance_1500.0Hz
+78         | 0.509090        | signal_Wavelet energy_1500.0Hz
+79         | 0.509090        | signal_Wavelet standard deviation_1500.0Hz
+80         | 0.480505        | signal_LPCC_1
+81         | 0.480505        | signal_LPCC_11
+82         | 0.479640        | signal_Min
+83         | 0.475874        | signal_MFCC_4
+84         | 0.472101        | signal_MFCC_5
+85         | 0.470203        | signal_Spectral spread
+86         | 0.457914        | signal_Spectrogram mean coefficient_18580.65Hz
+87         | 0.441251        | signal_Interquartile range
+88         | 0.437035        | signal_Mean absolute diff
+89         | 0.424079        | signal_Median frequency
+90         | 0.422826        | signal_Power bandwidth
+91         | 0.416376        | signal_Mean diff
+92         | 0.412410        | signal_Spectrogram mean coefficient_19354.84Hz
+93         | 0.404991        | signal_Spectrogram mean coefficient_12387.1Hz
+94         | 0.402771        | signal_Spectrogram mean coefficient_11612.9Hz
+95         | 0.401509        | signal_Median absolute deviation
+96         | 0.399453        | signal_Spectrogram mean coefficient_20129.03Hz
+97         | 0.399076        | signal_Spectrogram mean coefficient_22451.61Hz
+98         | 0.372120        | signal_Skewness
+99         | 0.365767        | signal_Spectral variation
+100        | 0.364040        | signal_Wavelet variance_1333.33Hz
+101        | 0.363725        | signal_Wavelet energy_1333.33Hz
+102        | 0.363725        | signal_Wavelet standard deviation_1333.33Hz
+103        | 0.363065        | signal_Wavelet absolute mean_1333.33Hz
+104        | 0.354679        | signal_Spectrogram mean coefficient_21677.42Hz
+105        | 0.347348        | signal_LPCC_10
+106        | 0.347348        | signal_LPCC_2
+107        | 0.313379        | signal_Peak to peak distance
+108        | 0.310674        | signal_Spectrogram mean coefficient_10064.52Hz
+109        | 0.306561        | signal_Sum absolute diff
+110        | 0.301471        | signal_MFCC_2
+111        | 0.299329        | signal_Spectrogram mean coefficient_23225.81Hz
+112        | 0.295937        | signal_Zero crossing rate
+113        | 0.294545        | signal_Spectral kurtosis
+114        | 0.291528        | signal_Kurtosis
+115        | 0.283768        | signal_Spectrogram mean coefficient_5419.35Hz
+116        | 0.282779        | signal_Spectrogram mean coefficient_4645.16Hz
+117        | 0.280457        | signal_Spectral roll-on
+118        | 0.275730        | signal_Spectrogram mean coefficient_20903.23Hz
+119        | 0.270376        | signal_Wavelet absolute mean_1500.0Hz
+120        | 0.258238        | signal_Spectrogram mean coefficient_24000.0Hz
+121        | 0.254997        | signal_Max power spectrum
+122        | 0.250332        | signal_Absolute energy
+123        | 0.248892        | signal_ECDF Percentile_0
+124        | 0.248302        | signal_LPCC_4
+125        | 0.248302        | signal_LPCC_8
+126        | 0.243841        | signal_Centroid
+127        | 0.237292        | signal_ECDF Percentile_1
+128        | 0.236614        | signal_Root mean square
+129        | 0.234562        | signal_Standard deviation
+130        | 0.233334        | signal_Variance
+131        | 0.232724        | signal_Spectral centroid
+132        | 0.225310        | signal_Slope
+133        | 0.219125        | signal_MFCC_3
+134        | 0.213981        | signal_Spectrogram mean coefficient_6193.55Hz
+135        | 0.204406        | signal_Wavelet entropy
+136        | 0.201442        | signal_LPCC_5
+137        | 0.201442        | signal_LPCC_7
+138        | 0.200524        | signal_Average power
+139        | 0.197024        | signal_Spectrogram mean coefficient_9290.32Hz
+----------------------------------------------------------------------
+
+Mempersiapkan data final untuk pelatihan...
+Bentuk data latih final: (400, 139)
+Scaler final telah dilatih.
+Model final telah dilatih.
+Menghitung akurasi training (pada semua data)...
+Akurasi Training (pada 400 data): 100.00%
+
+Model dan artefak baru berhasil disimpan ke: model_artifacts.joblib
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="transformasi-dengan-pca">
+<h2><strong>6. Transformasi dengan PCA</strong><a class="headerlink" href="#transformasi-dengan-pca" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- EKSPERIMEN 3: Melatih dengan Looping Komponen PCA ---&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Langkah 6a: Fit PCA dengan SEMUA {N_FEATURES} komponen (satu kali) ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Langkah 6a: Fit PCA dengan SEMUA </span><span class="si">{</span><span class="n">N_FEATURES</span><span class="si">}</span><span class="s2"> komponen (satu kali)...&quot;</span><span class="p">)</span>
+<span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="n">N_FEATURES</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Fit pada data scaled dari Eksperimen 1</span>
+<span class="n">X_train_pca_all</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train_scaled_all</span><span class="p">)</span>
+<span class="n">X_test_pca_all</span> <span class="o">=</span> <span class="n">pca</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test_scaled_all</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Selesai fit/transform PCA.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Langkah 6b: Memulai looping untuk n = 1 s/d {N_FEATURES} ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Langkah 6b: Memulai looping untuk n = 1 s/d </span><span class="si">{</span><span class="n">N_FEATURES</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+
+<span class="n">accuracies_pca_loop</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">n_components_values</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N_FEATURES</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">n_components_values</span><span class="p">,</span> <span class="n">desc</span><span class="o">=</span><span class="s2">&quot;Menguji Jumlah Komponen&quot;</span><span class="p">):</span>
+    <span class="c1"># 1. Slice data yang sudah di-transform</span>
+    <span class="n">X_train_n</span> <span class="o">=</span> <span class="n">X_train_pca_all</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n</span><span class="p">]</span>
+    <span class="n">X_test_n</span> <span class="o">=</span> <span class="n">X_test_pca_all</span><span class="p">[:,</span> <span class="p">:</span><span class="n">n</span><span class="p">]</span>
+    
+    <span class="c1"># 2. Latih model (n_estimators=50 agar loop cepat)</span>
+    <span class="n">model_loop_pca</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">model_loop_pca</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_n</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Prediksi dan simpan akurasi</span>
+    <span class="n">y_pred_n_pca</span> <span class="o">=</span> <span class="n">model_loop_pca</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_n</span><span class="p">)</span>
+    <span class="n">acc_n_pca</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_n_pca</span><span class="p">)</span>
+    <span class="n">accuracies_pca_loop</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">acc_n_pca</span><span class="p">)</span>
+    
+    <span class="c1"># 4. Cetak akurasi (sesuai permintaan, tapi hanya sesekali agar tidak penuh)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">25</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">or</span> <span class="n">n</span> <span class="o">==</span> <span class="n">N_FEATURES</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi PCA (n=</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">): </span><span class="si">{</span><span class="n">acc_n_pca</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Looping PCA selesai.&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Langkah 6c: Cari hasil terbaik ---</span>
+<span class="n">best_n_index_pca</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">accuracies_pca_loop</span><span class="p">)</span>
+<span class="n">best_n_pca</span> <span class="o">=</span> <span class="n">n_components_values</span><span class="p">[</span><span class="n">best_n_index_pca</span><span class="p">]</span> <span class="c1"># Nilai &#39;n&#39; terbaik</span>
+<span class="n">best_acc_pca</span> <span class="o">=</span> <span class="n">accuracies_pca_loop</span><span class="p">[</span><span class="n">best_n_index_pca</span><span class="p">]</span> <span class="c1"># Akurasi terbaik</span>
+
+<span class="c1"># Simpan hasil ini untuk ringkasan akhir</span>
+<span class="n">acc_pca</span> <span class="o">=</span> <span class="n">best_acc_pca</span>
+<span class="n">n_components_pca</span> <span class="o">=</span> <span class="n">best_n_pca</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hasil Looping PCA ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Akurasi PCA tertinggi adalah </span><span class="si">{</span><span class="n">best_acc_pca</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Didapatkan saat menggunakan </span><span class="si">{</span><span class="n">best_n_pca</span><span class="si">}</span><span class="s2"> komponen PCA terbaik.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--- EKSPERIMEN 3: Melatih dengan Looping Komponen PCA ---
+Langkah 6a: Fit PCA dengan SEMUA 4 komponen (satu kali)...
+Selesai fit/transform PCA.
+
+Langkah 6b: Memulai looping untuk n = 1 s/d 4...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menguji Jumlah Komponen:  25%|██▌       | 1/4 [00:00&lt;00:00,  5.30it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi PCA (n=1): 56.25%
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Menguji Jumlah Komponen: 100%|██████████| 4/4 [00:00&lt;00:00,  7.84it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Akurasi PCA (n=4): 80.00%
+Looping PCA selesai.
+
+--- Hasil Looping PCA ---
+Akurasi PCA tertinggi adalah 80.00%
+Didapatkan saat menggunakan 4 komponen PCA terbaik.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Langkah 6b: Visualisasi Cumulative Explained Variance PCA...&quot;</span><span class="p">)</span>
+
+<span class="c1"># Kita fit PCA baru (tanpa batas komponen) untuk melihat sebaran varians</span>
+<span class="n">pca_plot</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">pca_plot</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train_scaled_all</span><span class="p">)</span> <span class="c1"># &lt;-- Menggunakan data LENGKAP</span>
+
+<span class="c1"># Hitung kumulatif varians</span>
+<span class="n">cumulative_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">pca_plot</span><span class="o">.</span><span class="n">explained_variance_ratio_</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cumulative_variance</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="n">cumulative_variance</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Cumulative Explained Variance oleh Komponen PCA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Jumlah Komponen PCA&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Total Varians yang Dijelaskan&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="c1"># Tandai di mana &#39;n&#39; yang kita pilih berada</span>
+<span class="k">if</span> <span class="n">n_components_pca</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">n_components_pca</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> 
+                <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">n_components_pca</span><span class="si">}</span><span class="s1"> komponen menangkap </span><span class="si">{</span><span class="n">cumulative_variance</span><span class="p">[</span><span class="n">n_components_pca</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">% varians&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Langkah 6b: Visualisasi Cumulative Explained Variance PCA...
+</pre></div>
+</div>
+<img alt="_images/6e3d8549b6a7996cf22bd7cc2ea85a4e081dfb15f35496c4300ceaf671e10320.png" src="_images/6e3d8549b6a7996cf22bd7cc2ea85a4e081dfb15f35496c4300ceaf671e10320.png" />
+</div>
+</div>
+</section>
+<section id="ringkasan-akhir-dan-visualisasi-perbandingan">
+<h2><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong><a class="headerlink" href="#ringkasan-akhir-dan-visualisasi-perbandingan" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;RINGKASAN AKHIR HASIL EKSPERIMEN&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eksperimen 1 (Semua </span><span class="si">{</span><span class="n">N_FEATURES</span><span class="si">}</span><span class="s2"> Fitur): </span><span class="se">\t\t</span><span class="si">{</span><span class="n">acc_all_features</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eksperimen 2 (Seleksi Fitur Terbaik): </span><span class="se">\t</span><span class="si">{</span><span class="n">best_acc_loop</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (menggunakan </span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s2"> fitur)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Eksperimen 3 (Transformasi PCA): </span><span class="se">\t\t</span><span class="si">{</span><span class="n">acc_pca</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">% (menggunakan </span><span class="si">{</span><span class="n">n_components_pca</span><span class="si">}</span><span class="s2"> komponen)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;=&quot;</span><span class="o">*</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="c1"># --- Visualisasi Perbandingan Hasil Akhir ---</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Langkah 7b: Visualisasi Perbandingan Hasil Akhir...&quot;</span><span class="p">)</span>
+
+<span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Eks 1: Semua Fitur&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eks 2: Seleksi (k=</span><span class="si">{</span><span class="n">best_k</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Eks 3: PCA (n=</span><span class="si">{</span><span class="n">n_components_pca</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">]</span>
+<span class="n">accuracies</span> <span class="o">=</span> <span class="p">[</span><span class="n">acc_all_features</span><span class="p">,</span> <span class="n">best_acc_loop</span><span class="p">,</span> <span class="n">acc_pca</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">accuracies</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;#FF5733&#39;</span><span class="p">,</span> <span class="s1">&#39;#33FF57&#39;</span><span class="p">,</span> <span class="s1">&#39;#3357FF&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Akurasi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Perbandingan Akurasi 3 Metode Eksperimen&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span> <span class="c1"># Batas y dari 0% sampai 105%</span>
+
+<span class="c1"># Tambahkan label angka di atas bar</span>
+<span class="k">for</span> <span class="n">bar</span> <span class="ow">in</span> <span class="n">bars</span><span class="p">:</span>
+    <span class="n">yval</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">yval</span> <span class="o">+</span> <span class="mf">0.01</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">yval</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>==================================================
+RINGKASAN AKHIR HASIL EKSPERIMEN
+==================================================
+Eksperimen 1 (Semua 4 Fitur): 		96.25%
+Eksperimen 2 (Seleksi Fitur Terbaik): 	100.00% (menggunakan 139 fitur)
+Eksperimen 3 (Transformasi PCA): 		80.00% (menggunakan 4 komponen)
+==================================================
+
+Langkah 7b: Visualisasi Perbandingan Hasil Akhir...
+</pre></div>
+</div>
+<img alt="_images/897125bfbb4b6181c78def56bacfeef99c3091b576da5599b0a562bf667dd37c.png" src="_images/897125bfbb4b6181c78def56bacfeef99c3091b576da5599b0a562bf667dd37c.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Forecasting%28autoCorelation%29.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Forecasting dengan Auto Corelation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="project_akhir.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><strong>PROJECT AKHIR</strong></p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-dan-import-library"><strong>1. Setup dan Import Library</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstraksi-fitur-dari-dataset-audio"><strong>2. Ekstraksi Fitur dari Dataset Audio</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#persiapan-data-dan-pembagian-train-test-split"><strong>3. Persiapan Data dan Pembagian (Train/Test Split)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#training-dengan-keseluruhan-fitur"><strong>4. Training dengan Keseluruhan Fitur</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seleksi-fitur-information-gain"><strong>5. Seleksi Fitur (Information Gain)</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-dengan-pca"><strong>6. Transformasi dengan PCA</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ringkasan-akhir-dan-visualisasi-perbandingan"><strong>7. Ringkasan Akhir dan Visualisasi Perbandingan</strong></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdiadha Syabirin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

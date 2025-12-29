@@ -1,0 +1,4426 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>- Import Library yang dibutuhkan &#8212; Proyek Sains Data A</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'analisis_data_suara';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.jpg" class="logo__image only-light" alt="Proyek Sains Data A - Home"/>
+    <script>document.write(`<img src="_static/logo.jpg" class="logo__image only-dark" alt="Proyek Sains Data A - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to my learning site : “PROYEK SAINS DATA - A”
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="memahamiBisnis.html">Bussines Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dataUnderstanding.html">Data Understanding</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ExplorasiData.html">Exploration Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PreprocessingData.html">Data Preprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE)</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="ketidakseimbanganData2.html"><strong>Preprocessing Data (Menyeimbangkan Data menggunakan SMOTE) Data Bank</strong></a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Forecasting.html">Forecasting NO2 with KNN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Forecasting%28autoCorelation%29.html">Forecasting NO2 with KNN (Auto Correlation)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test.html"><strong>1. Setup dan Import Library</strong></a></li>
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Forecasting%28Exponential%20Smooting%29.html">Forecasting NO2 with Exponential Smoothing</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fanalisis_data_suara.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/analisis_data_suara.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>- Import Library yang dibutuhkan</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">- Import Library yang dibutuhkan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-dan-konfigurasi">- Setup dan Konfigurasi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstrak-fitur-menggunakan-tsfel">- Ekstrak fitur menggunakan tsfel</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>tsfel
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: tsfel in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (0.2.0)
+Requirement already satisfied: ipython&gt;=7.4.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (9.5.0)
+Requirement already satisfied: numpy&gt;=1.18.5 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (1.24.4)
+Requirement already satisfied: pandas&gt;=1.5.3 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (1.5.3)
+Requirement already satisfied: PyWavelets&gt;=1.4.1 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (1.9.0)
+Requirement already satisfied: requests&gt;=2.31.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (2.32.5)
+Requirement already satisfied: scikit-learn&gt;=0.21.3 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (1.3.2)
+Requirement already satisfied: scipy&gt;=1.7.3 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (1.11.4)
+Requirement already satisfied: setuptools&gt;=47.1.1 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (78.1.1)
+Requirement already satisfied: statsmodels&gt;=0.12.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from tsfel) (0.14.5)
+Requirement already satisfied: colorama in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.4.6)
+Requirement already satisfied: decorator in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (5.2.1)
+Requirement already satisfied: ipython-pygments-lexers in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (1.1.1)
+Requirement already satisfied: jedi&gt;=0.16 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.19.2)
+Requirement already satisfied: matplotlib-inline in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.1.7)
+Requirement already satisfied: prompt_toolkit&lt;3.1.0,&gt;=3.0.41 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (3.0.52)
+Requirement already satisfied: pygments&gt;=2.4.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (2.19.2)
+Requirement already satisfied: stack_data in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (0.6.3)
+Requirement already satisfied: traitlets&gt;=5.13.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (5.14.3)
+Requirement already satisfied: typing_extensions&gt;=4.6 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from ipython&gt;=7.4.0-&gt;tsfel) (4.15.0)
+Requirement already satisfied: wcwidth in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from prompt_toolkit&lt;3.1.0,&gt;=3.0.41-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.2.13)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.4 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.8.5)
+Requirement already satisfied: python-dateutil&gt;=2.8.1 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from pandas&gt;=1.5.3-&gt;tsfel) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from pandas&gt;=1.5.3-&gt;tsfel) (2025.2)
+Requirement already satisfied: six&gt;=1.5 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from python-dateutil&gt;=2.8.1-&gt;pandas&gt;=1.5.3-&gt;tsfel) (1.17.0)
+Collecting numpy&gt;=1.18.5 (from tsfel)
+  Using cached numpy-2.3.5-cp311-cp311-win_amd64.whl.metadata (60 kB)
+Requirement already satisfied: charset_normalizer&lt;4,&gt;=2 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from requests&gt;=2.31.0-&gt;tsfel) (3.4.3)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from requests&gt;=2.31.0-&gt;tsfel) (3.10)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from requests&gt;=2.31.0-&gt;tsfel) (1.26.20)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from requests&gt;=2.31.0-&gt;tsfel) (2025.8.3)
+  Using cached numpy-1.26.4-cp311-cp311-win_amd64.whl.metadata (61 kB)
+Requirement already satisfied: joblib&gt;=1.1.1 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from scikit-learn&gt;=0.21.3-&gt;tsfel) (1.3.2)
+Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from scikit-learn&gt;=0.21.3-&gt;tsfel) (3.6.0)
+Requirement already satisfied: patsy&gt;=0.5.6 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from statsmodels&gt;=0.12.0-&gt;tsfel) (1.0.1)
+Requirement already satisfied: packaging&gt;=21.3 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from statsmodels&gt;=0.12.0-&gt;tsfel) (25.0)
+Requirement already satisfied: executing&gt;=1.2.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from stack_data-&gt;ipython&gt;=7.4.0-&gt;tsfel) (2.2.1)
+Requirement already satisfied: asttokens&gt;=2.1.0 in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from stack_data-&gt;ipython&gt;=7.4.0-&gt;tsfel) (3.0.0)
+Requirement already satisfied: pure-eval in c:\users\ahabi\anaconda3\envs\pycaret-env\lib\site-packages (from stack_data-&gt;ipython&gt;=7.4.0-&gt;tsfel) (0.2.3)
+Using cached numpy-1.26.4-cp311-cp311-win_amd64.whl (15.8 MB)
+Installing collected packages: numpy
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.24.4
+    Uninstalling numpy-1.24.4:
+      Successfully uninstalled numpy-1.24.4
+Successfully installed numpy-1.26.4
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  WARNING: Failed to remove contents in a temporary directory &#39;C:\Users\ahabi\anaconda3\envs\pycaret-env\Lib\site-packages\~~mpy&#39;.
+  You can safely remove it manually.
+ERROR: pip&#39;s dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+opencv-python 4.12.0.88 requires numpy&lt;2.3.0,&gt;=2; python_version &gt;= &quot;3.9&quot;, but you have numpy 1.26.4 which is incompatible.
+pycaret 3.0.0 requires numpy&lt;1.25,&gt;=1.21, but you have numpy 1.26.4 which is incompatible.
+salib 1.5.1 requires pandas&gt;=2.0, but you have pandas 1.5.3 which is incompatible.
+visions 0.8.1 requires pandas&gt;=2.0.0, but you have pandas 1.5.3 which is incompatible.
+xarray 2025.1.1 requires pandas&gt;=2.1, but you have pandas 1.5.3 which is incompatible.
+</pre></div>
+</div>
+</div>
+</div>
+<section id="import-library-yang-dibutuhkan">
+<h1>- Import Library yang dibutuhkan<a class="headerlink" href="#import-library-yang-dibutuhkan" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">tsfel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setup-dan-konfigurasi">
+<h1>- Setup dan Konfigurasi<a class="headerlink" href="#setup-dan-konfigurasi" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">AUGMENTED_PATH</span> <span class="o">=</span> <span class="s2">&quot;C:</span><span class="se">\\</span><span class="s2">Dokumen</span><span class="se">\\</span><span class="s2">PSD</span><span class="se">\\</span><span class="s2">dataset</span><span class="se">\\</span><span class="s2">voice_augmented&quot;</span>
+<span class="n">TARGET_SR</span> <span class="o">=</span> <span class="mi">22050</span>  <span class="c1"># Sample rate konsisten untuk training &amp; deployment</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">get_features_by_domain</span><span class="p">()</span> <span class="c1"># Konfigurasi default tsfel</span>
+
+<span class="c1"># 1. Load audio files (dari notebook Anda, tapi kita modifikasi)</span>
+<span class="n">all_audio_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">category</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;buka&#39;</span><span class="p">,</span> <span class="s1">&#39;tutup&#39;</span><span class="p">]:</span>
+    <span class="n">category_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">AUGMENTED_PATH</span><span class="p">,</span> <span class="n">category</span><span class="p">)</span>
+    <span class="n">audio_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">f</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">category_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.wav&#39;</span><span class="p">)]</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading </span><span class="si">{</span><span class="n">category</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">audio_file</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">audio_files</span><span class="p">):</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_path</span><span class="p">,</span> <span class="n">audio_file</span><span class="p">)</span>
+        <span class="c1"># Load DAN RESAMPLE ke TARGET_SR</span>
+        <span class="n">audio</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">TARGET_SR</span><span class="p">)</span>
+        <span class="n">all_audio_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;audio&#39;</span><span class="p">:</span> <span class="n">audio</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">category</span><span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total files loaded: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_audio_data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading buka...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                                                                               | 0/100 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                                                                                                                                                               | 0/100 [00:29&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>         <span class="n">file_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">category_path</span><span class="p">,</span> <span class="n">audio_file</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>         <span class="c1"># Load DAN RESAMPLE ke TARGET_SR</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>         <span class="n">audio</span><span class="p">,</span> <span class="n">sr</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">TARGET_SR</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>         <span class="n">all_audio_data</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;audio&#39;</span><span class="p">:</span> <span class="n">audio</span><span class="p">,</span> <span class="s1">&#39;label&#39;</span><span class="p">:</span> <span class="n">category</span><span class="p">})</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total files loaded: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">all_audio_data</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\librosa\core\audio.py:190,</span> in <span class="ni">load</span><span class="nt">(path, sr, mono, offset, duration, dtype, res_type)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> <span class="c1"># Final cleanup for dtype and contiguity</span>
+<span class="g g-Whitespace">    </span><span class="mi">189</span> <span class="k">if</span> <span class="n">mono</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">190</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">to_mono</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">192</span> <span class="k">if</span> <span class="n">sr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">193</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">resample</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">orig_sr</span><span class="o">=</span><span class="n">sr_native</span><span class="p">,</span> <span class="n">target_sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">res_type</span><span class="o">=</span><span class="n">res_type</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\librosa\core\audio.py:505,</span> in <span class="ni">to_mono</span><span class="nt">(y)</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Convert an audio signal to mono by averaging samples across channels.</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span><span class="sd"> Parameters</span>
+<span class="sd">   (...)    502 (117601,)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span> <span class="c1"># Validate the buffer</span>
+<span class="ne">--&gt; </span><span class="mi">505</span> <span class="n">util</span><span class="o">.</span><span class="n">valid_audio</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="k">if</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span>     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="nb">tuple</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)))</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\lazy_loader\__init__.py:82,</span> in <span class="ni">attach.&lt;locals&gt;.__getattr__</span><span class="nt">(name)</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span> <span class="k">elif</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">attr_to_modules</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">81</span>     <span class="n">submod_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">package_name</span><span class="si">}</span><span class="s2">.</span><span class="si">{</span><span class="n">attr_to_modules</span><span class="p">[</span><span class="n">name</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">82</span>     <span class="n">submod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">submod_path</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>     <span class="n">attr</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">submod</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>     <span class="c1"># If the attribute lives in a file (module) with the same</span>
+<span class="g g-Whitespace">     </span><span class="mi">86</span>     <span class="c1"># name as the attribute, ensure that the attribute and *not*</span>
+<span class="g g-Whitespace">     </span><span class="mi">87</span>     <span class="c1"># the module is accessible on the package.</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\importlib\__init__.py:126,</span> in <span class="ni">import_module</span><span class="nt">(name, package)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span>             <span class="k">break</span>
+<span class="g g-Whitespace">    </span><span class="mi">125</span>         <span class="n">level</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">--&gt; </span><span class="mi">126</span> <span class="k">return</span> <span class="n">_bootstrap</span><span class="o">.</span><span class="n">_gcd_import</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="n">level</span><span class="p">:],</span> <span class="n">package</span><span class="p">,</span> <span class="n">level</span><span class="p">)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1204,</span> in <span class="ni">_gcd_import</span><span class="nt">(name, package, level)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1176,</span> in <span class="ni">_find_and_load</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:1147,</span> in <span class="ni">_find_and_load_unlocked</span><span class="nt">(name, import_)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:690,</span> in <span class="ni">_load_unlocked</span><span class="nt">(spec)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap_external&gt;:940,</span> in <span class="ni">exec_module</span><span class="nt">(self, module)</span>
+
+<span class="nn">File &lt;frozen importlib._bootstrap&gt;:241,</span> in <span class="ni">_call_with_frames_removed</span><span class="nt">(f, *args, **kwds)</span>
+
+<span class="n">File</span> <span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Programs</span>\<span class="n">Python</span>\<span class="n">Python311</span>\<span class="n">Lib</span>\<span class="n">site</span><span class="o">-</span><span class="n">packages</span>\<span class="n">librosa</span>\<span class="n">util</span>\<span class="n">utils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">1052</span>
+<span class="g g-Whitespace">   </span><span class="mi">1048</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Vectorized wrapper for the localmax stencil&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1049</span>     <span class="n">y</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">_localmax_sten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1052</span> <span class="nd">@numba</span><span class="o">.</span><span class="n">guvectorize</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span>     <span class="p">[</span>
+<span class="g g-Whitespace">   </span><span class="mi">1054</span>         <span class="s2">&quot;void(int16[:], bool_[:])&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span>         <span class="s2">&quot;void(int32[:], bool_[:])&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span>         <span class="s2">&quot;void(int64[:], bool_[:])&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1057</span>         <span class="s2">&quot;void(float32[:], bool_[:])&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1058</span>         <span class="s2">&quot;void(float64[:], bool_[:])&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1059</span>     <span class="p">],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1060</span>     <span class="s2">&quot;(n)-&gt;(n)&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1061</span>     <span class="n">cache</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1062</span>     <span class="n">nopython</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1063</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1064</span> <span class="k">def</span><span class="w"> </span><span class="nf">_localmin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Vectorized wrapper for the localmin stencil&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span>     <span class="n">y</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">_localmin_sten</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\np\ufunc\decorators.py:203,</span> in <span class="ni">guvectorize.&lt;locals&gt;.wrap</span><span class="nt">(func)</span>
+<span class="g g-Whitespace">    </span><span class="mi">201</span> <span class="n">guvec</span> <span class="o">=</span> <span class="n">GUVectorize</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">signature</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">202</span> <span class="k">for</span> <span class="n">fty</span> <span class="ow">in</span> <span class="n">ftylist</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">203</span>     <span class="n">guvec</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fty</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">204</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">ftylist</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">205</span>     <span class="n">guvec</span><span class="o">.</span><span class="n">disable_compile</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\np\ufunc\gufunc.py:137,</span> in <span class="ni">GUFunc.add</span><span class="nt">(self, fty)</span>
+<span class="g g-Whitespace">    </span><span class="mi">136</span> <span class="k">def</span><span class="w"> </span><span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fty</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">137</span>     <span class="bp">self</span><span class="o">.</span><span class="n">gufunc_builder</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">fty</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\np\ufunc\ufuncbuilder.py:257,</span> in <span class="ni">_BaseUFuncBuilder.add</span><span class="nt">(self, sig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">255</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">256</span>     <span class="n">targetoptions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">nb_func</span><span class="o">.</span><span class="n">targetoptions</span>
+<span class="ne">--&gt; </span><span class="mi">257</span> <span class="n">cres</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="n">_compile_element_wise_function</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="bp">self</span><span class="o">.</span><span class="n">nb_func</span><span class="p">,</span> <span class="n">targetoptions</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="n">sig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_finalize_signature</span><span class="p">(</span><span class="n">cres</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">return_type</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sigs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\np\ufunc\ufuncbuilder.py:175,</span> in <span class="ni">_compile_element_wise_function</span><span class="nt">(nb_func, targetoptions, sig)</span>
+<span class="g g-Whitespace">    </span><span class="mi">172</span> <span class="k">def</span><span class="w"> </span><span class="nf">_compile_element_wise_function</span><span class="p">(</span><span class="n">nb_func</span><span class="p">,</span> <span class="n">targetoptions</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">173</span>     <span class="c1"># Do compilation</span>
+<span class="g g-Whitespace">    </span><span class="mi">174</span>     <span class="c1"># Return CompileResult to test</span>
+<span class="ne">--&gt; </span><span class="mi">175</span>     <span class="n">cres</span> <span class="o">=</span> <span class="n">nb_func</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="o">**</span><span class="n">targetoptions</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">176</span>     <span class="n">args</span><span class="p">,</span> <span class="n">return_type</span> <span class="o">=</span> <span class="n">sigutils</span><span class="o">.</span><span class="n">normalize_signature</span><span class="p">(</span><span class="n">sig</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">177</span>     <span class="k">return</span> <span class="n">cres</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">return_type</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\np\ufunc\ufuncbuilder.py:123,</span> in <span class="ni">UFuncDispatcher.compile</span><span class="nt">(self, sig, locals, **targetoptions)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="c1"># Disable loop lifting</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span> <span class="c1"># The feature requires a real</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span> <span class="c1">#  python function</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span> <span class="n">flags</span><span class="o">.</span><span class="n">enable_looplift</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="ne">--&gt; </span><span class="mi">123</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_core</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="nb">locals</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\np\ufunc\ufuncbuilder.py:162,</span> in <span class="ni">UFuncDispatcher._compile_core</span><span class="nt">(self, sig, flags, locals)</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span> <span class="n">cres</span> <span class="o">=</span> <span class="n">compiler</span><span class="o">.</span><span class="n">compile_extra</span><span class="p">(</span><span class="n">typingctx</span><span class="p">,</span> <span class="n">targetctx</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span>                               <span class="bp">self</span><span class="o">.</span><span class="n">py_func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">158</span>                               <span class="n">return_type</span><span class="o">=</span><span class="n">return_type</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span>                               <span class="n">flags</span><span class="o">=</span><span class="n">flags</span><span class="p">,</span> <span class="nb">locals</span><span class="o">=</span><span class="nb">locals</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span> <span class="c1"># cache lookup failed before so safe to save</span>
+<span class="ne">--&gt; </span><span class="mi">162</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">save_overload</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">cres</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">164</span> <span class="k">return</span> <span class="n">cres</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\core\caching.py:698,</span> in <span class="ni">Cache.save_overload</span><span class="nt">(self, sig, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span><span class="sd"> Save the data for the given signature in the cache.</span>
+<span class="g g-Whitespace">    </span><span class="mi">696</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">697</span> <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">_guard_against_spurious_io_errors</span><span class="p">():</span>
+<span class="ne">--&gt; </span><span class="mi">698</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_save_overload</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\core\caching.py:705,</span> in <span class="ni">Cache._save_overload</span><span class="nt">(self, sig, data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="o">.</span><span class="n">check_cachable</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="k">return</span>
+<span class="ne">--&gt; </span><span class="mi">705</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="o">.</span><span class="n">locator</span><span class="o">.</span><span class="n">ensure_cache_path</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_index_key</span><span class="p">(</span><span class="n">sig</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">codegen</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span> <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_impl</span><span class="o">.</span><span class="n">reduce</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\site-packages\numba\core\caching.py:109,</span> in <span class="ni">_CacheLocator.ensure_cache_path</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">107</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span> <span class="c1"># Ensure the directory is writable by trying to write a temporary file</span>
+<span class="ne">--&gt; </span><span class="mi">109</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">TemporaryFile</span><span class="p">(</span><span class="nb">dir</span><span class="o">=</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\tempfile.py:526,</span> in <span class="ni">_TemporaryFileWrapper.close</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span> <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span><span class="sd">     Close the temporary file, possibly deleting it.</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">526</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_closer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File ~\AppData\Local\Programs\Python\Python311\Lib\tempfile.py:473,</span> in <span class="ni">_TemporaryFileCloser.close</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">471</span> <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">close_called</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">472</span>     <span class="bp">self</span><span class="o">.</span><span class="n">close_called</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">473</span>     <span class="bp">self</span><span class="o">.</span><span class="n">file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ekstrak-fitur-menggunakan-tsfel">
+<h1>- Ekstrak fitur menggunakan tsfel<a class="headerlink" href="#ekstrak-fitur-menggunakan-tsfel" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_features</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting features with TSFEL...&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">all_audio_data</span><span class="p">):</span>
+    <span class="n">audio</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;audio&#39;</span><span class="p">]</span>
+    <span class="n">label</span> <span class="o">=</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># Ekstrak fitur. tsfel akan mengembalikan 1 baris DataFrame</span>
+    <span class="n">features_df</span> <span class="o">=</span> <span class="n">tsfel</span><span class="o">.</span><span class="n">time_series_features_extractor</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">fs</span><span class="o">=</span><span class="n">TARGET_SR</span><span class="p">)</span>
+    
+    <span class="c1"># Tambahkan label</span>
+    <span class="n">features_df</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">label</span>
+    <span class="n">all_features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">features_df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Extracting features with TSFEL...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 0/200 [00:00&lt;?, ?it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|          | 1/200 [00:01&lt;04:03,  1.22s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1%|          | 2/200 [00:01&lt;02:30,  1.31it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 3/200 [00:02&lt;02:03,  1.59it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▏         | 4/200 [00:03&lt;02:33,  1.28it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2%|▎         | 5/200 [00:03&lt;02:16,  1.43it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  3%|▎         | 6/200 [00:04&lt;02:35,  1.25it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▎         | 7/200 [00:05&lt;02:57,  1.09it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▍         | 8/200 [00:06&lt;02:26,  1.31it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  4%|▍         | 9/200 [00:06&lt;02:12,  1.44it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  5%|▌         | 10/200 [00:07&lt;02:04,  1.52it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▌         | 11/200 [00:07&lt;01:53,  1.66it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▌         | 12/200 [00:09&lt;02:30,  1.25it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  6%|▋         | 13/200 [00:10&lt;02:42,  1.15it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  7%|▋         | 14/200 [00:10&lt;02:19,  1.33it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 15/200 [00:11&lt;02:39,  1.16it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 16/200 [00:12&lt;02:18,  1.33it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  8%|▊         | 17/200 [00:12&lt;01:59,  1.53it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  9%|▉         | 18/200 [00:13&lt;01:50,  1.64it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|▉         | 19/200 [00:14&lt;02:22,  1.27it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█         | 20/200 [00:15&lt;02:42,  1.11it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 10%|█         | 21/200 [00:16&lt;02:18,  1.29it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 11%|█         | 22/200 [00:16&lt;02:27,  1.21it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▏        | 23/200 [00:17&lt;02:12,  1.34it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▏        | 24/200 [00:18&lt;02:32,  1.16it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 12%|█▎        | 25/200 [00:19&lt;02:45,  1.06it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 13%|█▎        | 26/200 [00:20&lt;02:24,  1.20it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▎        | 27/200 [00:20&lt;02:01,  1.42it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 28/200 [00:21&lt;01:45,  1.63it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 14%|█▍        | 29/200 [00:22&lt;02:25,  1.18it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 15%|█▌        | 30/200 [00:22&lt;01:59,  1.42it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▌        | 31/200 [00:23&lt;02:11,  1.29it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▌        | 32/200 [00:24&lt;02:23,  1.17it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16%|█▋        | 33/200 [00:26&lt;02:36,  1.07it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 17%|█▋        | 34/200 [00:26&lt;02:33,  1.08it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 35/200 [00:27&lt;02:06,  1.31it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 36/200 [00:28&lt;02:10,  1.26it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 18%|█▊        | 37/200 [00:28&lt;01:55,  1.41it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 19%|█▉        | 38/200 [00:29&lt;01:42,  1.57it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|█▉        | 39/200 [00:30&lt;02:03,  1.31it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|██        | 40/200 [00:31&lt;02:04,  1.28it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 20%|██        | 41/200 [00:31&lt;01:54,  1.39it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 21%|██        | 42/200 [00:32&lt;01:51,  1.42it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▏       | 43/200 [00:32&lt;01:40,  1.57it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▏       | 44/200 [00:33&lt;01:32,  1.68it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 22%|██▎       | 45/200 [00:33&lt;01:35,  1.63it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 23%|██▎       | 46/200 [00:34&lt;01:28,  1.73it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▎       | 47/200 [00:35&lt;01:41,  1.50it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▍       | 48/200 [00:35&lt;01:29,  1.70it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 24%|██▍       | 49/200 [00:36&lt;01:31,  1.66it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 25%|██▌       | 50/200 [00:36&lt;01:24,  1.78it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██▌       | 51/200 [00:37&lt;01:48,  1.37it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██▌       | 52/200 [00:38&lt;01:56,  1.27it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 26%|██▋       | 53/200 [00:39&lt;01:43,  1.41it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 27%|██▋       | 54/200 [00:40&lt;01:53,  1.28it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|██▊       | 55/200 [00:41&lt;01:57,  1.23it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|██▊       | 56/200 [00:42&lt;02:07,  1.13it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 28%|██▊       | 57/200 [00:43&lt;02:14,  1.07it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 29%|██▉       | 58/200 [00:43&lt;01:52,  1.26it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|██▉       | 59/200 [00:44&lt;01:56,  1.21it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 60/200 [00:45&lt;01:44,  1.33it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 30%|███       | 61/200 [00:46&lt;01:55,  1.20it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 31%|███       | 62/200 [00:46&lt;01:40,  1.37it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███▏      | 63/200 [00:47&lt;01:29,  1.53it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███▏      | 64/200 [00:48&lt;01:45,  1.29it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 32%|███▎      | 65/200 [00:48&lt;01:35,  1.41it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 33%|███▎      | 66/200 [00:49&lt;01:25,  1.57it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███▎      | 67/200 [00:50&lt;01:37,  1.36it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███▍      | 68/200 [00:50&lt;01:26,  1.52it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 34%|███▍      | 69/200 [00:51&lt;01:14,  1.76it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 35%|███▌      | 70/200 [00:52&lt;01:26,  1.50it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▌      | 71/200 [00:52&lt;01:32,  1.40it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▌      | 72/200 [00:53&lt;01:44,  1.22it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 36%|███▋      | 73/200 [00:54&lt;01:38,  1.28it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 37%|███▋      | 74/200 [00:55&lt;01:38,  1.28it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 75/200 [00:55&lt;01:23,  1.50it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 76/200 [00:56&lt;01:16,  1.63it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 38%|███▊      | 77/200 [00:57&lt;01:24,  1.45it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 39%|███▉      | 78/200 [00:57&lt;01:14,  1.65it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|███▉      | 79/200 [00:58&lt;01:30,  1.34it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 80/200 [00:59&lt;01:21,  1.48it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 40%|████      | 81/200 [01:00&lt;01:27,  1.36it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 41%|████      | 82/200 [01:00&lt;01:19,  1.48it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▏     | 83/200 [01:01&lt;01:26,  1.35it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▏     | 84/200 [01:02&lt;01:35,  1.21it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 42%|████▎     | 85/200 [01:03&lt;01:24,  1.35it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 43%|████▎     | 86/200 [01:03&lt;01:23,  1.37it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▎     | 87/200 [01:04&lt;01:15,  1.49it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 88/200 [01:04&lt;01:12,  1.55it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 44%|████▍     | 89/200 [01:05&lt;01:02,  1.77it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 45%|████▌     | 90/200 [01:06&lt;01:19,  1.39it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▌     | 91/200 [01:06&lt;01:09,  1.56it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▌     | 92/200 [01:07&lt;01:02,  1.74it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 46%|████▋     | 93/200 [01:08&lt;01:12,  1.48it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 47%|████▋     | 94/200 [01:08&lt;01:03,  1.67it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 95/200 [01:09&lt;01:12,  1.46it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 96/200 [01:10&lt;01:15,  1.38it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 48%|████▊     | 97/200 [01:11&lt;01:25,  1.21it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 49%|████▉     | 98/200 [01:11&lt;01:16,  1.33it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|████▉     | 99/200 [01:12&lt;01:21,  1.24it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 100/200 [01:13&lt;01:10,  1.41it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 50%|█████     | 101/200 [01:14&lt;01:20,  1.23it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 51%|█████     | 102/200 [01:14&lt;01:07,  1.45it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▏    | 103/200 [01:15&lt;01:02,  1.56it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▏    | 104/200 [01:15&lt;00:57,  1.68it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 52%|█████▎    | 105/200 [01:16&lt;00:52,  1.80it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 53%|█████▎    | 106/200 [01:16&lt;00:48,  1.92it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████▎    | 107/200 [01:17&lt;00:47,  1.96it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 54%|█████▍    | 108/200 [01:18&lt;01:00,  1.52it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|█████▍    | 109/200 [01:18&lt;00:52,  1.72it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 55%|█████▌    | 110/200 [01:19&lt;00:51,  1.73it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▌    | 111/200 [01:19&lt;00:47,  1.88it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▌    | 112/200 [01:20&lt;00:58,  1.50it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 56%|█████▋    | 113/200 [01:21&lt;00:54,  1.58it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▋    | 114/200 [01:21&lt;01:01,  1.41it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 57%|█████▊    | 115/200 [01:22&lt;00:53,  1.60it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 116/200 [01:22&lt;00:46,  1.79it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 58%|█████▊    | 117/200 [01:23&lt;00:54,  1.53it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 59%|█████▉    | 118/200 [01:24&lt;00:50,  1.62it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|█████▉    | 119/200 [01:24&lt;00:46,  1.73it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 120/200 [01:25&lt;00:54,  1.48it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 60%|██████    | 121/200 [01:26&lt;00:50,  1.58it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 61%|██████    | 122/200 [01:26&lt;00:45,  1.72it/s]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 123/200 [01:28&lt;01:23,  1.09s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▏   | 124/200 [01:30&lt;01:25,  1.12s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 62%|██████▎   | 125/200 [01:31&lt;01:23,  1.11s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 63%|██████▎   | 126/200 [01:33&lt;01:43,  1.40s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▎   | 127/200 [01:35&lt;02:00,  1.65s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▍   | 128/200 [01:37&lt;02:12,  1.84s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 64%|██████▍   | 129/200 [01:39&lt;02:12,  1.87s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 65%|██████▌   | 130/200 [01:40&lt;01:52,  1.60s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|██████▌   | 131/200 [01:42&lt;02:05,  1.82s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|██████▌   | 132/200 [01:43&lt;01:44,  1.54s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 66%|██████▋   | 133/200 [01:44&lt;01:33,  1.39s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 67%|██████▋   | 134/200 [01:45&lt;01:22,  1.25s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|██████▊   | 135/200 [01:46&lt;01:17,  1.20s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|██████▊   | 136/200 [01:48&lt;01:28,  1.39s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 68%|██████▊   | 137/200 [01:49&lt;01:23,  1.33s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 69%|██████▉   | 138/200 [01:51&lt;01:22,  1.33s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|██████▉   | 139/200 [01:53&lt;01:30,  1.48s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 140/200 [01:55&lt;01:40,  1.67s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 70%|███████   | 141/200 [01:56&lt;01:40,  1.70s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 71%|███████   | 142/200 [01:58&lt;01:39,  1.72s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|███████▏  | 143/200 [02:00&lt;01:43,  1.81s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|███████▏  | 144/200 [02:01&lt;01:31,  1.64s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 72%|███████▎  | 145/200 [02:04&lt;01:39,  1.82s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 73%|███████▎  | 146/200 [02:05&lt;01:27,  1.62s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████▎  | 147/200 [02:07&lt;01:32,  1.75s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████▍  | 148/200 [02:08&lt;01:18,  1.51s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 74%|███████▍  | 149/200 [02:09&lt;01:10,  1.38s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 75%|███████▌  | 150/200 [02:10&lt;01:02,  1.26s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▌  | 151/200 [02:12&lt;01:09,  1.41s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▌  | 152/200 [02:14&lt;01:18,  1.64s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 76%|███████▋  | 153/200 [02:16&lt;01:20,  1.70s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 77%|███████▋  | 154/200 [02:17&lt;01:07,  1.46s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 155/200 [02:18&lt;01:09,  1.54s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 156/200 [02:19&lt;01:02,  1.42s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 78%|███████▊  | 157/200 [02:21&lt;01:03,  1.49s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 79%|███████▉  | 158/200 [02:23&lt;01:04,  1.54s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|███████▉  | 159/200 [02:24&lt;00:54,  1.32s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 160/200 [02:24&lt;00:47,  1.19s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 80%|████████  | 161/200 [02:25&lt;00:43,  1.12s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 81%|████████  | 162/200 [02:26&lt;00:40,  1.08s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|████████▏ | 163/200 [02:28&lt;00:49,  1.34s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|████████▏ | 164/200 [02:30&lt;00:50,  1.40s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 82%|████████▎ | 165/200 [02:31&lt;00:45,  1.29s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 83%|████████▎ | 166/200 [02:32&lt;00:39,  1.17s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▎ | 167/200 [02:33&lt;00:37,  1.15s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▍ | 168/200 [02:34&lt;00:37,  1.17s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 84%|████████▍ | 169/200 [02:35&lt;00:37,  1.21s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 85%|████████▌ | 170/200 [02:36&lt;00:34,  1.15s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▌ | 171/200 [02:38&lt;00:33,  1.15s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▌ | 172/200 [02:39&lt;00:38,  1.36s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 86%|████████▋ | 173/200 [02:41&lt;00:37,  1.40s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 87%|████████▋ | 174/200 [02:43&lt;00:41,  1.61s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 175/200 [02:44&lt;00:34,  1.40s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 176/200 [02:45&lt;00:30,  1.26s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 88%|████████▊ | 177/200 [02:46&lt;00:27,  1.19s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 89%|████████▉ | 178/200 [02:48&lt;00:31,  1.42s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|████████▉ | 179/200 [02:50&lt;00:33,  1.61s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 180/200 [02:51&lt;00:29,  1.46s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 90%|█████████ | 181/200 [02:53&lt;00:30,  1.58s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 91%|█████████ | 182/200 [02:55&lt;00:29,  1.63s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|█████████▏| 183/200 [02:56&lt;00:28,  1.66s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|█████████▏| 184/200 [02:59&lt;00:28,  1.81s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 92%|█████████▎| 185/200 [02:59&lt;00:23,  1.56s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 93%|█████████▎| 186/200 [03:00&lt;00:19,  1.39s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▎| 187/200 [03:03&lt;00:21,  1.65s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 188/200 [03:05&lt;00:21,  1.78s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 94%|█████████▍| 189/200 [03:06&lt;00:17,  1.60s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 95%|█████████▌| 190/200 [03:08&lt;00:16,  1.68s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|█████████▌| 191/200 [03:09&lt;00:12,  1.41s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|█████████▌| 192/200 [03:10&lt;00:09,  1.24s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 96%|█████████▋| 193/200 [03:11&lt;00:08,  1.20s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 97%|█████████▋| 194/200 [03:12&lt;00:06,  1.13s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|█████████▊| 195/200 [03:14&lt;00:06,  1.38s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|█████████▊| 196/200 [03:16&lt;00:07,  1.76s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 98%|█████████▊| 197/200 [03:17&lt;00:04,  1.58s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 99%|█████████▉| 198/200 [03:20&lt;00:03,  1.84s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|█████████▉| 199/200 [03:21&lt;00:01,  1.55s/it]
+</pre></div>
+</div>
+<div class="output text_html">
+              <p>
+                  Progress: 100% Complete
+              <p/>
+              <progress
+                  value='67'
+                  max='67',
+                  style='width: 25%',
+              >
+                  67
+              </progress>
+
+    </div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>100%|██████████| 200/200 [03:22&lt;00:00,  1.01s/it]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">all_features</span><span class="p">,</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_dataset</span> <span class="o">=</span> <span class="n">final_dataset</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+<span class="c1"># Opsi 1: Drop kolom yang mengandung NaN (lebih aman)</span>
+<span class="n">cols_before</span> <span class="o">=</span> <span class="n">final_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">final_dataset</span> <span class="o">=</span> <span class="n">final_dataset</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">cols_after</span> <span class="o">=</span> <span class="n">final_dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dropped </span><span class="si">{</span><span class="n">cols_before</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">cols_after</span><span class="si">}</span><span class="s2"> columns due to NaNs&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dropped 0 columns due to NaNs
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">final_dataset</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;audio_features_labeled.csv&quot;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dataset features created: audio_features_labeled.csv&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">final_dataset</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataset features created: audio_features_labeled.csv
+   0_Absolute energy  0_Area under the curve  0_Autocorrelation  \
+0        1195.415865                0.173556                9.0   
+1         712.102519                0.125769               11.0   
+2        1078.760947                0.152884                9.0   
+3         990.424002                0.154929                9.0   
+4        1638.215058                0.197455               11.0   
+
+   0_Average power  0_Centroid  0_ECDF Percentile Count_0  \
+0       524.586937    1.552753                        0.0   
+1       402.808049    0.831794                        0.0   
+2       561.867932    1.026031                     8467.0   
+3       493.901650    1.374111                     8843.0   
+4       568.833630    1.023877                    12700.0   
+
+   0_ECDF Percentile Count_1  0_ECDF Percentile_0  0_ECDF Percentile_1  \
+0                        0.0             0.000000             0.000000   
+1                        0.0             0.000000             0.000000   
+2                    33868.0            -0.020829             0.024266   
+3                    35374.0            -0.026571             0.028218   
+4                    50803.0            -0.013522             0.013518   
+
+   0_ECDF_0  ...  0_Wavelet variance_1378.12Hz  0_Wavelet variance_1837.5Hz  \
+0  0.000020  ...                      0.045357                     0.016114   
+1  0.000026  ...                      0.023050                     0.008544   
+2  0.000024  ...                      0.055191                     0.020157   
+3  0.000023  ...                      0.046433                     0.017258   
+4  0.000016  ...                      0.036774                     0.014281   
+
+   0_Wavelet variance_2756.25Hz  0_Wavelet variance_5512.5Hz  \
+0                      0.003401                     0.000343   
+1                      0.001992                     0.000180   
+2                      0.004518                     0.000505   
+3                      0.003888                     0.000476   
+4                      0.003621                     0.000404   
+
+   0_Wavelet variance_612.5Hz  0_Wavelet variance_689.06Hz  \
+0                    0.280741                     0.247798   
+1                    0.163983                     0.131229   
+2                    0.276967                     0.252824   
+3                    0.262664                     0.233567   
+4                    0.248541                     0.202718   
+
+   0_Wavelet variance_787.5Hz  0_Wavelet variance_918.75Hz  \
+0                    0.201384                     0.145760   
+1                    0.101317                     0.072377   
+2                    0.216100                     0.164844   
+3                    0.191623                     0.140709   
+4                    0.158129                     0.113148   
+
+   0_Zero crossing rate  label  
+0                3412.0   buka  
+1                3177.0   buka  
+2                3188.0   buka  
+3               12028.0   buka  
+4               19597.0   buka  
+
+[5 rows x 157 columns]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">joblib</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Muat dataset (jika Anda me-restart notebook)</span>
+<span class="n">final_dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;audio_features_labeled.csv&quot;</span><span class="p">)</span>
+
+<span class="c1"># 2. Pisahkan Fitur (X) dan Label (y)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">final_dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;label&#39;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">final_dataset</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span>
+
+<span class="c1"># Simpan nama kolom fitur, PENTING untuk deployment</span>
+<span class="n">feature_columns</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">feature_columns</span><span class="p">,</span> <span class="s1">&#39;feature_columns.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;feature_columns.pkl&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">le</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">y_encoded</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">X_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_scaled</span><span class="p">,</span> <span class="n">y_encoded</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y_encoded</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-container-id-2 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: black;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-2 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-2 pre {
+  padding: 0;
+}
+
+#sk-container-id-2 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-2 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-2 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-2 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-2 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-2 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-2 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-2 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-2 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-2 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-2 label.sk-toggleable__label {
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-2 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-2 div.sk-toggleable__content {
+  max-height: 0;
+  max-width: 0;
+  overflow: hidden;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  max-height: 200px;
+  max-width: 100%;
+  overflow: auto;
+}
+
+#sk-container-id-2 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-2 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-2 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-2 div.sk-label label.sk-toggleable__label,
+#sk-container-id-2 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-2 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-2 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-2 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-2 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-2 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-2 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-2 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 1ex;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-2 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-2 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-2 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+</style><div id="sk-container-id-2" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>RandomForestClassifier(random_state=42)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-2" type="checkbox" checked><label for="sk-estimator-id-2" class="sk-toggleable__label fitted sk-toggleable__label-arrow fitted">&nbsp;&nbsp;RandomForestClassifier<a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.4/modules/generated/sklearn.ensemble.RandomForestClassifier.html">?<span>Documentation for RandomForestClassifier</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></label><div class="sk-toggleable__content fitted"><pre>RandomForestClassifier(random_state=42)</pre></div> </div></div></div></div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="w"> </span><span class="n">y_pred</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">target_names</span><span class="o">=</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Accuracy: 95.00%
+              precision    recall  f1-score   support
+
+        buka       0.91      1.00      0.95        20
+       tutup       1.00      0.90      0.95        20
+
+    accuracy                           0.95        40
+   macro avg       0.95      0.95      0.95        40
+weighted avg       0.95      0.95      0.95        40
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s1">&#39;voice_model.pkl&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="s1">&#39;scaler.pkl&#39;</span><span class="p">)</span>
+<span class="n">joblib</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">le</span><span class="p">,</span> <span class="s1">&#39;label_encoder.pkl&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model, Scaler, LabelEncoder, and Column List saved!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model, Scaler, LabelEncoder, and Column List saved!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">- Import Library yang dibutuhkan</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-dan-konfigurasi">- Setup dan Konfigurasi</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ekstrak-fitur-menggunakan-tsfel">- Ekstrak fitur menggunakan tsfel</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Abdiadha Syabirin
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
