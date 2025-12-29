@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'project_akhir';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -404,7 +406,15 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-transformasi">1. Konsep Dasar Transformasi</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#landasan-matematis-rumus">2. Landasan Matematis (Rumus)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-manual-sederhana">3. Contoh Perhitungan Manual (Sederhana)</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menghitung-frekuensi-0-rata-rata-dc-component">Langkah 1: Menghitung Frekuensi 0 (Rata-rata / DC Component)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghitung-frekuensi-1-fundamental-frequency">Langkah 2: Menghitung Frekuensi 1 (Fundamental Frequency)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-memuat-dataset">2.2 Import Library &amp; Memuat Dataset</a></li>
@@ -545,22 +555,156 @@ data direkam dari lokasi tubuh yang berbeda (aorta, pulmonal, mitral, trikuspid)
 <p>Penggunaan representasi spectrogram dipilih karena mampu memvisualisasikan intensitas energi pada berbagai frekuensi, yang mana fitur ini sangat relevan untuk mendeteksi murmur atau suara tambahan pada jantung abnormal.</p>
 <section id="transformasi-sinyal-jantung-ke-spectrogram">
 <h4>2.1.1 Transformasi Sinyal Jantung ke Spectrogram<a class="headerlink" href="#transformasi-sinyal-jantung-ke-spectrogram" title="Link to this heading">#</a></h4>
-<p>Sinyal suara jantung yang direkam menggunakan stetoskop digital pada awalnya berbentuk domain waktu (time domain). Pada bentuk ini, grafik hanya memperlihatkan perubahan amplitudo atau keras–lemahnya suara terhadap waktu. Namun, tampilan ini belum menunjukkan informasi frekuensi, padahal kelainan suara jantung seperti murmur biasanya muncul pada rentang frekuensi tertentu, misalnya frekuensi tinggi di atas 200 Hz.</p>
-<p>Untuk mendapatkan informasi frekuensi, sinyal perlu diubah ke domain frekuensi. Akan tetapi, penggunaan Fast Fourier Transform (FFT) biasa memiliki kelemahan, yaitu kehilangan informasi waktu. Dengan FFT, kita dapat mengetahui frekuensi apa saja yang ada, tetapi tidak dapat mengetahui kapan frekuensi tersebut muncul, misalnya apakah terjadi saat fase sistol atau diastol.</p>
-<p>Oleh karena itu, penelitian ini menggunakan spectrogram sebagai representasi sinyal suara jantung. Spectrogram dihasilkan melalui metode Short-Time Fourier Transform (STFT), yang mampu menampilkan informasi waktu dan frekuensi secara bersamaan.</p>
-<p>Proses STFT dilakukan dengan langkah-langkah sebagai berikut:</p>
-<ol class="arabic simple">
-<li><p>Sinyal suara yang panjang dibagi menjadi potongan-potongan kecil (window) yang saling tumpang tindih (overlap).</p></li>
-<li><p>Setiap potongan kecil tersebut dianalisis menggunakan FFT.</p></li>
-<li><p>Hasil dari setiap potongan kemudian disusun secara berurutan berdasarkan waktu.</p></li>
-<li><p>Hasil akhirnya adalah gambar spectrogram yang memuat tiga informasi utama:</p></li>
-</ol>
+<p>Analisis sinyal suara jantung memerlukan pemahaman mendalam tentang kandungan frekuensi yang berubah seiring waktu. Berikut adalah rincian proses transformasi dari sinyal mentah hingga menjadi citra Spectrogram.</p>
+<section id="konsep-dasar-transformasi">
+<h5>1. Konsep Dasar Transformasi<a class="headerlink" href="#konsep-dasar-transformasi" title="Link to this heading">#</a></h5>
+<p>Proses perubahan ini melewati tiga tahapan visualisasi:</p>
 <ul class="simple">
-<li><p>Sumbu X (Waktu) menunjukkan durasi atau urutan detak jantung.</p></li>
-<li><p>Sumbu Y (Frekuensi) menunjukkan tinggi atau rendahnya frekuensi suara.</p></li>
-<li><p>Warna atau intensitas menunjukkan kekuatan energi suara pada waktu dan frekuensi tertentu.</p></li>
+<li><p>Time Domain (Domain Waktu): Grafik amplitudo terhadap waktu. Kita bisa melihat kapan suara keras terjadi, tapi tidak tahu apakah itu suara rendah (bass) atau tinggi (treble).</p></li>
+<li><p>Frequency Domain (FFT): Grafik amplitudo terhadap frekuensi. Kita tahu apa nada yang muncul (misal ada murmur di 200Hz), tapi informasi waktunya hilang (tidak tahu murmur itu terjadi di detik keberapa).</p></li>
+<li><p>Spectrogram (STFT): Gabungan keduanya. Kita tahu apa frekuensinya dan kapan munculnya.</p></li>
 </ul>
-<p>Dengan menggunakan spectrogram, pola suara jantung—termasuk adanya murmur—dapat lebih mudah dikenali karena informasi waktu dan frekuensi ditampilkan secara bersamaan.</p>
+</section>
+<section id="landasan-matematis-rumus">
+<h5>2. Landasan Matematis (Rumus)<a class="headerlink" href="#landasan-matematis-rumus" title="Link to this heading">#</a></h5>
+<p>Dasar dari semua analisis frekuensi digital adalah Discrete Fourier Transform (DFT). Algoritma cepat untuk menghitung DFT disebut Fast Fourier Transform (FFT).Rumus DFT:$<span class="math notranslate nohighlight">\(X[k] = \sum_{n=0}^{N-1} x[n] \cdot e^{-j \frac{2\pi}{N} kn}\)</span>$</p>
+<p>Dimana:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x[n]\)</span>: Nilai sinyal pada titik waktu ke-<span class="math notranslate nohighlight">\(n\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X[k]\)</span>: Nilai sinyal pada frekuensi ke-<span class="math notranslate nohighlight">\(k\)</span> (bilangan kompleks).</p></li>
+<li><p><span class="math notranslate nohighlight">\(N\)</span>: Total jumlah sampel data.</p></li>
+<li><p><span class="math notranslate nohighlight">\(e^{-j...}\)</span>: Identitas Euler (<span class="math notranslate nohighlight">\(\cos(\theta) - j\sin(\theta)\)</span>)</p></li>
+</ul>
+<p>yang membedah sinyal menjadi komponen sinus dan cosinus.Karena kita butuh informasi waktu, kita menggunakan Short-Time Fourier Transform (STFT). Sinyal dipotong-potong menggunakan fungsi jendela (window function) <span class="math notranslate nohighlight">\(w[n]\)</span>.Rumus STFT:$<span class="math notranslate nohighlight">\(STFT \{x[n]\}(m, k) = \sum_{n=-\infty}^{\infty} x[n] \cdot w[n-m] \cdot e^{-j \frac{2\pi}{N} kn}\)</span><span class="math notranslate nohighlight">\(Magnitudo Spectrogram: Nilai warna pada gambar Spectrogram diambil dari kuadrat magnitudonya: \)</span>|X(m,k)|^2$.</p>
+</section>
+<section id="contoh-perhitungan-manual-sederhana">
+<h5>3. Contoh Perhitungan Manual (Sederhana)<a class="headerlink" href="#contoh-perhitungan-manual-sederhana" title="Link to this heading">#</a></h5>
+<p>Untuk memahami bagaimana komputer mengubah angka menjadi grafik, mari kita hitung secara manual menggunakan 1 potong sinyal kecil (Window) yang hanya berisi 4 data sampel (<span class="math notranslate nohighlight">\(N=4\)</span>).</p>
+<p>Misalkan amplitudo sinyal suara jantung pada 4 titik waktu adalah:
+$<span class="math notranslate nohighlight">\(x = [1, 2, 3, 1]\)</span>$</p>
+<p>Kita akan menghitung komponen frekuensi (<span class="math notranslate nohighlight">\(X[k]\)</span>) menggunakan rumus DFT.</p>
+</section>
+</section>
+<section id="langkah-1-menghitung-frekuensi-0-rata-rata-dc-component">
+<h4>Langkah 1: Menghitung Frekuensi 0 (Rata-rata / DC Component)<a class="headerlink" href="#langkah-1-menghitung-frekuensi-0-rata-rata-dc-component" title="Link to this heading">#</a></h4>
+<p>Untuk <span class="math notranslate nohighlight">\(k=0\)</span> (Frekuensi terendah):</p>
+<div class="math notranslate nohighlight">
+\[
+X[0] = \sum_{n=0}^{3} x[n] \cdot 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+X[0] = 1 + 2 + 3 + 1 = \mathbf{7}
+\]</div>
+</section>
+<section id="langkah-2-menghitung-frekuensi-1-fundamental-frequency">
+<h4>Langkah 2: Menghitung Frekuensi 1 (Fundamental Frequency)<a class="headerlink" href="#langkah-2-menghitung-frekuensi-1-fundamental-frequency" title="Link to this heading">#</a></h4>
+<p>Untuk <span class="math notranslate nohighlight">\(k=1\)</span>, kita gunakan basis DFT dimana <span class="math notranslate nohighlight">\(W_4 = e^{-j2\pi/4} = -j\)</span>.
+Perhitungannya adalah:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+X[1] &amp;= 1(e^0) + 2(e^{-j\pi/2}) + 3(e^{-j\pi}) + 1(e^{-j3\pi/2}) \\
+X[1] &amp;= 1(1) + 2(-j) + 3(-1) + 1(j) \\
+X[1] &amp;= 1 - 2j - 3 + j \\
+X[1] &amp;= (1-3) + (-2j+j) \\
+X[1] &amp;= \mathbf{-2 - j}
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">
+<h4>Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)<a class="headerlink" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram" title="Link to this heading">#</a></h4>
+<p>Hasil di atas adalah bilangan kompleks. Spectrogram hanya menampilkan kekuatan sinyal (magnitude), yang dihitung dengan rumus Pythagoras <span class="math notranslate nohighlight">\(\sqrt{Real^2 + Imajiner^2}\)</span>.</p>
+<ul class="simple">
+<li><p><strong>Pixel Frekuensi 0:</strong>
+$<span class="math notranslate nohighlight">\(|X[0]| = |7| = \mathbf{7}\)</span>$
+<em>(Sangat Terang/Kuning)</em></p></li>
+<li><p><strong>Pixel Frekuensi 1:</strong>
+$<span class="math notranslate nohighlight">\(|X[1]| = \sqrt{(-2)^2 + (-1)^2} = \sqrt{4+1} \approx \mathbf{2.23}\)</span>$
+<em>(Agak Gelap/Ungu)</em></p></li>
+</ul>
+<p><strong>Kesimpulan:</strong>
+Dalam potongan waktu tersebut, sinyal didominasi oleh energi frekuensi rendah (Nilai 7) dibandingkan frekuensi tinggi (Nilai 2.23). Inilah yang membuat bagian bawah Spectrogram warnanya lebih terang daripada bagian atas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">librosa.display</span>
+
+<span class="c1"># 1. MEMBUAT SINYAL JANTUNG SINTETIS (CONTOH)</span>
+<span class="c1"># Kita buat sinyal dummy: &quot;Lub-Dub&quot; (Frekuensi rendah) + &quot;Murmur&quot; (Frekuensi tinggi)</span>
+<span class="n">sr</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Sample rate</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">2.0</span>    <span class="c1"># Durasi 2 detik</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span><span class="o">*</span><span class="n">sr</span><span class="p">))</span>
+
+<span class="c1"># Sinyal S1 &amp; S2 (Frekuensi Rendah 30Hz - 50Hz)</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Lub</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Dub</span>
+<span class="c1"># Sinyal Murmur (Frekuensi Tinggi 200Hz, muncul di antara S1 dan S2)</span>
+<span class="n">murmur</span> <span class="o">=</span> <span class="mf">0.3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">200</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span> <span class="o">*</span> <span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="mf">0.35</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Gabungkan sinyal</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">s2</span> <span class="o">+</span> <span class="n">murmur</span>
+
+<span class="c1"># 2. PROSES FFT (FREQUENCY DOMAIN)</span>
+<span class="c1"># Mengubah seluruh sinyal ke frekuensi (Hilang info waktu)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">yf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="n">xf</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">sr</span><span class="p">)</span>
+<span class="n">magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yf</span><span class="p">[:</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Ambil separuh (positif saja)</span>
+
+<span class="c1"># 3. PROSES STFT (SPECTROGRAM)</span>
+<span class="c1"># Mengubah ke Waktu &amp; Frekuensi</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">stft</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">n_fft</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">hop_length</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="n">S_db</span> <span class="o">=</span> <span class="n">librosa</span><span class="o">.</span><span class="n">amplitude_to_db</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">D</span><span class="p">),</span> <span class="n">ref</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">)</span>
+
+<span class="c1"># 4. PLOTTING (VISUALISASI 3 TAHAP)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Time Domain (Persis gambar Truk bagian atas)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;A. Time Domain (Sinyal Suara Jantung)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitudo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Waktu (detik)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c1"># Plot 2: Frequency Domain / FFT (Persis gambar Truk bagian bawah)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf</span><span class="p">[:</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">],</span> <span class="n">magnitude</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;B. Frequency Domain (FFT Spectrum)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitudo&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frekuensi (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span> <span class="c1"># Fokus ke 0-300 Hz</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span><span class="o">*</span><span class="mf">0.8</span><span class="p">,</span> <span class="s1">&#39;S1 &amp; S2 (Low Freq)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">magnitude</span><span class="p">)</span><span class="o">*</span><span class="mf">0.2</span><span class="p">,</span> <span class="s1">&#39;Murmur (High Freq)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot 3: Spectrogram (Hasil Akhir)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">librosa</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">specshow</span><span class="p">(</span><span class="n">S_db</span><span class="p">,</span> <span class="n">sr</span><span class="o">=</span><span class="n">sr</span><span class="p">,</span> <span class="n">hop_length</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">x_axis</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">y_axis</span><span class="o">=</span><span class="s1">&#39;hz&#39;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;inferno&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;C. Spectrogram (STFT)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%+2.0f</span><span class="s1"> dB&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1464807530d8e4abcff145fd278c4c0bb8efa83155468daf3558bebdd863c340.png" src="_images/1464807530d8e4abcff145fd278c4c0bb8efa83155468daf3558bebdd863c340.png" />
+</div>
+</div>
+<p>Penjelasan Gambar grafik:</p>
+<ul class="simple">
+<li><p>Grafik A (Time Domain): Kamu melihat gelombang naik turun. Kamu bisa melihat kapan detak jantung terjadi (detik 0.2 dan 0.5), tapi sulit membedakan mana yang murmur.</p></li>
+<li><p>Grafik B (Frequency Domain/FFT): Kamu melihat lonjakan garis tajam.Ada lonjakan besar di kiri (30-50Hz) <span class="math notranslate nohighlight">\(\rightarrow\)</span> Itu suara jantung normal.Ada lonjakan kecil di kanan (200Hz) <span class="math notranslate nohighlight">\(\rightarrow\)</span> Itu suara murmur.Kekurangannya: Kamu tidak tahu kapan murmur 200Hz itu terjadi.</p></li>
+<li><p>Grafik C (Spectrogram): Ini solusinya.Sumbu X adalah Waktu.Sumbu Y adalah Frekuensi.Kamu bisa melihat warna kuning (S1 &amp; S2) di bawah, dan ada bercak oranye (Murmur) di tengah-tengahnya pada frekuensi 200Hz.</p></li>
+</ul>
 </section>
 </section>
 <section id="import-library-memuat-dataset">
@@ -709,7 +853,7 @@ Jumlah Data Testing       : 205 orang
 Rincian Jumlah Data: Counter({&#39;abnormal&#39;: 147, &#39;normal&#39;: 57})
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_15936\3621272935.py:9: FutureWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>C:\Users\ahabi\AppData\Local\Temp\ipykernel_10188\3621272935.py:9: FutureWarning: 
 
 Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
 
@@ -1579,7 +1723,15 @@ Status: SIAP UNTUK STREAMLIT.
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-understanding"><strong>DATA UNDERSTANDING</strong></a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#penjelasan-dataset-spectrogram">2.1 Penjelasan Dataset (Spectrogram)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#transformasi-sinyal-jantung-ke-spectrogram">2.1.1 Transformasi Sinyal Jantung ke Spectrogram</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#konsep-dasar-transformasi">1. Konsep Dasar Transformasi</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#landasan-matematis-rumus">2. Landasan Matematis (Rumus)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#contoh-perhitungan-manual-sederhana">3. Contoh Perhitungan Manual (Sederhana)</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-1-menghitung-frekuensi-0-rata-rata-dc-component">Langkah 1: Menghitung Frekuensi 0 (Rata-rata / DC Component)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-2-menghitung-frekuensi-1-fundamental-frequency">Langkah 2: Menghitung Frekuensi 1 (Fundamental Frequency)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#langkah-3-menghitung-magnitudo-nilai-pixel-spectrogram">Langkah 3: Menghitung Magnitudo (Nilai Pixel Spectrogram)</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-library-memuat-dataset">2.2 Import Library &amp; Memuat Dataset</a></li>
